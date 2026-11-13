@@ -16,7 +16,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { WtCheckbox } from '@lpcp/components/vue';
+import { WtCheckbox } from '@mache-hangar/components/vue';
 
 const checkedValue = ref(true);
 </script>

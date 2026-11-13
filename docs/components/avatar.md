@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import { WtAvatar } from '@lpcp/components/vue';
+import { WtAvatar } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>
@@ -57,7 +57,7 @@ import { WtAvatar } from '@lpcp/components/vue';
 </template>
 
 <script setup>
-import { WtAvatar } from '@lpcp/components/vue';
+import { WtAvatar } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>
@@ -92,7 +92,7 @@ import { WtAvatar } from '@lpcp/components/vue';
 </template>
 
 <script setup>
-import { WtAvatar } from '@lpcp/components/vue';
+import { WtAvatar } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>
@@ -123,7 +123,7 @@ Pass multiple `WtAvatar` components through the default slot, then use `max` to 
 	</WtAvatarGroup>
 </template>
 <script setup>
-import { WtAvatar, WtAvatarGroup } from '@lpcp/components/vue';
+import { WtAvatar, WtAvatarGroup } from '@mache-hangar/components/vue';
 </script>
 ```
 :::
@@ -143,7 +143,7 @@ When data is passed through `list`, `WtAvatar-group` will apply a unified `size`
 
 <script setup>
 import { ref } from 'vue';
-import { WtAvatarGroup } from '@lpcp/components/vue';
+import { WtAvatarGroup } from '@mache-hangar/components/vue';
 
 const members = ref([
 	{ text: 'Felix Li' },

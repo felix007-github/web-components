@@ -15,8 +15,8 @@ pnpm --filter react-playground dev
 
 # Some build commands
 ```bash
-pnpm run build --filter @lpcp/components
-pnpm run build --filter @lpcp/xml-editor
+pnpm run build --filter @mache-hangar/components
+pnpm run build --filter @mache-hangar/xml-editor
 ```
 
 ## About Turbo (Turborepo)

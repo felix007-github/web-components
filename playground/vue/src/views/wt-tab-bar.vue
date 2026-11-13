@@ -15,7 +15,7 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
-import { WtTabBar } from "@lpcp/components/vue";
+import { WtTabBar } from "@mache-hangar/components/vue";
 
 const tabList = ref([
   { label: "Tab 1", value: "tab1" },

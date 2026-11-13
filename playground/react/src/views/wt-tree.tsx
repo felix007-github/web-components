@@ -1,5 +1,5 @@
 import { forwardRef, useState } from "react";
-import { WtTree, WtTreeNode } from "@lpcp/components/react";
+import { WtTree, WtTreeNode } from "@mache-hangar/components/react";
 export const WtTreeVs = forwardRef<
   HTMLWtTreeElement,
   React.ComponentPropsWithoutRef<"wt-tree">

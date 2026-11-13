@@ -18,7 +18,7 @@
 </template>
 
 <script setup>
-import { WtBadge, WtButton } from '@lpcp/components/vue';
+import { WtBadge, WtButton } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>
@@ -46,7 +46,7 @@ import { WtBadge, WtButton } from '@lpcp/components/vue';
 </template>
 
 <script setup>
-import { WtBadge, WtButton } from '@lpcp/components/vue';
+import { WtBadge, WtButton } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>
@@ -72,7 +72,7 @@ import { WtBadge, WtButton } from '@lpcp/components/vue';
 </template>
 
 <script setup>
-import { WtBadge, WtButton } from '@lpcp/components/vue';
+import { WtBadge, WtButton } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>
@@ -98,7 +98,7 @@ import { WtBadge, WtButton } from '@lpcp/components/vue';
 
 <script setup>
 import { ref } from 'vue';
-import { WtBadge, WtButton } from '@lpcp/components/vue';
+import { WtBadge, WtButton } from '@mache-hangar/components/vue';
 
 const hidden = ref(false);
 </script>

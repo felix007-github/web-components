@@ -16,6 +16,8 @@ export interface GridLayoutOptions {
   gap: number;
   collisionTolerance: number;
   snap?: boolean;
+  /** Skip min-height inflation while the container width is still unknown. */
+  applyMinHeight?: boolean;
 }
 
 export const cloneLayout = (items: GridLayoutItem[]): GridLayoutItem[] => items.map(item => ({ ...item }));
@@ -48,7 +50,7 @@ export function fitGridLayout(items: GridLayoutItem[], options: GridLayoutOption
   for (const item of cloneLayout(items).sort((a, b) => a.y - b.y || a.x - b.x)) {
     item.w = clamp(item.w, minWidth(item, options.columns), options.columns);
     item.x = clamp(item.x, 0, options.columns - item.w);
-    item.h = Math.max(item.h, minHeight(item, options.cell));
+    item.h = Math.max(item.h, options.applyMinHeight === false ? 1 : minHeight(item, options.cell));
     let collisions: GridLayoutItem[];
     while ((collisions = placed.filter(other => intersects(item, other, options.gap))).length) {
       item.y = ceil(Math.max(...collisions.map(other => other.y + other.h + options.gap)));

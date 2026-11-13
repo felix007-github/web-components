@@ -1,7 +1,7 @@
 {
-  "name": "@lpcp/icons",
+  "name": "@mache-hangar/icons",
   "version": "0.0.2",
-  "description": "SVG icon for VT UI Icons collection.",
+  "description": "SVG icon for WT UI Icons collection.",
   "keywords": [
     "icon",
     "svg"

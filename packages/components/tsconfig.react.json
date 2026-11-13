@@ -5,10 +5,10 @@
     "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
-      "@lpcp/components": ["dist/types/index.d.ts"],
-      "@lpcp/components/core": ["dist/types/index.d.ts"],
-      "@lpcp/components/dist/components": ["dist/components/index.d.ts"],
-      "@lpcp/components/dist/components/*": ["dist/components/*"]
+      "@mache-hangar/components": ["dist/types/index.d.ts"],
+      "@mache-hangar/components/core": ["dist/types/index.d.ts"],
+      "@mache-hangar/components/dist/components": ["dist/components/index.d.ts"],
+      "@mache-hangar/components/dist/components/*": ["dist/components/*"]
     },
     "declaration": true,
     "rootDir": "./output/generated/react",

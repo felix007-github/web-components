@@ -15,7 +15,7 @@
 
 <script setup>
 import { ref } from 'vue';
-import { WtInput } from '@lpcp/components/vue';
+import { WtInput } from '@mache-hangar/components/vue';
 
 const text = ref('');
 </script>
@@ -52,7 +52,7 @@ const text = ref('');
 </template>
 
 <script setup>
-import { WtInput } from '@lpcp/components/vue';
+import { WtInput } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>
@@ -82,7 +82,7 @@ import { WtInput } from '@lpcp/components/vue';
 </template>
 
 <script setup>
-import { WtInput } from '@lpcp/components/vue';
+import { WtInput } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>
@@ -107,7 +107,7 @@ import { WtInput } from '@lpcp/components/vue';
 </template>
 
 <script setup>
-import { WtInput } from '@lpcp/components/vue';
+import { WtInput } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>
@@ -137,7 +137,7 @@ import { WtInput } from '@lpcp/components/vue';
 </template>
 
 <script setup>
-import { WtInput } from '@lpcp/components/vue';
+import { WtInput } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>
@@ -169,7 +169,7 @@ import { WtInput } from '@lpcp/components/vue';
 
 <script setup>
 import { ref } from 'vue';
-import { WtInput } from '@lpcp/components/vue';
+import { WtInput } from '@mache-hangar/components/vue';
 
 const value = ref('');
 const status = ref('Not focused');

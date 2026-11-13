@@ -1,5 +1,5 @@
 import type { DetailedHTMLProps, HTMLAttributes } from 'react';
-import type { JSX as VtJSX } from '@lpcp/components';
+import type { JSX as VtJSX } from '@mache-hangar/components';
 
 type VtTagName = Extract<keyof VtJSX.IntrinsicElements, `wt-${string}`>;
 
@@ -29,7 +29,7 @@ declare module 'react/jsx-runtime' {
   }
 }
 
-import '@lpcp/xml-editor/react';
+import '@mache-hangar/xml-editor/react';
 
 declare global {
   namespace JSX {

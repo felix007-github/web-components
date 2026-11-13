@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { WtAvatar, WtAvatarGroup } from "@lpcp/components/react";
+import { WtAvatar, WtAvatarGroup } from "@mache-hangar/components/react";
 import useImage from "../images/avatar.png";
 export const WtAvatarVs = forwardRef<
   HTMLWtAvatarElement,

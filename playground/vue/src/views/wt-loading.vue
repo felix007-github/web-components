@@ -8,5 +8,5 @@
   </article>
 </template>
 <script lang="ts" setup>
-import { WtLoading } from "@lpcp/components/vue";
+import { WtLoading } from "@mache-hangar/components/vue";
 </script>

@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-import { WtProgress } from '@lpcp/components/vue';
+import { WtProgress } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>
@@ -52,7 +52,7 @@ Use the `type` prop to set the color style of the progress bar. Supported values
 </template>
 
 <script setup>
-import { WtProgress } from '@lpcp/components/vue';
+import { WtProgress } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>
@@ -91,7 +91,7 @@ Use the `label` prop to add a text label to the progress bar.
 </template>
 
 <script setup>
-import { WtProgress } from '@lpcp/components/vue';
+import { WtProgress } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>
@@ -132,7 +132,7 @@ Set `shape="circle"` to switch to a circular progress bar.
 </template>
 
 <script setup>
-import { WtProgress } from '@lpcp/components/vue';
+import { WtProgress } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>
@@ -178,7 +178,7 @@ Update the value of `percentage` to change the progress dynamically.
 
 <script setup>
 import { ref } from 'vue';
-import { WtProgress, WtButton } from '@lpcp/components/vue';
+import { WtProgress, WtButton } from '@mache-hangar/components/vue';
 
 const percentage = ref(0);
 </script>

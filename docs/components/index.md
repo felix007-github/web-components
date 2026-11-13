@@ -1,6 +1,6 @@
 # Components
 
-VT UI provides a flexible and easy-to-use collection of Web Components with support for modern frontend frameworks such as Vue and React.
+WT UI provides a flexible and easy-to-use collection of Web Components with support for modern frontend frameworks such as Vue and React.
 
 ## Component List
 
@@ -221,9 +221,9 @@ A divider component for separating content horizontally or vertically.
 ### Installation
 
 ```bash
-npm install @lpcp/components
+npm install @mache-hangar/components
 # or
-pnpm add @lpcp/components
+pnpm add @mache-hangar/components
 ```
 
 ### Using With Vue 3
@@ -239,7 +239,7 @@ pnpm add @lpcp/components
 
 <script setup>
 import { ref } from 'vue'
-import { WtButton, WtInput, WtIcon } from '@lpcp/components/vue'
+import { WtButton, WtInput, WtIcon } from '@mache-hangar/components/vue'
 
 const value = ref('')
 </script>
@@ -248,7 +248,7 @@ const value = ref('')
 ### Using With React
 
 ```jsx
-import { WtButton, WtInput, WtIcon } from '@lpcp/components/react'
+import { WtButton, WtInput, WtIcon } from '@mache-hangar/components/react'
 
 export function App() {
   const [value, setValue] = useState('')
@@ -269,14 +269,14 @@ export function App() {
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="https://unpkg.com/@lpcp/components@latest/dist/lpcp-components/lpcp-components.css">
+  <link rel="stylesheet" href="https://unpkg.com/@mache-hangar/components@latest/dist/lpcp-components/lpcp-components.css">
 </head>
 <body>
   <wt-button type="primary">Click me</wt-button>
   <wt-input placeholder="Type here..."></wt-input>
   <wt-icon name="add" size="24"></wt-icon>
 
-  <script crossorigin src="https://unpkg.com/@lpcp/components@latest/dist/lpcp-components.esm.js"></script>
+  <script crossorigin src="https://unpkg.com/@mache-hangar/components@latest/dist/lpcp-components.esm.js"></script>
 </body>
 </html>
 ```

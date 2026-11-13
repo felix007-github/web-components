@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { WtSwitch } from "@lpcp/components/react";
+import { WtSwitch } from "@mache-hangar/components/react";
 
 export const WtSwitchVs = () => {
   const [value1, setValue1] = useState(false);

@@ -34,7 +34,7 @@
 </template>
 <script lang="ts" setup>
 import { ref, onMounted, nextTick, onUnmounted, type ComponentPublicInstance } from "vue";
-import { WtHeatBar, type WtHeatBarExpose } from "@lpcp/components/vue";
+import { WtHeatBar, type WtHeatBarExpose } from "@mache-hangar/components/vue";
 const showHeatBar = ref(false);
 const heatItemData = ref([
   {

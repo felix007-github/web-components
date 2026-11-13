@@ -21,10 +21,10 @@ pnpm install
 
 ### 2. Build the Component Library
 
-The documentation site depends on the build output of `@lpcp/components`:
+The documentation site depends on the build output of `@mache-hangar/components`:
 
 ```bash
-pnpm --filter @lpcp/components build
+pnpm --filter @mache-hangar/components build
 ```
 
 This generates:
@@ -122,7 +122,7 @@ This starts the following services through Turborepo:
 1. Create a new directory under `packages/components/src/components/`
 2. Create the `.tsx` and `.scss` files
 3. Write the Stencil component code
-4. Run `pnpm --filter @lpcp/components build` to compile
+4. Run `pnpm --filter @mache-hangar/components build` to compile
 
 ### Write Documentation
 
@@ -135,13 +135,13 @@ This starts the following services through Turborepo:
 #### In a Vue Project
 
 ```javascript
-import { VtButton, VtInput } from '@lpcp/components/vue'
+import { VtButton, VtInput } from '@mache-hangar/components/vue'
 ```
 
 #### In a React Project
 
 ```javascript
-import { VtButton, VtInput } from '@lpcp/components/react'
+import { VtButton, VtInput } from '@mache-hangar/components/react'
 ```
 
 ## FAQ
@@ -151,7 +151,7 @@ import { VtButton, VtInput } from '@lpcp/components/react'
 A: You need to build the component library first:
 
 ```bash
-pnpm --filter @lpcp/components build
+pnpm --filter @mache-hangar/components build
 ```
 
 ### Q: Styles are not loading correctly
@@ -164,13 +164,13 @@ A: Edit `packages/components/src/assets/styles/root_token.scss`, then rebuild th
 
 ## Raw Editor Integration (Monaco As A Third-Party Dependency)
 
-`@lpcp/raw-editor` uses `monaco-editor` and `@lpcp/xmllint-wasm` as `peerDependencies`,
+`@mache-hangar/raw-editor` uses `monaco-editor` and `@mache-hangar/xmllint-wasm` as `peerDependencies`,
 so they must be installed and initialized by the host application.
 
 ### 1. Install Dependencies
 
 ```bash
-pnpm add @lpcp/raw-editor @lpcp/xmllint-wasm monaco-editor
+pnpm add @mache-hangar/raw-editor @mache-hangar/xmllint-wasm monaco-editor
 ```
 
 ### 2. Initialize the Monaco Worker in the Application Entry
@@ -178,7 +178,7 @@ pnpm add @lpcp/raw-editor @lpcp/xmllint-wasm monaco-editor
 Run the following before rendering any `wt-raw-editor`:
 
 ```ts
-import { setupMonacoEnvironment } from '@lpcp/raw-editor/core';
+import { setupMonacoEnvironment } from '@mache-hangar/raw-editor/core';
 import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
 import htmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker';
 

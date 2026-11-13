@@ -14,7 +14,7 @@ const logIconRegistrationError = (error: unknown): void => {
   store[ICON_REGISTRATION_WARNED_KEY] = true
 
   if (typeof console !== 'undefined') {
-    console.warn('[lpcp] Failed to register icon custom elements from @lpcp/icons/loader.', error)
+    console.warn('[lpcp] Failed to register icon custom elements from @mache-hangar/icons/loader.', error)
   }
 }
 
@@ -29,7 +29,7 @@ export const registerIconsGlobally = (): Promise<void> => {
     return existingPromise
   }
 
-  const registrationPromise = import('@lpcp/icons/loader/index.js')
+  const registrationPromise = import('@mache-hangar/icons/loader/index.js')
     .then(({ defineCustomElements }) => {
       defineCustomElements(window)
     })

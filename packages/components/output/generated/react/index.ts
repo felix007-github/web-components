@@ -1,8 +1,8 @@
-import * as coreExports from '@lpcp/components/core';
+import * as coreExports from '@mache-hangar/components/core';
 import * as generatedComponents from './generated/components';
 
 export * from './generated/components';
-export * from '@lpcp/components/core';
+export * from '@mache-hangar/components/core';
 
 const reactComponents = {
 	...generatedComponents,

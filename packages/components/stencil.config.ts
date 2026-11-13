@@ -12,10 +12,10 @@ export const config: Config = {
   outputTargets: [
     reactOutputTarget({
       outDir: 'output/generated/react/generated',
-      stencilPackageName: '@lpcp/components',
+      stencilPackageName: '@mache-hangar/components',
     }),
     vueOutputTarget({
-      componentCorePackage: '@lpcp/components',
+      componentCorePackage: '@mache-hangar/components',
       proxiesFile: 'output/generated/vue/generated/components.ts',
       includeImportCustomElements: true,
       customElementsDir: 'dist/components',

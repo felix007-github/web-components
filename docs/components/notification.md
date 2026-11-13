@@ -162,7 +162,7 @@ const handleClose = () => {
 </template>
 
 <script setup>
-import { WtNotificationService } from '@lpcp/components/vue';
+import { WtNotificationService } from '@mache-hangar/components/vue';
 
 const openSuccess = () => {
 	WtNotificationService.open({

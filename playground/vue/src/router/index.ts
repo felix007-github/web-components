@@ -13,6 +13,7 @@ export const demoRoutes: DemoRoute[] = [
   { path: '/wt-button', label: 'wt-button', component: () => import('../views/wt-button.vue') },
   { path: '/wt-checkbox', label: 'wt-checkbox', component: () => import('../views/wt-checkbox.vue') },
   { path: '/wt-divider', label: 'wt-divider', component: () => import('../views/wt-divider.vue') },
+  { path: '/wt-grid-layout', label: 'wt-grid-layout', component: () => import('../views/wt-grid-layout.vue') },
   { path: '/wt-heat-bar', label: 'wt-heat-bar', component: () => import('../views/wt-heat-bar.vue') },
   { path: '/wt-icon', label: 'wt-icon', component: () => import('../views/wt-icon.vue') },
   { path: '/wt-input', label: 'wt-input', component: () => import('../views/wt-input.vue') },

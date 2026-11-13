@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-import { WtIcon } from '@lpcp/components/vue';
+import { WtIcon } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>
@@ -43,7 +43,7 @@ import { WtIcon } from '@lpcp/components/vue';
 </template>
 
 <script setup>
-import { WtIcon } from '@lpcp/components/vue';
+import { WtIcon } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>
@@ -70,7 +70,7 @@ import { WtIcon } from '@lpcp/components/vue';
 </template>
 
 <script setup>
-import { WtIcon } from '@lpcp/components/vue';
+import { WtIcon } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>
@@ -95,7 +95,7 @@ import { WtIcon } from '@lpcp/components/vue';
 </template>
 
 <script setup>
-import { WtIcon } from '@lpcp/components/vue';
+import { WtIcon } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>
@@ -124,8 +124,8 @@ import { WtIcon } from '@lpcp/components/vue';
 
 <script setup>
 import { ref } from "vue";
-import { icons } from '@lpcp/icons';
-import { WtIcon } from '@lpcp/components/vue';
+import { icons } from '@mache-hangar/icons';
+import { WtIcon } from '@mache-hangar/components/vue';
 const iconList = [...icons].filter(Boolean).sort((a, b) => a.localeCompare(b));
 </script>
 

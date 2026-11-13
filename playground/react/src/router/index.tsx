@@ -25,6 +25,7 @@ const WtBadgeVs = lazyNamed(() => import('../views/wt-badge'), 'WtBadgeVs');
 const WtButtonVs = lazyNamed(() => import('../views/wt-button'), 'WtButtonVs');
 const WtCheckboxVs = lazyNamed(() => import('../views/wt-checkbox'), 'WtCheckboxVs');
 const WtDividerVs = lazyNamed(() => import('../views/wt-divider'), 'WtDividerVs');
+const WtGridLayoutVs = lazyNamed(() => import('../views/wt-grid-layout'), 'WtGridLayoutVs');
 const WtHeatBarVs = lazyNamed(() => import('../views/wt-heat-bar'), 'WtHeatBarVs');
 const WtIconVs = lazyNamed(() => import('../views/wt-icon'), 'WtIconVs');
 const WtInputVs = lazyNamed(() => import('../views/wt-input'), 'WtInputVs');
@@ -67,6 +68,11 @@ export const demoRoutes = [
     path: '/wt-divider',
     label: 'wt-divider',
     element: withSuspense(WtDividerVs),
+  },
+  {
+    path: '/wt-grid-layout',
+    label: 'wt-grid-layout',
+    element: withSuspense(WtGridLayoutVs),
   },
   {
     path: '/wt-heat-bar',

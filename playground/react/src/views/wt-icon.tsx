@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
-import { WtIcon } from "@lpcp/components/react";
-import { icons } from "@lpcp/icons";
+import { WtIcon } from "@mache-hangar/components/react";
+import { icons } from "@mache-hangar/icons";
 import "./scss/wt-icon.scss";
 
 const iconList = [...icons].filter(Boolean).sort((a, b) => a.localeCompare(b));

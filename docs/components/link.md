@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-import { WtLink } from '@lpcp/components/vue';
+import { WtLink } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>
@@ -42,7 +42,7 @@ import { WtLink } from '@lpcp/components/vue';
 </template>
 
 <script setup>
-import { WtLink } from '@lpcp/components/vue';
+import { WtLink } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>
@@ -68,7 +68,7 @@ import { WtLink } from '@lpcp/components/vue';
 </template>
 
 <script setup>
-import { WtLink } from '@lpcp/components/vue';
+import { WtLink } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>
@@ -93,7 +93,7 @@ import { WtLink } from '@lpcp/components/vue';
 </template>
 
 <script setup>
-import { WtLink } from '@lpcp/components/vue';
+import { WtLink } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>
@@ -119,7 +119,7 @@ import { WtLink } from '@lpcp/components/vue';
 </template>
 
 <script setup>
-import { WtLink } from '@lpcp/components/vue';
+import { WtLink } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>

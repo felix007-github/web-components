@@ -6,7 +6,7 @@ import {
   type ComponentPropsWithRef,
   type Ref,
 } from "react";
-import { WtHeatBar, type WtHeatBarExpose } from "@lpcp/components/react";
+import { WtHeatBar, type WtHeatBarExpose } from "@mache-hangar/components/react";
 import "./scss/heat-bar.scss";
 
 type WtHeatBarInstance = NonNullable<

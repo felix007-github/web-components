@@ -1,5 +1,5 @@
 import { forwardRef, useState } from "react";
-import { WtCheckbox } from "@lpcp/components/react";
+import { WtCheckbox } from "@mache-hangar/components/react";
 
 export const WtCheckboxVs = forwardRef<
   HTMLWtCheckboxElement,

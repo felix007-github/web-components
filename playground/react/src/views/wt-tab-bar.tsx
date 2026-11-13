@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { WtTabBar } from "@lpcp/components/react";
+import { WtTabBar } from "@mache-hangar/components/react";
 export const WtTabBarVs = forwardRef<
   HTMLWtTabBarElement,
   React.ComponentPropsWithoutRef<"wt-tab-bar">

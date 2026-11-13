@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { WtTag } from "@lpcp/components/react";
+import { WtTag } from "@mache-hangar/components/react";
 export const WtTagVs = forwardRef<
   HTMLWtTagElement,
   React.ComponentPropsWithoutRef<"wt-tag">

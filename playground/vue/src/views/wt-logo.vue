@@ -9,5 +9,5 @@
   </article>
 </template>
 <script setup lang="ts">
-import { WtLogo } from "@lpcp/components/vue";
+import { WtLogo } from "@mache-hangar/components/vue";
 </script>

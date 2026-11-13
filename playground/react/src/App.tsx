@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Outlet, NavLink, useLocation } from 'react-router-dom';
-import { WtScrollbar } from '@lpcp/components/react';
+import { WtScrollbar } from '@mache-hangar/components/react';
 import { demoRoutes } from './router';
 
 function App() {

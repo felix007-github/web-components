@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { WtScrollbar } from "@lpcp/components/react";
+import { WtScrollbar } from "@mache-hangar/components/react";
 
 import './index.css';
 

@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-import { WtButton } from '@lpcp/components/vue';
+import { WtButton } from '@mache-hangar/components/vue';
 </script>
 ```
 :::
@@ -35,7 +35,7 @@ import { WtButton } from '@lpcp/components/vue';
 </template>
 
 <script setup>
-import { WtButton } from '@lpcp/components/vue';
+import { WtButton } from '@mache-hangar/components/vue';
 </script>
 ```
 :::
@@ -53,7 +53,7 @@ import { WtButton } from '@lpcp/components/vue';
 </template>
 
 <script setup>
-import { WtButton } from '@lpcp/components/vue';
+import { WtButton } from '@mache-hangar/components/vue';
 </script>
 ```
 :::
@@ -70,7 +70,7 @@ import { WtButton } from '@lpcp/components/vue';
 </template>
 
 <script setup>
-import { WtButton, WtIcon } from '@lpcp/components/vue';
+import { WtButton, WtIcon } from '@mache-hangar/components/vue';
 </script>
 ```
 :::
@@ -90,7 +90,7 @@ Clicking the button triggers the `click-btn` event, which carries timestamp info
 
 <script setup>
 import { ref } from 'vue';
-import { WtButton } from '@lpcp/components/vue';
+import { WtButton } from '@mache-hangar/components/vue';
 
 const message = ref('No clicks yet');
 const handleClick = (e) => {
@@ -124,7 +124,7 @@ const handleClick = (e) => {
 </template>
 
 <script setup>
-import { WtButton } from '@lpcp/components/vue';
+import { WtButton } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>

@@ -11,7 +11,7 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
-import { WtTree, WtTreeNode } from "@lpcp/components/vue";
+import { WtTree, WtTreeNode } from "@mache-hangar/components/vue";
 
 const treeData = ref<WtTreeNode[]>([
   {

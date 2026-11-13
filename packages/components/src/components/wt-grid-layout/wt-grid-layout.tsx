@@ -27,6 +27,8 @@ export class WtGridLayout {
   private initial: GridLayoutItem[] = [];
   private gesture?: Gesture;
   private observer?: ResizeObserver;
+  /** True until the container width is measurable (custom elements start as inline boxes). */
+  private measuring = false;
 
   @Event({ eventName: 'wt-layout-change' }) layoutChange!: EventEmitter<GridLayoutItem[]>;
   @Event({ eventName: 'wt-layout-save' }) layoutSave!: EventEmitter<GridLayoutItem[]>;
@@ -34,7 +36,7 @@ export class WtGridLayout {
   @Event({ eventName: 'wt-layout-interaction' }) interaction!: EventEmitter<{ id: string; action: 'move' | 'resize'; phase: 'start' | 'end' | 'cancel' }>;
 
   private options(snap = true): GridLayoutOptions {
-    return { columns: this.columnCount, cell: this.cell, gap: Math.max(0, Math.round(this.gap || 0)), collisionTolerance: Math.max(0, this.collisionTolerance || 0), snap };
+    return { columns: this.columnCount, cell: this.cell, gap: Math.max(0, Math.round(this.gap || 0)), collisionTolerance: Math.max(0, this.collisionTolerance || 0), snap, applyMinHeight: !this.measuring };
   }
   private get columnCount() { return Math.max(1, Math.min(1024, Math.round(this.columns) || 192)); }
   private apply(items: GridLayoutItem[]) {
@@ -44,7 +46,9 @@ export class WtGridLayout {
   private report(error: unknown) { this.layoutError.emit({ message: error instanceof Error ? error.message : 'Layout operation failed.' }); }
 
   componentWillLoad() {
-    this.cell = this.el.clientWidth / this.columnCount || 7;
+    const width = this.el.clientWidth;
+    this.measuring = width <= 0;
+    this.cell = this.measuring ? 7 : width / this.columnCount;
     this.onItems();
     if (this.storageKey) {
       try {
@@ -64,14 +68,18 @@ export class WtGridLayout {
     }
   }
   componentDidLoad() {
-    this.observer = new ResizeObserver(() => {
-      const cell = this.el.clientWidth / this.columnCount;
-      if (cell <= 0 || Math.abs(cell - this.cell) < .001) return;
-      this.finish(true); this.cell = cell;
-      this.layout = fitGridLayout(this.layout, this.options());
-      this.baseline = fitGridLayout(this.baseline, this.options());
-    });
+    this.updateCell(this.el.clientWidth / this.columnCount);
+    this.observer = new ResizeObserver(() => this.updateCell(this.el.clientWidth / this.columnCount));
     this.observer.observe(this.el);
+    // Styles land with the first paint, so retry once the grid has a real width.
+    requestAnimationFrame(() => this.updateCell(this.el.clientWidth / this.columnCount));
+  }
+  private updateCell(cell: number) {
+    if (cell <= 0 || Math.abs(cell - this.cell) < .001) return;
+    this.measuring = false;
+    this.finish(true); this.cell = cell;
+    this.layout = fitGridLayout(this.layout, this.options());
+    this.baseline = fitGridLayout(this.baseline, this.options());
   }
   connectedCallback() { this.observer?.observe(this.el); }
   disconnectedCallback() { this.observer?.disconnect(); this.finish(true); }
@@ -80,7 +88,9 @@ export class WtGridLayout {
     catch (error) { this.report(error); }
   }
   @Watch('columns') onColumns() {
-    this.finish(true); this.cell = this.el.clientWidth / this.columnCount || 7;
+    this.finish(true);
+    const cell = this.el.clientWidth / this.columnCount;
+    if (cell > 0) { this.measuring = false; this.cell = cell; }
     this.layout = fitGridLayout(this.layout, this.options()); this.baseline = fitGridLayout(this.baseline, this.options());
   }
   @Watch('editable') onEditable(value: boolean) { if (!value) this.finish(true); }
@@ -116,7 +126,7 @@ export class WtGridLayout {
       if (!cancel) this.layoutChange.emit(cloneLayout(this.layout));
     }
   }
-  @Listen('pointerdown') onPointerDown(event: PointerEvent) {
+  @Listen('pointerdown', { passive: false }) onPointerDown(event: PointerEvent) {
     if (!this.editable || this.gesture || event.button !== 0) return;
     const path = event.composedPath().filter(item => item instanceof HTMLElement) as HTMLElement[];
     const tile = path.find(item => item.hasAttribute('data-grid-id'));

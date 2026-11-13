@@ -1,6 +1,6 @@
 # Web Component 图标库
 
-为 [@lpcp/components] Web Component 组件库封装的图标库
+为 [@mache-hangar/components] Web Component 组件库封装的图标库
 
 
 ## 注册使用
@@ -9,7 +9,7 @@
 
 ```js
 // 全量引入
-import { defineCustomElements} from '@lpcp/icons/loader'
+import { defineCustomElements} from '@mache-hangar/icons/loader'
 defineCustomElements()
 
 ```
@@ -18,7 +18,7 @@ defineCustomElements()
 
 ```js
 // 按需引入，自动注册
-import '@lpcp/icons/dist/components/wt-icon-add-location.js'
+import '@mache-hangar/icons/dist/components/wt-icon-add-location.js'
 ```
 
 像普通 html 标签一样使用
@@ -29,7 +29,7 @@ import '@lpcp/icons/dist/components/wt-icon-add-location.js'
 3、所有 icon 名称
 
 ```js
-import { icons } from '@lpcp/icons'
+import { icons } from '@mache-hangar/icons'
 ```
 
 ## 基础用法
@@ -91,7 +91,7 @@ import { icons } from '@lpcp/icons'
 
 | 属性名   | 说明   |类型| 可选值       | 默认值    |
 |-------|------|-|-----------|--------|
-| name  | 图标名称 |`string`| @lpcp/icons 图标 | - |
+| name  | 图标名称 |`string`| @mache-hangar/icons 图标 | - |
 | rotate  | 图标旋转角度 |`number`| 0 | - |
 | spin  | 360度旋转 |`boolean`| `true`、`false` | `false` |
 | size  | 图标大小 |`string`| 合法的 css 单位 | `1em` |

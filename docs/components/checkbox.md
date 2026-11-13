@@ -15,7 +15,7 @@
 
 <script setup>
 import { ref } from 'vue';
-import { WtCheckbox } from '@lpcp/components/vue';
+import { WtCheckbox } from '@mache-hangar/components/vue';
 
 const checkedA = ref(false);
 const checkedB = ref(true);
@@ -43,7 +43,7 @@ const checkedB = ref(true);
 </template>
 
 <script setup>
-import { WtCheckbox } from '@lpcp/components/vue';
+import { WtCheckbox } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>
@@ -65,7 +65,7 @@ import { WtCheckbox } from '@lpcp/components/vue';
 </template>
 
 <script setup>
-import { WtCheckbox } from '@lpcp/components/vue';
+import { WtCheckbox } from '@mache-hangar/components/vue';
 </script>
 ```
 :::
@@ -83,7 +83,7 @@ import { WtCheckbox } from '@lpcp/components/vue';
 </template>
 
 <script setup>
-import { WtCheckbox } from '@lpcp/components/vue';
+import { WtCheckbox } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>
@@ -111,7 +111,7 @@ Map the checked and unchecked states with `true-value` and `false-value`.
 
 <script setup>
 import { ref } from 'vue';
-import { WtCheckbox } from '@lpcp/components/vue';
+import { WtCheckbox } from '@mache-hangar/components/vue';
 
 const status = ref('no');
 </script>

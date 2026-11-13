@@ -1,5 +1,5 @@
 import { forwardRef, useState } from "react";
-import { WtInput } from "@lpcp/components/react";
+import { WtInput } from "@mache-hangar/components/react";
 export const WtInputVs = forwardRef<
   HTMLWtInputElement,
   React.ComponentPropsWithoutRef<"wt-input">

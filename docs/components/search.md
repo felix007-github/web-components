@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import { WtSearch } from '@lpcp/components/vue'; 
+import { WtSearch } from '@mache-hangar/components/vue'; 
 </script>
 
 <style scoped>
@@ -41,7 +41,7 @@ Use the `size` prop to control the component size. Supported values are `small`,
 </template>
 
 <script setup>
-import { WtSearch } from '@lpcp/components/vue'; 
+import { WtSearch } from '@mache-hangar/components/vue'; 
 </script>
 
 <style scoped>
@@ -76,7 +76,7 @@ Use `v-model` for two-way binding of the input value. Clicking the search button
 
 <script setup>
 import { ref } from 'vue';
-import { WtSearch } from '@lpcp/components/vue'; 
+import { WtSearch } from '@mache-hangar/components/vue'; 
 const keyword = ref('');
 const lastSearch = ref('');
 const onSearch = (e) => { lastSearch.value = e.detail; };
@@ -111,7 +111,7 @@ When the input contains text, a clear icon is shown. `clearable` defaults to `tr
 </template>
 
 <script setup>
-import { WtSearch } from '@lpcp/components/vue'; 
+import { WtSearch } from '@mache-hangar/components/vue'; 
 </script>
 
 <style scoped>
@@ -138,7 +138,7 @@ Set `disabled` to disable the component. When disabled, the user cannot type, cl
 </template>
 
 <script setup>
-import { WtSearch } from '@lpcp/components/vue'; 
+import { WtSearch } from '@mache-hangar/components/vue'; 
 </script>
 
 <style scoped>
@@ -165,7 +165,7 @@ Use the `width` prop to set the component width, such as `100%` or `500px`. If o
 </template>
 
 <script setup>
-import { WtSearch } from '@lpcp/components/vue'; 
+import { WtSearch } from '@mache-hangar/components/vue'; 
 </script>
 
 <style scoped>

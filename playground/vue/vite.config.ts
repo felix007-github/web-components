@@ -8,10 +8,10 @@ export default defineConfig({
   },
   optimizeDeps: {
     exclude: [
-      "@lpcp/icons",
-      "@lpcp/components",
-      "@lpcp/xml-editor",
-      "@lpcp/raw-editor",
+      "@mache-hangar/icons",
+      "@mache-hangar/components",
+      "@mache-hangar/xml-editor",
+      "@mache-hangar/raw-editor",
     ],
   },
   server: {

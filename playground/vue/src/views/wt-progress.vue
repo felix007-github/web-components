@@ -18,5 +18,5 @@
 </template>
 
 <script lang="ts" setup>
-import { WtProgress } from '@lpcp/components/vue';
+import { WtProgress } from '@mache-hangar/components/vue';
 </script>

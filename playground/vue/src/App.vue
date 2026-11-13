@@ -63,7 +63,7 @@
 
 <script setup lang="ts">
 import { RouterLink, RouterView, useRoute } from 'vue-router';
-import { WtScrollbar } from '@lpcp/components/vue';
+import { WtScrollbar } from '@mache-hangar/components/vue';
 import { demoRoutes } from './router';
 import { computed, ref } from 'vue';
 

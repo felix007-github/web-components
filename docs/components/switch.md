@@ -15,7 +15,7 @@
 
 <script setup>
 import { ref } from 'vue';
-import { WtSwitch } from '@lpcp/components/vue';
+import { WtSwitch } from '@mache-hangar/components/vue';
 
 const enabled = ref(false);
 </script>
@@ -48,7 +48,7 @@ const enabled = ref(false);
 
 <script setup>
 import { ref } from 'vue';
-import { WtSwitch } from '@lpcp/components/vue';
+import { WtSwitch } from '@mache-hangar/components/vue';
 
 const mediumValue = ref(false);
 const smallValue = ref(true);
@@ -77,7 +77,7 @@ const smallValue = ref(true);
 
 <script setup>
 import { ref } from 'vue';
-import { WtSwitch } from '@lpcp/components/vue';
+import { WtSwitch } from '@mache-hangar/components/vue';
 
 const offDisabled = ref(false);
 const onDisabled = ref(true);
@@ -106,7 +106,7 @@ const onDisabled = ref(true);
 
 <script setup>
 import { ref } from 'vue';
-import { WtSwitch } from '@lpcp/components/vue';
+import { WtSwitch } from '@mache-hangar/components/vue';
 
 const value = ref(false);
 const log = ref('None');

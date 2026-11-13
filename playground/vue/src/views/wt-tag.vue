@@ -24,5 +24,5 @@
   </article>
 </template>
 <script setup lang="ts">
-import { WtTag } from "@lpcp/components/vue";
+import { WtTag } from "@mache-hangar/components/vue";
 </script>

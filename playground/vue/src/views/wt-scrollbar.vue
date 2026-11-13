@@ -89,7 +89,7 @@
 
 <script setup lang="ts">
 import { ref, type ComponentPublicInstance } from 'vue';
-import { WtScrollbar } from '@lpcp/components/vue'; 
+import { WtScrollbar } from '@mache-hangar/components/vue'; 
 
 type WtScrollbarVueRef = ComponentPublicInstance & {
   $el: HTMLWtScrollbarElement;

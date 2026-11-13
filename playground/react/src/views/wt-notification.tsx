@@ -4,7 +4,7 @@ import {
   WtButton,
   WtIcon,
   WtNotificationService,
-} from "@lpcp/components/react";
+} from "@mache-hangar/components/react";
 export const WtNotificationVs = forwardRef<
   HTMLWtNotificationElement,
   React.ComponentPropsWithoutRef<"wt-notification">

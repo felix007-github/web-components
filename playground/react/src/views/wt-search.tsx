@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { WtSearch } from "@lpcp/components/react";
+import { WtSearch } from "@mache-hangar/components/react";
 
 export const WtSearchVs = () => {
   const [value1, setValue1] = useState("");

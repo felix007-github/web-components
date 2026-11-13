@@ -48,7 +48,7 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
-import { WtSwitch } from "@lpcp/components/vue";
+import { WtSwitch } from "@mache-hangar/components/vue";
 
 const value1 = ref(false);
 const value2 = ref(true);

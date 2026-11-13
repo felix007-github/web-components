@@ -1,4 +1,4 @@
-import { WtDivider } from "@lpcp/components/react";
+import { WtDivider } from "@mache-hangar/components/react";
 
 export const WtDividerVs = () => {
   return (

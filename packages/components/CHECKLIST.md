@@ -61,7 +61,7 @@ After component changes, validate both apps:
 
 ```bash
 # library
-cd @lpcp/components && npm run build
+cd @mache-hangar/components && npm run build
 
 # react consumer
 cd ../wt-ui-react && npm run build

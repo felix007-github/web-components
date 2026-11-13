@@ -109,6 +109,6 @@
   </article>
 </template>
 <script lang="ts" setup>
-import { WtAvatar, WtAvatarGroup } from "@lpcp/components/vue";
+import { WtAvatar, WtAvatarGroup } from "@mache-hangar/components/vue";
 import useImage from "../images/avatar.png";
 </script>

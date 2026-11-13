@@ -80,7 +80,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { WtRadio } from '@lpcp/components/vue';
+import { WtRadio } from '@mache-hangar/components/vue';
 
 const selectedValue = ref('option1');
 const selectedSize = ref('medium');

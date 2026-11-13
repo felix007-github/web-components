@@ -33,7 +33,7 @@
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { WtButton, WtIcon, WtTooltip, type WtButtonCustomEvent } from "@lpcp/components/vue";
+import { WtButton, WtIcon, WtTooltip, type WtButtonCustomEvent } from "@mache-hangar/components/vue";
 
 const lastButtonClick = ref('Not fired yet');
 const handleButtonClick = (event: WtButtonCustomEvent<{ time: Date }>) => {

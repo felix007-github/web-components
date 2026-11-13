@@ -37,5 +37,5 @@
 </template>
 
 <script lang="ts" setup>
-import { WtLink } from '@lpcp/components/vue';
+import { WtLink } from '@mache-hangar/components/vue';
 </script>

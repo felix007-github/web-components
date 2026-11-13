@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { WtLink } from "@lpcp/components/react";
+import { WtLink } from "@mache-hangar/components/react";
 
 export const WtLinkVs = () => {
   const [count, setCount] = useState(0);

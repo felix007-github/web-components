@@ -1,12 +1,21 @@
 {
-  "name": "@lpcp/icons",
-  "version": "1.0.0",
+  "name": "@mache-hangar/icons",
+  "version": "0.1.2",
   "type": "module",
   "keywords": [
     "icon",
     "web-component"
   ],
-  "description": "VT UI Icons collection",
+  "description": "WT UI Icons collection",
+  "homepage": "https://github.com/felix007-github/web-components/tree/main/packages/icons#readme",
+  "bugs": {
+    "url": "https://github.com/felix007-github/web-components/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felix007-github/web-components.git",
+    "directory": "packages/icons"
+  },
   "main": "dist/index.cjs.js",
   "module": "./index.js",
   "unpkg": "dist/esm/loader.js",
@@ -53,7 +62,8 @@
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
     "transform": "node scripts/transfer-svg.mjs",
-    "clean": "node ../../scripts/tasks.cjs clean"
+    "clean": "node ../../scripts/tasks.cjs clean",
+    "prepublishOnly": "pnpm run build"
   },
   "devDependencies": {
     "@stencil/core": "^4.43.4",

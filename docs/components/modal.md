@@ -17,7 +17,7 @@
 
 <script setup>
 import { ref } from 'vue';
-import { WtButton, WtModal } from '@lpcp/components/vue';
+import { WtButton, WtModal } from '@mache-hangar/components/vue';
 
 const modalOpen = ref(false);
 </script>
@@ -41,7 +41,7 @@ Use `titleText` to set the modal title.
 
 <script setup>
 import { ref } from 'vue';
-import { WtButton, WtModal } from '@lpcp/components/vue';
+import { WtButton, WtModal } from '@mache-hangar/components/vue';
 
 const isOpen = ref(false);
 </script>
@@ -69,7 +69,7 @@ Use `top` to control the distance between the modal and the top of the viewport.
 
 <script setup>
 import { ref } from 'vue';
-import { WtButton, WtModal } from '@lpcp/components/vue';
+import { WtButton, WtModal } from '@mache-hangar/components/vue';
 
 const isOpen = ref(false);
 const position = ref('20%');
@@ -118,7 +118,7 @@ Use `showOverlay` to control whether the background overlay is displayed.
 
 <script setup>
 import { ref } from 'vue';
-import { WtButton, WtModal } from '@lpcp/components/vue';
+import { WtButton, WtModal } from '@mache-hangar/components/vue';
 
 const showWithOverlay = ref(false);
 const showWithoutOverlay = ref(false);
@@ -149,7 +149,7 @@ Use `showCloseIcon` to control whether the close button is shown.
 
 <script setup>
 import { ref } from 'vue';
-import { WtButton, WtModal } from '@lpcp/components/vue';
+import { WtButton, WtModal } from '@mache-hangar/components/vue';
 
 const withIcon = ref(false);
 const withoutIcon = ref(false);
@@ -180,7 +180,7 @@ The modal emits `wt-open-change` and `updateModelValue` when its open state chan
 
 <script setup>
 import { ref } from 'vue';
-import { WtButton, WtModal } from '@lpcp/components/vue';
+import { WtButton, WtModal } from '@mache-hangar/components/vue';
 
 const isOpen = ref(false);
 

@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { WtLoading } from "@lpcp/components/react";
+import { WtLoading } from "@mache-hangar/components/react";
 export const WtLoadingVs = forwardRef<
   HTMLWtLoadingElement,
   React.ComponentPropsWithoutRef<"wt-loading">

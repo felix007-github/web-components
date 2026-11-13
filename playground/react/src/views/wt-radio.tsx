@@ -1,5 +1,5 @@
 import { forwardRef, useState } from "react";
-import { WtRadio } from "@lpcp/components/react";
+import { WtRadio } from "@mache-hangar/components/react";
 
 export const WtRadioVs = forwardRef<
   HTMLWtRadioElement,

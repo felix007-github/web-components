@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import { WtLogo } from '@lpcp/components/vue';
+import { WtLogo } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>
@@ -51,7 +51,7 @@ Use the `environment` prop to switch logo styles. Supported environments are `pr
 
 
 <script setup>
-import { WtLogo } from '@lpcp/components/vue';
+import { WtLogo } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>
@@ -92,7 +92,7 @@ Use the `size` prop in pixels to customize the logo size.
 </template>
 
 <script setup>
-import { WtLogo } from '@lpcp/components/vue';
+import { WtLogo } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>
@@ -120,7 +120,7 @@ Use the `text` prop to customize the text displayed next to the logo, or pass an
 </template>
 
 <script setup>
-import { WtLogo } from '@lpcp/components/vue';
+import { WtLogo } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>
@@ -151,7 +151,7 @@ import { WtLogo } from '@lpcp/components/vue';
 </template>
 
 <script setup>
-import { WtLogo } from '@lpcp/components/vue';
+import { WtLogo } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>

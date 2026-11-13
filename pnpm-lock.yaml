@@ -20,10 +20,10 @@ importers:
 
   docs:
     dependencies:
-      '@lpcp/components':
+      '@mache-hangar/components':
         specifier: workspace:*
         version: link:../packages/components
-      '@lpcp/icons':
+      '@mache-hangar/icons':
         specifier: workspace:*
         version: link:../packages/icons
     devDependencies:
@@ -39,22 +39,22 @@ importers:
 
   packages/components:
     dependencies:
-      '@lpcp/icons':
-        specifier: workspace:^
-        version: link:../icons
-    devDependencies:
-      '@stencil/core':
-        specifier: ^4.43.4
-        version: 4.45.3
       '@stencil/react-output-target':
         specifier: ^1.5.2
         version: 1.8.1(@stencil/core@4.45.3)(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
-      '@stencil/sass':
-        specifier: ^3.2.3
-        version: 3.3.3(@stencil/core@4.45.3)
       '@stencil/vue-output-target':
         specifier: ^0.13.1
         version: 0.13.2(@stencil/core@4.45.3)(vue-router@4.6.4(vue@3.5.45(typescript@5.9.3)))(vue@3.5.45(typescript@5.9.3))
+    devDependencies:
+      '@mache-hangar/icons':
+        specifier: workspace:^
+        version: link:../icons
+      '@stencil/core':
+        specifier: ^4.43.4
+        version: 4.45.3
+      '@stencil/sass':
+        specifier: ^3.2.3
+        version: 3.3.3(@stencil/core@4.45.3)
       '@types/jest':
         specifier: ^29.5.14
         version: 29.5.14
@@ -109,10 +109,10 @@ importers:
 
   playground/react:
     dependencies:
-      '@lpcp/components':
+      '@mache-hangar/components':
         specifier: workspace:*
         version: link:../../packages/components
-      '@lpcp/icons':
+      '@mache-hangar/icons':
         specifier: workspace:*
         version: link:../../packages/icons
       react:
@@ -146,10 +146,10 @@ importers:
 
   playground/vue:
     dependencies:
-      '@lpcp/components':
+      '@mache-hangar/components':
         specifier: workspace:*
         version: link:../../packages/components
-      '@lpcp/icons':
+      '@mache-hangar/icons':
         specifier: workspace:*
         version: link:../../packages/icons
       vue:

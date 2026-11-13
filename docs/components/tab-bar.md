@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-import { WtTabBar } from '@lpcp/components/vue';
+import { WtTabBar } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>
@@ -69,7 +69,7 @@ Supports any number of tab items.
 
 <script setup>
 import { ref } from 'vue';
-import { WtTabBar } from '@lpcp/components/vue';
+import { WtTabBar } from '@mache-hangar/components/vue';
 
 const activeTab = ref('home');
 const tabList = [
@@ -143,7 +143,7 @@ You can implement reactive tab switching by dynamically updating the `list` prop
 
 <script setup>
 import { ref, computed } from 'vue';
-import { WtTabBar, WtButton } from '@lpcp/components/vue';
+import { WtTabBar, WtButton } from '@mache-hangar/components/vue';
 
 const mode = ref('basic');
 const activeValue = ref('tab1');
@@ -212,7 +212,7 @@ const currentTabs = computed(() => {
 </template>
 
 <script setup>
-import { WtTabBar } from '@lpcp/components/vue';
+import { WtTabBar } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>
@@ -282,7 +282,7 @@ import { WtTabBar } from '@lpcp/components/vue';
 
 <script setup>
 import { ref } from 'vue';
-import { WtTabBar } from '@lpcp/components/vue';
+import { WtTabBar } from '@mache-hangar/components/vue';
 
 const currentTab = ref('profile');
 const tabs = [

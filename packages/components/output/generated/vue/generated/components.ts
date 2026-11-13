@@ -3,32 +3,32 @@
 /* auto-generated vue proxies */
 import { defineContainer, type StencilVueComponent } from '@stencil/vue-output-target/runtime';
 
-import type { JSX } from '@lpcp/components/dist/components';
+import type { JSX } from '@mache-hangar/components/dist/components';
 
-import { defineCustomElement as defineWtAvatar } from '@lpcp/components/dist/components/wt-avatar.js';
-import { defineCustomElement as defineWtAvatarGroup } from '@lpcp/components/dist/components/wt-avatar-group.js';
-import { defineCustomElement as defineWtBadge } from '@lpcp/components/dist/components/wt-badge.js';
-import { defineCustomElement as defineWtButton } from '@lpcp/components/dist/components/wt-button.js';
-import { defineCustomElement as defineWtCheckbox } from '@lpcp/components/dist/components/wt-checkbox.js';
-import { defineCustomElement as defineWtDivider } from '@lpcp/components/dist/components/wt-divider.js';
-import { defineCustomElement as defineWtGridLayout } from '@lpcp/components/dist/components/wt-grid-layout.js';
-import { defineCustomElement as defineWtHeatBar } from '@lpcp/components/dist/components/wt-heat-bar.js';
-import { defineCustomElement as defineWtIcon } from '@lpcp/components/dist/components/wt-icon.js';
-import { defineCustomElement as defineWtInput } from '@lpcp/components/dist/components/wt-input.js';
-import { defineCustomElement as defineWtLink } from '@lpcp/components/dist/components/wt-link.js';
-import { defineCustomElement as defineWtLoading } from '@lpcp/components/dist/components/wt-loading.js';
-import { defineCustomElement as defineWtLogo } from '@lpcp/components/dist/components/wt-logo.js';
-import { defineCustomElement as defineWtModal } from '@lpcp/components/dist/components/wt-modal.js';
-import { defineCustomElement as defineWtNotification } from '@lpcp/components/dist/components/wt-notification.js';
-import { defineCustomElement as defineWtProgress } from '@lpcp/components/dist/components/wt-progress.js';
-import { defineCustomElement as defineWtRadio } from '@lpcp/components/dist/components/wt-radio.js';
-import { defineCustomElement as defineWtScrollbar } from '@lpcp/components/dist/components/wt-scrollbar.js';
-import { defineCustomElement as defineWtSearch } from '@lpcp/components/dist/components/wt-search.js';
-import { defineCustomElement as defineWtSwitch } from '@lpcp/components/dist/components/wt-switch.js';
-import { defineCustomElement as defineWtTabBar } from '@lpcp/components/dist/components/wt-tab-bar.js';
-import { defineCustomElement as defineWtTag } from '@lpcp/components/dist/components/wt-tag.js';
-import { defineCustomElement as defineWtTooltip } from '@lpcp/components/dist/components/wt-tooltip.js';
-import { defineCustomElement as defineWtTree } from '@lpcp/components/dist/components/wt-tree.js';
+import { defineCustomElement as defineWtAvatar } from '@mache-hangar/components/dist/components/wt-avatar.js';
+import { defineCustomElement as defineWtAvatarGroup } from '@mache-hangar/components/dist/components/wt-avatar-group.js';
+import { defineCustomElement as defineWtBadge } from '@mache-hangar/components/dist/components/wt-badge.js';
+import { defineCustomElement as defineWtButton } from '@mache-hangar/components/dist/components/wt-button.js';
+import { defineCustomElement as defineWtCheckbox } from '@mache-hangar/components/dist/components/wt-checkbox.js';
+import { defineCustomElement as defineWtDivider } from '@mache-hangar/components/dist/components/wt-divider.js';
+import { defineCustomElement as defineWtGridLayout } from '@mache-hangar/components/dist/components/wt-grid-layout.js';
+import { defineCustomElement as defineWtHeatBar } from '@mache-hangar/components/dist/components/wt-heat-bar.js';
+import { defineCustomElement as defineWtIcon } from '@mache-hangar/components/dist/components/wt-icon.js';
+import { defineCustomElement as defineWtInput } from '@mache-hangar/components/dist/components/wt-input.js';
+import { defineCustomElement as defineWtLink } from '@mache-hangar/components/dist/components/wt-link.js';
+import { defineCustomElement as defineWtLoading } from '@mache-hangar/components/dist/components/wt-loading.js';
+import { defineCustomElement as defineWtLogo } from '@mache-hangar/components/dist/components/wt-logo.js';
+import { defineCustomElement as defineWtModal } from '@mache-hangar/components/dist/components/wt-modal.js';
+import { defineCustomElement as defineWtNotification } from '@mache-hangar/components/dist/components/wt-notification.js';
+import { defineCustomElement as defineWtProgress } from '@mache-hangar/components/dist/components/wt-progress.js';
+import { defineCustomElement as defineWtRadio } from '@mache-hangar/components/dist/components/wt-radio.js';
+import { defineCustomElement as defineWtScrollbar } from '@mache-hangar/components/dist/components/wt-scrollbar.js';
+import { defineCustomElement as defineWtSearch } from '@mache-hangar/components/dist/components/wt-search.js';
+import { defineCustomElement as defineWtSwitch } from '@mache-hangar/components/dist/components/wt-switch.js';
+import { defineCustomElement as defineWtTabBar } from '@mache-hangar/components/dist/components/wt-tab-bar.js';
+import { defineCustomElement as defineWtTag } from '@mache-hangar/components/dist/components/wt-tag.js';
+import { defineCustomElement as defineWtTooltip } from '@mache-hangar/components/dist/components/wt-tooltip.js';
+import { defineCustomElement as defineWtTree } from '@mache-hangar/components/dist/components/wt-tree.js';
 
 
 

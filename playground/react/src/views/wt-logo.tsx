@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { WtLogo } from "@lpcp/components/react";
+import { WtLogo } from "@mache-hangar/components/react";
 export const WtLogoVs = forwardRef<
   HTMLWtLogoElement,
   React.ComponentPropsWithoutRef<"wt-logo">

@@ -33,7 +33,7 @@ In `inner` mode, colored segments are rendered inside the heat bar, which is use
 
 <script setup lang="ts">
 import { ref, onMounted, nextTick, onUnmounted, type ComponentPublicInstance } from "vue";
-import { WtHeatBar, type WtHeatBarExpose } from "@lpcp/components/vue";
+import { WtHeatBar, type WtHeatBarExpose } from "@mache-hangar/components/vue";
 
 const showHeatBar1 = ref(false)
 
@@ -146,7 +146,7 @@ In `outer` mode, clickable navigation labels are rendered outside the heat bar, 
 
 <script setup lang="ts">
 import { ref, onMounted, nextTick, onUnmounted, type ComponentPublicInstance } from "vue";
-import { WtHeatBar, type WtHeatBarExpose } from "@lpcp/components/vue";
+import { WtHeatBar, type WtHeatBarExpose } from "@mache-hangar/components/vue";
 
 const showHeatBar2 = ref(false)
 

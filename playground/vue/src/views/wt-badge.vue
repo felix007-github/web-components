@@ -83,5 +83,5 @@
 </template>
 
 <script lang="ts" setup>
-import { WtBadge } from '@lpcp/components/vue';
+import { WtBadge } from '@mache-hangar/components/vue';
 </script>

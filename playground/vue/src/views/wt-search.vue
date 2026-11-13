@@ -56,7 +56,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { WtSearch } from '@lpcp/components/vue';
+import { WtSearch } from '@mache-hangar/components/vue';
 
 const searchValue = ref('');
 const prefilledValue = ref('预填内容');

@@ -79,7 +79,7 @@ import {
   WtButton,
   WtIcon,
   WtNotificationService,
-} from "@lpcp/components/vue";
+} from "@mache-hangar/components/vue";
 function hangClick() {
    WtNotificationService.open({
     type: "info",

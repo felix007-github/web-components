@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import { WtTag } from '@lpcp/components/vue';
+import { WtTag } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>
@@ -48,7 +48,7 @@ Use `variant="outlined"` to switch to the outlined style.
 </template>
 
 <script setup>
-import { WtTag } from '@lpcp/components/vue';
+import { WtTag } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>
@@ -78,7 +78,7 @@ In list views, you can map business states to different tag types.
 </template>
 
 <script setup>
-import { WtTag } from '@lpcp/components/vue';
+import { WtTag } from '@mache-hangar/components/vue';
 
 const statusList = [
 	{ id: 1, name: 'Build', status: 'Running', type: 'info', variant: 'solid' },

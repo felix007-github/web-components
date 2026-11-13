@@ -1,6 +1,6 @@
 import { forwardRef, useState } from "react";
-import type { WtButtonCustomEvent } from "@lpcp/components";
-import { WtButton, WtTooltip } from "@lpcp/components/react";
+import type { WtButtonCustomEvent } from "@mache-hangar/components";
+import { WtButton, WtTooltip } from "@mache-hangar/components/react";
 export const WtButtonVs = forwardRef<
   HTMLWtButtonElement,
   React.ComponentPropsWithoutRef<"wt-button">

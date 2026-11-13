@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import { WtAvatarGroup } from '@lpcp/components/vue';
+import { WtAvatarGroup } from '@mache-hangar/components/vue';
 </script>
 ```
 :::
@@ -41,7 +41,7 @@ Use the `max` prop to control how many avatars are shown. Extra avatars are repr
 </template>
 
 <script setup>
-import { WtAvatarGroup } from '@lpcp/components/vue';
+import { WtAvatarGroup } from '@mache-hangar/components/vue';
 </script>
 ```
 :::
@@ -82,7 +82,7 @@ Supports three preset sizes: `small`, `medium`, and `large`.
 </template>
 
 <script setup>
-import { WtAvatarGroup } from '@lpcp/components/vue';
+import { WtAvatarGroup } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>
@@ -121,7 +121,7 @@ Supports two shapes: `circle` and `square`.
 </template>
 
 <script setup>
-import { WtAvatarGroup } from '@lpcp/components/vue';
+import { WtAvatarGroup } from '@mache-hangar/components/vue';
 </script>
 ```
 :::
@@ -144,7 +144,7 @@ You can also place `wt-avatar` components directly inside the group via slots.
 </template>
 
 <script setup>
-import { WtAvatarGroup, WtAvatar } from '@lpcp/components/vue';
+import { WtAvatarGroup, WtAvatar } from '@mache-hangar/components/vue';
 </script>
 ```
 :::

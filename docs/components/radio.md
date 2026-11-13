@@ -26,7 +26,7 @@
 
 <script setup>
 import { ref } from 'vue';
-import { WtRadio } from '@lpcp/components/vue';
+import { WtRadio } from '@mache-hangar/components/vue';
 
 const selectedValue = ref('option1');
 </script>
@@ -69,7 +69,7 @@ const selectedValue = ref('option1');
 
 <script setup>
 import { ref } from 'vue';
-import { WtRadio } from '@lpcp/components/vue';
+import { WtRadio } from '@mache-hangar/components/vue';
 
 const sizeValue = ref('medium');
 </script>
@@ -108,7 +108,7 @@ const sizeValue = ref('medium');
 </template>
 
 <script setup>
-import { WtRadio } from '@lpcp/components/vue';
+import { WtRadio } from '@mache-hangar/components/vue';
 </script>
 
 <style scoped>
@@ -140,7 +140,7 @@ import { WtRadio } from '@lpcp/components/vue';
 
 <script setup>
 import { ref } from 'vue';
-import { WtRadio } from '@lpcp/components/vue';
+import { WtRadio } from '@mache-hangar/components/vue';
 
 const stateValue = ref('checked');
 </script>

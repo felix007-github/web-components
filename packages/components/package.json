@@ -1,7 +1,26 @@
 {
-  "name": "@lpcp/components",
-  "version": "1.0.0",
-  "description": "Stencil Component Starter",
+  "name": "@mache-hangar/components",
+  "version": "0.1.2",
+  "description": "WT UI Web Components 组件库：基于 Stencil 构建，提供 React / Vue 适配层与按需加载的 loader。",
+  "keywords": [
+    "web-components",
+    "stencil",
+    "design-system",
+    "component-library",
+    "react",
+    "vue",
+    "ui"
+  ],
+  "homepage": "https://github.com/felix007-github/web-components/tree/main/packages/components#readme",
+  "bugs": {
+    "url": "https://github.com/felix007-github/web-components/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felix007-github/web-components.git",
+    "directory": "packages/components"
+  },
+  "license": "MIT",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
   "types": "dist/types/index.d.ts",
@@ -20,19 +39,19 @@
       "require": "./dist/cjs/index.cjs.js"
     },
     "./react": {
+      "types": "./output/react/index.d.ts",
       "import": "./output/react/index.js",
-      "require": "./output/react-cjs/index.js",
-      "types": "./output/react/index.d.ts"
+      "require": "./output/react-cjs/index.js"
     },
     "./vue": {
+      "types": "./output/vue/index.d.ts",
       "import": "./output/vue/index.js",
-      "require": "./output/vue-cjs/index.js",
-      "types": "./output/vue/index.d.ts"
+      "require": "./output/vue-cjs/index.js"
     },
     "./loader": {
+      "types": "./loader/index.d.ts",
       "import": "./loader/index.js",
-      "require": "./loader/index.cjs.js",
-      "types": "./loader/index.d.ts"
+      "require": "./loader/index.cjs.js"
     },
     "./dist/components": {
       "types": "./dist/components/index.d.ts",
@@ -40,25 +59,26 @@
       "require": "./dist/components/index.js"
     },
     "./dist/components/*": "./dist/components/*",
-    "./dist/lpcp-components.css": "./dist/lpcp-components/lpcp-components.css"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/stenciljs/component-starter.git"
+    "./dist/lpcp-components.css": "./dist/lpcp-components/lpcp-components.css",
+    "./package.json": "./package.json"
   },
   "files": [
     "dist/",
     "loader/",
     "output/"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
-    "dev": "pnpm --filter @lpcp/icons build && stencil build --watch --serve",
+    "dev": "pnpm --filter @mache-hangar/icons build && stencil build --watch --serve",
     "build": "pnpm run build:stencil && pnpm run build:react && pnpm run build:vue",
-    "build:stencil": "pnpm --filter @lpcp/icons build && pnpm run prepare:output-dirs && stencil build && pnpm run sync:component-assets",
+    "build:stencil": "pnpm --filter @mache-hangar/icons build && pnpm run prepare:output-dirs && stencil build && pnpm run sync:component-assets",
     "sync:component-assets": "node ../../scripts/tasks.cjs sync-component-assets",
     "build:vue": "tsc -p tsconfig.vue.json && tsc -p tsconfig.vue.cjs.json",
     "build:react": "tsc -p tsconfig.react.json && tsc -p tsconfig.react.cjs.json",
     "prepare:output-dirs": "node ../../scripts/tasks.cjs prepare-output-dirs",
+    "prepublishOnly": "pnpm run build",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
@@ -68,13 +88,25 @@
     "generate": "stencil generate"
   },
   "dependencies": {
-    "@lpcp/icons": "workspace:^"
+    "@stencil/react-output-target": "^1.5.2",
+    "@stencil/vue-output-target": "^0.13.1"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "vue": ">=3.3.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "vue": {
+      "optional": true
+    }
   },
   "devDependencies": {
+    "@mache-hangar/icons": "workspace:^",
     "@stencil/core": "^4.43.4",
     "@stencil/sass": "^3.2.3",
-    "@stencil/react-output-target": "^1.5.2",
-    "@stencil/vue-output-target": "^0.13.1",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.13.5",
     "@types/react": "^19.1.10",
@@ -84,6 +116,5 @@
     "react": "^19.1.1",
     "typescript": "^5.9.3",
     "vue": "^3.5.22"
-  },
-  "license": "MIT"
+  }
 }

@@ -10,8 +10,8 @@
   </article>
 </template>
 <script lang="ts" setup>
-import { icons } from "@lpcp/icons";
-import { WtIcon } from "@lpcp/components/vue";
+import { icons } from "@mache-hangar/icons";
+import { WtIcon } from "@mache-hangar/components/vue";
 const iconList = [...icons].filter(Boolean).sort((a, b) => a.localeCompare(b));
 </script>
 <style scoped lang="scss">

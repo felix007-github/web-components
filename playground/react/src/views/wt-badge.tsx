@@ -1,4 +1,4 @@
-import { WtBadge } from "@lpcp/components/react";
+import { WtBadge } from "@mache-hangar/components/react";
 
 export const WtBadgeVs = () => {
   return (

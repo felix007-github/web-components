@@ -12,6 +12,6 @@
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { WtInput, WtIcon } from "@lpcp/components/vue";
+import { WtInput, WtIcon } from "@mache-hangar/components/vue";
 const inputValue = ref('');
 </script>

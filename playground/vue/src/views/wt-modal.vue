@@ -18,7 +18,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { WtButton, WtModal } from '@lpcp/components/vue';
+import { WtButton, WtModal } from '@mache-hangar/components/vue';
 
 const isOpen = ref(false);
 </script>

@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { WtProgress } from "@lpcp/components/react";
+import { WtProgress } from "@mache-hangar/components/react";
 export const WtProgressVs = forwardRef<
   HTMLWtProgressElement,
   React.ComponentPropsWithoutRef<"wt-progress">

@@ -85,5 +85,5 @@
 </template>
 
 <script lang="ts" setup>
-import { WtDivider } from '@lpcp/components/vue';
+import { WtDivider } from '@mache-hangar/components/vue';
 </script>

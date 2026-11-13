@@ -1,5 +1,5 @@
 import { forwardRef, useState } from "react";
-import { WtModal, WtButton } from "@lpcp/components/react";
+import { WtModal, WtButton } from "@mache-hangar/components/react";
 export const WtModalVs = forwardRef<
   HTMLWtModalElement,
   React.ComponentPropsWithoutRef<"wt-modal">

@@ -1,4 +1,4 @@
-# @lpcp/icons
+# @mache-hangar/icons
 
 ## 0.1.4
 
