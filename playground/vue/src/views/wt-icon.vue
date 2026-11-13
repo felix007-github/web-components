@@ -1,19 +1,19 @@
 <template>
   <article class="demo-card">
-    <p class="icon-total">Total: {{iconList.length}}</p>
+    <p class="icon-total">Total: {{ iconList.length }}</p>
     <div class="icon-grid">
-      <div v-for="iconName in iconList" class="icon-item" :key="iconName">
+      <div v-for="iconName in iconList" :key="iconName" class="icon-item">
         <WtIcon :name="iconName" size="20" />
-        <span class="icon-name">{{iconName}}</span>
+        <span class="icon-name">{{ iconName }}</span>
       </div>
     </div>
   </article>
 </template>
 <script lang="ts" setup>
-import { icons } from "@mache-hangar/icons";
-import { WtIcon } from "@mache-hangar/components/vue";
+import { icons } from '@mache-hangar/icons';
+import { WtIcon } from '@mache-hangar/components/vue';
 const iconList = [...icons].filter(Boolean).sort((a, b) => a.localeCompare(b));
 </script>
 <style scoped lang="scss">
-@use "./scss/wt-icon.scss" as *;
+@use './scss/wt-icon.scss' as *;
 </style>

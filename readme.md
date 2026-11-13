@@ -21,6 +21,9 @@ web-components/
 │   ├── react/               # React 19 + Vite 的组件演示站
 │   └── vue/                 # Vue 3 + Vite 的组件演示站
 ├── scripts/tasks.cjs        # 构建辅助脚本（输出目录准备、资源同步、清理）
+├── .husky/                  # git hooks（pre-commit 跑 lint-staged）
+├── eslint.config.mjs        # ESLint flat config（TS + Vue）
+├── .prettierrc.json         # Prettier 配置
 ├── .changeset/              # changesets 版本与 CHANGELOG 配置
 ├── PUBLISHING.md            # npm 发布流程
 └── turbo.json               # 任务依赖与缓存配置
@@ -49,20 +52,23 @@ pnpm dev            # 启动所有 dev 任务（docs + 两个 playground + 组�
 
 ## 常用命令
 
-| 命令 | 作用 |
-| --- | --- |
-| `pnpm dev` | 启动全部开发服务 |
-| `pnpm dev:doc` / `pnpm dev:components` / `pnpm dev:react` / `pnpm dev:vue` | 只启动指定子项目 |
-| `pnpm build` | 按依赖顺序构建全部包 |
-| `pnpm build:icons` | 只构建图标包 |
-| `pnpm build:components` | 只构建组件库（含 Stencil 产物与 React/Vue 适配层） |
-| `pnpm build:doc` / `pnpm build:react` / `pnpm build:vue` | 只构建指定子项目 |
-| `pnpm test` | 跑 Stencil 单元测试（依赖构建产物） |
-| `pnpm typecheck` | 全仓 TypeScript 检查 |
-| `pnpm lint` | 代码检查（组件包目前是占位脚本） |
-| `pnpm clean` | 清理各包的构建产物 |
-| `pnpm changeset` | 创建变更记录（版本发布用） |
-| `pnpm release` | `changeset version` + 全量构建 + 发布到 npm |
+| 命令                                                                       | 作用                                               |
+| -------------------------------------------------------------------------- | -------------------------------------------------- |
+| `pnpm dev`                                                                 | 启动全部开发服务                                   |
+| `pnpm dev:doc` / `pnpm dev:components` / `pnpm dev:react` / `pnpm dev:vue` | 只启动指定子项目                                   |
+| `pnpm build`                                                               | 按依赖顺序构建全部包                               |
+| `pnpm build:icons`                                                         | 只构建图标包                                       |
+| `pnpm build:components`                                                    | 只构建组件库（含 Stencil 产物与 React/Vue 适配层） |
+| `pnpm build:doc` / `pnpm build:react` / `pnpm build:vue`                   | 只构建指定子项目                                   |
+| `pnpm test`                                                                | 跑 Stencil 单元测试（依赖构建产物）                |
+| `pnpm typecheck`                                                           | 全仓 TypeScript 检查                               |
+| `pnpm lint`                                                                | ESLint 全仓检查                                    |
+| `pnpm lint:fix`                                                            | ESLint 自动修复可修复的问题                        |
+| `pnpm format`                                                              | Prettier 格式化全仓                                |
+| `pnpm format:check`                                                        | 只检查格式，不写文件                               |
+| `pnpm clean`                                                               | 清理各包的构建产物                                 |
+| `pnpm changeset`                                                           | 创建变更记录（版本发布用）                         |
+| `pnpm release`                                                             | `changeset version` + 全量构建 + 发布到 npm        |
 
 也可以直接按包名过滤：
 
@@ -119,6 +125,23 @@ pnpm changeset version
 4. 提交 PR
 
 > 注意：`packages/components/src/components.d.ts`、`dist/`、`loader/`、`www/`、`output/react*`、`output/vue*` 都是生成物，不要手改，构建会覆盖。
+
+## 代码规范与提交钩子
+
+- **ESLint**：[eslint.config.mjs](eslint.config.mjs)，flat config，覆盖 TS/TSX/Vue，规则集是 `@eslint/js` + `typescript-eslint` + `eslint-plugin-vue`，末尾用 `eslint-config-prettier` 关掉与格式化冲突的规则
+- **Prettier**：[.prettierrc.json](.prettierrc.json)（单引号、2 空格、printWidth 180），忽略项在 [.prettierignore](.prettierignore)
+- **pre-commit**：husky + lint-staged，提交时只处理**暂存区**的文件
+  - `*.{js,cjs,mjs,ts,tsx,vue}` → `eslint --fix` + `prettier --write`
+  - `*.{json,md,css,scss,yml,yaml,html}` → `prettier --write`
+  - 配置见 [lint-staged.config.mjs](lint-staged.config.mjs)，钩子命令在 `.husky/pre-commit`
+
+钩子通过 `pnpm install` 的 `prepare` 自动安装（`git config core.hooksPath` 会指向 `.husky/_`）。临时跳过：
+
+```bash
+git commit --no-verify -m "wip"
+```
+
+> 存量文件还没有整体跑过 Prettier，`pnpm format:check` 目前会报告一些历史文件；提交时被改动的文件会自动格式化，想一次性整理可以执行 `pnpm format`。
 
 ## 构建与发布
 

@@ -8,7 +8,7 @@
     "build": "vitepress build . --outDir dist",
     "preview": "vitepress preview . --outDir dist --port 4173",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "lint": "echo \"lint is not configured for docs yet\"",
+    "lint": "eslint .",
     "clean": "node -e \"const fs=require('fs');['dist'].forEach((d)=>fs.rmSync(d,{recursive:true,force:true}))\""
   },
   "dependencies": {

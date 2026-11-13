@@ -1,0 +1,24 @@
+# 依赖与构建产物
+node_modules/
+.pnpm-store/
+dist/
+loader/
+output/
+www/
+coverage/
+.turbo/
+.stencil/
+
+# 生成文件
+pnpm-lock.yaml
+packages/components/src/components.d.ts
+**/components.d.ts
+
+# 文档站构建缓存
+docs/.vitepress/cache/
+docs/.vitepress/dist/
+
+# 静态资源与图标源文件
+packages/icons/svg/
+playground/*/public/
+docs/public/
