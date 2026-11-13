@@ -1,59 +1,152 @@
-# Start all projects
+# WT UI Web Components
 
-```bash
-pnpm install
-pnpm dev
+基于 [Stencil](https://stenciljs.com/) 构建的企业级 Web Components 组件库，同一套组件可以：
+
+- 在任意框架或纯 HTML 页面中使用（`/loader` 按需加载）
+- 通过 React 适配层使用（`@mache-hangar/components/react`）
+- 通过 Vue 3 适配层使用（`@mache-hangar/components/vue`），支持 `v-model`
+- 用 CSS 变量与 Shadow Parts 覆盖主题
+
+仓库使用 pnpm workspace + Turborepo 管理，`packages/*` 里的库会被 docs 站点和两个 playground 直接消费。
+
+## 仓库结构
+
+```
+web-components/
+├── packages/
+│   ├── components/          # @mache-hangar/components —— Stencil 组件库（含 React/Vue 适配层）
+│   └── icons/               # @mache-hangar/icons —— SVG 图标集合（构建时打入组件包）
+├── docs/                    # VitePress 组件文档站
+├── playground/
+│   ├── react/               # React 19 + Vite 的组件演示站
+│   └── vue/                 # Vue 3 + Vite 的组件演示站
+├── scripts/tasks.cjs        # 构建辅助脚本（输出目录准备、资源同步、清理）
+├── .changeset/              # changesets 版本与 CHANGELOG 配置
+├── PUBLISHING.md            # npm 发布流程
+└── turbo.json               # 任务依赖与缓存配置
 ```
 
-# Run individual sub-projects
+## 环境要求
+
+- Node.js **22.12+**（Vite 7 要求 `^20.19` 或 `>=22.12`，推荐直接用 22 LTS）
+- pnpm **11.x**（仓库在 `package.json` 里声明了 `packageManager: pnpm@11.1.3`，并配有 `only-allow`，用 npm/yarn 安装会被拦截）
+
+如果本机 pnpm 版本不对：
 
 ```bash
-pnpm --filter docs dev
-pnpm --filter vue-playground dev
+corepack enable
+corepack prepare pnpm@11.1.3 --activate
+```
+
+## 快速开始
+
+```bash
+pnpm install        # 安装依赖并链接 workspace 包
+pnpm dev            # 启动所有 dev 任务（docs + 两个 playground + 组件 watch）
+```
+
+`pnpm dev` 会同时起多个进程，日志会按包名前缀聚合输出，各服务的端口以终端提示为准。
+
+## 常用命令
+
+| 命令 | 作用 |
+| --- | --- |
+| `pnpm dev` | 启动全部开发服务 |
+| `pnpm dev:doc` / `pnpm dev:components` / `pnpm dev:react` / `pnpm dev:vue` | 只启动指定子项目 |
+| `pnpm build` | 按依赖顺序构建全部包 |
+| `pnpm build:icons` | 只构建图标包 |
+| `pnpm build:components` | 只构建组件库（含 Stencil 产物与 React/Vue 适配层） |
+| `pnpm build:doc` / `pnpm build:react` / `pnpm build:vue` | 只构建指定子项目 |
+| `pnpm test` | 跑 Stencil 单元测试（依赖构建产物） |
+| `pnpm typecheck` | 全仓 TypeScript 检查 |
+| `pnpm lint` | 代码检查（组件包目前是占位脚本） |
+| `pnpm clean` | 清理各包的构建产物 |
+| `pnpm changeset` | 创建变更记录（版本发布用） |
+| `pnpm release` | `changeset version` + 全量构建 + 发布到 npm |
+
+也可以直接按包名过滤：
+
+```bash
+pnpm --filter @mache-hangar/components build
+pnpm --filter react-playground dev
+pnpm --filter vue-playground build && pnpm --filter vue-playground preview
+```
+
+## 子项目说明
+
+### packages/components —— 组件库
+
+- 源码在 `src/components/<tag>/`，通常包含 `*.tsx`、`*.scss`、`readme.md`（`readme.md` 由 Stencil 自动生成，不要手改）
+- 构建产物：
+  - `dist/`：Stencil 的 `dist`、`dist-custom-elements`、懒加载 ESM 与类型声明
+  - `loader/`：按需注册入口
+  - `output/react`、`output/vue`：从 Stencil 元数据生成的 React/Vue 适配层
+- 组件级文档：`docs/components/*.md`
+
+新增组件请先看 [packages/components/CHECKLIST.md](packages/components/CHECKLIST.md)。
+
+### packages/icons —— 图标包
+
+- `svg/` 存放源文件，`pnpm build:icons` 会先执行 `scripts/transfer-svg.mjs` 生成图标组件，再跑 Stencil 构建
+- 图标会在组件库构建时打包进 `dist`，所以安装 `@mache-hangar/components` 即可使用 `wt-icon`，无需单独安装图标包
+
+### docs —— 文档站
+
+VitePress 站点，示例代码通过 `vitepress-theme-demoblock` 渲染。开发时 `pnpm dev:doc`，构建 `pnpm build:doc`。
+
+### playground/react、playground/vue —— 演示站
+
+两个 playground 通过 workspace 依赖引用 `@mache-hangar/components`，消费的是**构建产物**而不是源码。
+
+所以改完组件源码后，需要在 playground 里看到效果，得先重新构建（或同时跑 `pnpm dev:components` 让 Stencil 持续 watch 输出）：
+
+```bash
+pnpm --filter @mache-hangar/components build
 pnpm --filter react-playground dev
 ```
 
-# Some build commands
+## 开发流程
+
+1. 从 `main` 拉分支，改 `packages/components/src/**` 或 `packages/icons/svg/**`
+2. 本地构建并跑 playground / docs 验证
+3. 需要发版时用 changesets 记录变更：
+
 ```bash
-pnpm run build --filter @mache-hangar/components
-pnpm run build --filter @mache-hangar/xml-editor
+pnpm changeset        # 选包、选 bump 类型（patch/minor/major）、写说明
+pnpm changeset version
 ```
 
-## About Turbo (Turborepo)
+4. 提交 PR
 
-1. Turbo's real strength is mainly in the incremental execution and caching of "completable tasks", not in "long-running service orchestration".
+> 注意：`packages/components/src/components.d.ts`、`dist/`、`loader/`、`www/`、`output/react*`、`output/vue*` 都是生成物，不要手改，构建会覆盖。
 
-## Key Strengths
+## 构建与发布
 
-1. Task Orchestration: Parallel execution with automatic dependency detection
-  You don't need to write complex scripts. Turbo automatically analyzes:
-  What depends on what
-  What can run in parallel
-  What must run sequentially
-  What are global tasks
-  For example:
-    docs depends on components
-    components depends on utils
-  Turbo automatically:
-    utils → components → docs
+- 构建：`pnpm build`（Turbo 会按 `^build` 依赖顺序先构建被依赖的包；`dist/**`、`loader/**`、`output/**` 会作为缓存产物）
+- 发布：见 [PUBLISHING.md](PUBLISHING.md)，核心命令是
 
-2. 4 Key Highlights:
+```bash
+pnpm --filter @mache-hangar/components publish --access public
+```
 
-    1. Incremental builds (only affected packages)
-    If you change one package, it won't run the entire repository. It will only run relevant tasks based on the dependency graph.
+- 版本与 CHANGELOG 由 [changesets](https://github.com/changesets/changesets) 管理，配置在 `.changeset/config.json`（`access: public`）
 
-    2. Task caching (local/remote)
-    For tasks like build/test/lint/typecheck, if the inputs haven't changed, it directly hits the cache, almost instantly.
+## Turborepo 说明
 
-    3. Dependency graph scheduling
-    dependsOn can automate "libraries first, then applications" build order, eliminating manual command chaining.
+- `build` / `test` / `typecheck` 通过 `dependsOn` 自动串起依赖顺序：`icons → components → docs / playground`
+- 输入未变化时直接命中本地缓存（`.turbo/cache`），CI 也能复用
+- `dev` 是 `persistent` 任务且不缓存，Turbo 只负责并发拉起，不负责“等某个服务就绪再启动另一个”
 
-    4. Unified entry point
-    One command from the root directory can batch execute multiple package tasks with logs aggregated by package for more stable team collaboration.
+## 常见问题
 
-Summary:
-Turbo's main value is making CI and daily build/test faster and more stable;
-it's not a replacement for process orchestrators to handle "start this after service is ready".
+**playground 里改了组件不生效？**
+组件包发布的是 `dist` 产物，改源码后要重新 `pnpm --filter @mache-hangar/components build`，或让 `pnpm dev:components` 持续 watch。
 
-pnpm --filter react-playground build
-pnpm --filter react-playground preview
+**`pnpm install` 被 `only-allow` 拦截？**
+仓库只允许 pnpm，用 `corepack enable` 切到 `pnpm@11.1.3`。
+
+**组件没有样式 / 主题不生效？**
+使用方需要引入一次 `@mache-hangar/components/dist/lpcp-components.css`（playground 在 `styles/dependence.scss` 里引了）。
+
+**图标不显示？**
+`wt-icon` 需要传 `name`；可用图标名见 `packages/icons` 的构建产物或 docs 的图标页。
