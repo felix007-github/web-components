@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "dist",
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "lib": [
+      "dom",
+      "es2022"
+    ],
+    "moduleResolution": "bundler",
+    "module": "esnext",
+    "target": "es2022",
+    "jsx": "react",
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "h.Fragment"
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist", "loader", ".stencil", ".turbo"]
+}

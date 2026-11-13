@@ -1,0 +1,11 @@
+import { Component, Host, h } from '@stencil/core';
+  
+  @Component({
+    tag: 'wt-icon-format_list_numbered'
+  })
+  export class VtIconFormatListNumbered {
+    render() {
+      return <Host class="wt-svg"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><g clip-path="url(#a)"><path fill="currentColor" d="M7 13v-2h14v2zm0 6v-2h14v2zM7 7V5h14v2zM3 8V5H2V4h2v4zm-1 9v-1h3v4H2v-1h2v-.5H3v-1h1V17zm2.25-7a.75.75 0 0 1 .54 1.27L3.12 13H5v1H2v-.92L4 11H2v-1z"/></g><defs><clipPath id="a"><path fill="currentColor" d="M0 0h24v24H0z"/></clipPath></defs></svg></Host>;
+    }
+  }
+  

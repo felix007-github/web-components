@@ -1,0 +1,11 @@
+import { Component, Host, h } from '@stencil/core';
+  
+  @Component({
+    tag: 'wt-icon-folder_open'
+  })
+  export class VtIconFolderOpen {
+    render() {
+      return <Host class="wt-svg"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><g clip-path="url(#a)"><path fill="currentColor" d="M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2m0 12H4V8h16z"/></g><defs><clipPath id="a"><path fill="currentColor" d="M0 0h24v24H0z"/></clipPath></defs></svg></Host>;
+    }
+  }
+  

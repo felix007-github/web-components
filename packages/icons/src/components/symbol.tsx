@@ -1,0 +1,11 @@
+import { Component, Host, h } from '@stencil/core';
+  
+  @Component({
+    tag: 'wt-icon-symbol'
+  })
+  export class VtIconSymbol {
+    render() {
+      return <Host class="wt-svg"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><g clip-path="url(#a)"><path fill="currentColor" d="M2.215 6.51v7h2v-7zm4 0v2h4v2h-2v3h2v-1c1.11 0 2-.89 2-2v-2c0-1.11-.89-2-2-2zm9.8 0-.2 2h-1.6v2h1.4l-.2 2h-1.2v2h1l-.2 2h2l.2-2h1.4l-.2 2h2l.2-2h1.6v-2h-1.4l.2-2h1.2v-2h-1l.2-2h-2l-.2 2h-1.4l.2-2zm1.6 4h1.4l-.2 2h-1.4zm-15.4 4v2h2v-2zm6 0v2h2v-2z"/></g><defs><clipPath id="a"><path fill="currentColor" d="M0 0h24v24H0z"/></clipPath></defs></svg></Host>;
+    }
+  }
+  

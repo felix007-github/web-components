@@ -1,0 +1,11 @@
+import { Component, Host, h } from '@stencil/core';
+  
+  @Component({
+    tag: 'wt-icon-collapse'
+  })
+  export class VtIconCollapse {
+    render() {
+      return <Host class="wt-svg"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><g clip-path="url(#a)"><path fill="currentColor" d="m21.904 3.305-1.208-1.208a.215.215 0 0 0-.303 0l-4.219 4.221-1.465-1.465a.213.213 0 0 0-.361.126l-.63 5.065c-.016.14.1.255.238.239l5.068-.63a.213.213 0 0 0 .126-.361l-1.465-1.466 4.221-4.221a.214.214 0 0 0-.002-.3M10.046 13.717l-5.068.629a.214.214 0 0 0-.126.362l1.465 1.465-4.219 4.219a.215.215 0 0 0 0 .302l1.208 1.208c.083.083.22.083.303 0l4.222-4.221 1.465 1.465a.212.212 0 0 0 .361-.126l.627-5.065a.213.213 0 0 0-.238-.238"/></g><defs><clipPath id="a"><path fill="currentColor" d="M0 0h24v24H0z"/></clipPath></defs></svg></Host>;
+    }
+  }
+  

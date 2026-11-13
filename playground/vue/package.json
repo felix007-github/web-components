@@ -1,0 +1,25 @@
+{
+  "name": "vue-playground",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -p tsconfig.json --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "clean": "node -e \"const fs=require('fs');['dist'].forEach((d)=>fs.rmSync(d,{recursive:true,force:true}))\""
+  },
+  "dependencies": {
+    "@lpcp/icons": "workspace:*",
+    "@lpcp/components": "workspace:*",
+    "vue": "^3.5.22",
+    "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.1",
+    "sass": "^1.95.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.3"
+  }
+}

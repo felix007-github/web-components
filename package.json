@@ -1,0 +1,36 @@
+{
+  "name": "lpcp-web-tool",
+  "version": "0.1.0",
+  "packageManager": "pnpm@11.1.3",
+  "scripts": {
+    "dev": "turbo run dev",
+    "dev:doc": "turbo run dev --filter=docs",
+    "dev:components": "turbo run dev --filter=@lpcp/components",
+    "dev:vue": "turbo run dev --filter=vue-playground",
+    "dev:react": "turbo run dev --filter=react-playground",
+    "build": "turbo run build",
+    "build:doc": "turbo run build --filter=docs",
+    "build:icons": "turbo run build --filter=@lpcp/icons",
+    "build:components": "turbo run build --filter=@lpcp/components",
+    "build:vue": "turbo run build --filter=vue-playground",
+    "build:react": "turbo run build --filter=react-playground",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "clean": "turbo run clean",
+    "changeset": "changeset",
+    "publish": "turbo run build --filter=./packages/* && pnpm publish -r --filter=./packages/* --access public",
+    "release": "changeset version && turbo run build && changeset publish",
+    "preinstall": "npx only-allow pnpm"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.29.6",
+    "turbo": "^2.9.14",
+    "typescript": "^5.9.3"
+  },
+  "overrides": {
+    "monaco-editor": "0.45.0",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3"
+  }
+}

@@ -1,0 +1,12 @@
+.flex {
+  display: flex;
+}
+
+.ui-wt-container {
+  padding: 20px;
+}
+
+.ui-wt-container .col-box {
+  gap: 20px;
+  margin-bottom: 20px;
+}

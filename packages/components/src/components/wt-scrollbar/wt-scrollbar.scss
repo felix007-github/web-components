@@ -1,0 +1,85 @@
+@use "sass:map";
+
+wt-scrollbar {
+  display: block;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.wt-scrollbar-wrap {
+  --scrollbar-size: 4px;
+  --scrollbar-width-mode: thin;
+
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+
+  &.size-small {
+    --scrollbar-size: 2px;
+    --scrollbar-width-mode: thin;
+  }
+  &.size-medium {
+    --scrollbar-size: 4px;
+    --scrollbar-width-mode: thin;
+  }
+  &.size-large {
+    --scrollbar-size: 6px;
+    --scrollbar-width-mode: auto;
+  }
+
+  &::-webkit-scrollbar {
+    width: var(--scrollbar-size, 4px);
+    height: var(--scrollbar-size, 4px);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(197, 206, 217, 0);
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  // Hide scrollbar buttons (arrows at top and bottom)
+  &::-webkit-scrollbar-button {
+    display: none !important;
+    width: 0;
+    height: 0;
+  }
+
+  &::-webkit-scrollbar-button:start:decrement,
+  &::-webkit-scrollbar-button:end:increment,
+  &::-webkit-scrollbar-button:horizontal:start:decrement,
+  &::-webkit-scrollbar-button:horizontal:end:increment,
+  &::-webkit-scrollbar-button:vertical:start:decrement,
+  &::-webkit-scrollbar-button:vertical:end:increment {
+    display: none !important;
+    width: 0;
+    height: 0;
+  }
+
+  &:hover::-webkit-scrollbar-thumb,
+  &.is-always::-webkit-scrollbar-thumb,
+  &.is-scrolling::-webkit-scrollbar-thumb {
+    background-color: rgba(197, 206, 217, 1);
+  }
+
+  // Firefox scrollbar styles
+  scrollbar-width: var(--scrollbar-width-mode, thin);
+  scrollbar-color: rgba(197, 206, 217, 0) transparent;
+
+  &:hover,
+  &.is-always,
+  &.is-scrolling {
+    scrollbar-color: rgba(197, 206, 217, 1) transparent;
+  }
+}
+
+.wt-scrollbar-view {
+  min-height: 100%;
+  min-width: 100%;
+  box-sizing: border-box;
+}

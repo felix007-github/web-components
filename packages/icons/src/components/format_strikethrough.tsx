@@ -1,0 +1,11 @@
+import { Component, Host, h } from '@stencil/core';
+  
+  @Component({
+    tag: 'wt-icon-format_strikethrough'
+  })
+  export class VtIconFormatStrikethrough {
+    render() {
+      return <Host class="wt-svg"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><g fill="currentColor" clip-path="url(#a)"><path d="M11.167 4h1.844l2.059 5.5h-2.233L12 7.146 11.151 9.5H9.047z"/><path fill-rule="evenodd" d="M3 11v1.5h4.89L5 20h2.42l1.364-3.9h6.415l1.383 3.9H19l-2.807-7.5H21V11zm6.527 3.004.542-1.504h3.833l.535 1.504z" clip-rule="evenodd"/></g><defs><clipPath id="a"><path fill="currentColor" d="M0 0h24v24H0z"/></clipPath></defs></svg></Host>;
+    }
+  }
+  

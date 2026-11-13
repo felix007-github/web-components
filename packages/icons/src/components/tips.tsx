@@ -1,0 +1,11 @@
+import { Component, Host, h } from '@stencil/core';
+  
+  @Component({
+    tag: 'wt-icon-tips'
+  })
+  export class VtIconTips {
+    render() {
+      return <Host class="wt-svg"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><g clip-path="url(#a)"><path fill="currentColor" d="M4.8 3.5h14.4A1.8 1.8 0 0 1 21 5.3v10.8a1.8 1.8 0 0 1-1.8 1.8h-3.6L12 21.5l-3.6-3.6H4.8A1.8 1.8 0 0 1 3 16.1V5.3a1.8 1.8 0 0 1 1.8-1.8m0 1.8v10.8h4.347L12 18.953l2.853-2.853H19.2V5.3zM6.6 8h10.8v1.8H6.6zm0 3.6h9v1.8h-9z"/></g><defs><clipPath id="a"><path fill="currentColor" d="M0 0h24v24H0z"/></clipPath></defs></svg></Host>;
+    }
+  }
+  

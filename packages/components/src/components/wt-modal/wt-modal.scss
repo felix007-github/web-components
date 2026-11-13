@@ -1,0 +1,98 @@
+@use 'assets/styles/function.scss' as *;
+
+$prefix: 'wt-modal';
+
+.#{$prefix}__dialog {
+  border: none;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: visible;
+  position: fixed;
+  background: transparent;
+
+  /* 动画相关配置 */
+  opacity: 0;
+  display: block;
+  pointer-events: none;
+  transition:
+    display 0.3s ease allow-discrete,
+    overlay 0.3s ease allow-discrete;
+  &::backdrop {
+    opacity: 0;
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &[open] {
+    opacity: 1;
+    pointer-events: auto;
+
+    .#{$prefix}__body {
+      transform: translate(-50%, 0);
+      opacity: 1;
+    }
+  }
+}
+
+.#{$prefix}__dialog--overlay::backdrop {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.37);
+}
+
+.#{$prefix}__body {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  border-radius: 8px;
+  /* 初始动画状态：向下偏移并透明 */
+  transform: translate(-50%, 20px);
+  opacity: 0;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+
+  background: var(--wt-surface-primary);
+  box-shadow: 0px 12px 17px 2px rgba(0, 0, 0, 0.14);
+  padding: 24px;
+  min-width: 490px;
+  .#{$prefix}__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .#{$prefix}__close-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 999px;
+    transition:
+      background-color 0.18s ease,
+      transform 0.18s ease;
+
+    &:hover {
+      background: rgba(15, 23, 42, 0.08);
+      transform: rotate(90deg);
+    }
+
+    &:focus-visible {
+      outline: 2px solid rgba(37, 99, 235, 0.45);
+      outline-offset: 2px;
+    }
+  }
+
+  .#{$prefix}__title {
+    font-size: 20px;
+    font-weight: 700;
+  }
+  
+  .#{$prefix}__footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--wt-space-3);
+  }
+}

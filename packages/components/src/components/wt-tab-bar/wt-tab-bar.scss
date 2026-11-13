@@ -1,0 +1,57 @@
+@use "assets/styles/function.scss" as *;
+
+$prefix: 'wt-tab-bar';
+
+.#{$prefix} {
+  position: relative;
+  display: flex;
+  border: 1.5px solid rgba(197, 206, 217, 1);
+  border-radius: 4px;
+  background: #fff;
+  padding: 2px;
+  box-sizing: border-box;
+
+  .#{$prefix}-indicator {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    z-index: 0;
+    height: 24px;
+    background: #e9e9fd;
+    border-radius: 3px;
+    pointer-events: none;
+    transition: transform 0.2s ease, width 0.2s ease;
+  }
+
+  .#{$prefix}-item {
+    position: relative;
+    z-index: 1;
+    flex: 1 0 auto;
+    text-align: center;
+    font-size: 14px;
+    color: #374151;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    background: transparent;
+    padding: 0;
+    display: grid;
+    place-items: center;
+    height: 24px;
+    line-height: 24px;
+    white-space: nowrap;
+    padding: 0 12px;
+  }
+
+  .#{$prefix}-item-label {
+    grid-area: 1 / 1;
+    white-space: nowrap;
+  }
+
+  .#{$prefix}-item.active {
+    color: #1a2233;
+
+    .#{$prefix}-item-label {
+      text-shadow: 0.35px 0 0 currentColor, -0.35px 0 0 currentColor;
+    }
+  }
+}

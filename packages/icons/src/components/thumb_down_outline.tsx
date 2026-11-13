@@ -1,0 +1,11 @@
+import { Component, Host, h } from '@stencil/core';
+  
+  @Component({
+    tag: 'wt-icon-thumb_down_outline'
+  })
+  export class VtIconThumbDownOutline {
+    render() {
+      return <Host class="wt-svg"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><g clip-path="url(#a)"><path fill="currentColor" fill-rule="evenodd" d="M12.386 21.843c.208-.194.387-.438.668-1.082L16.514 14H20a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H6.136C4.57 1.988 3.236 3.15 3 4.725v.002l-.964 7.412v.003a3.25 3.25 0 0 0 .736 2.585 3.12 3.12 0 0 0 2.4 1.103h3.31v2.07c0 1.07.424 1.96.838 2.55.212.3.455.571.708.787.125.106.281.224.464.324.134.075 1.41.734 1.894.282M4.73 4.993a1.405 1.405 0 0 1 1.398-1.21h9.122v8.84l-3.796 7.415c-.05 0-.123-.033-.21-.095-.319-.227-.816-.837-.967-1.597a2.3 2.3 0 0 1-.045-.446v-2.96a.883.883 0 0 0-.875-.892H5.164a1.39 1.39 0 0 1-1.071-.49 1.45 1.45 0 0 1-.327-1.149z" clip-rule="evenodd"/></g><defs><clipPath id="a"><path fill="currentColor" d="M0 0h24v24H0z"/></clipPath></defs></svg></Host>;
+    }
+  }
+  

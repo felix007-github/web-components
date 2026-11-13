@@ -1,0 +1,23 @@
+{
+  "name": "docs",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev . --port 5173",
+    "build": "vitepress build . --outDir dist",
+    "preview": "vitepress preview . --outDir dist --port 4173",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "echo \"lint is not configured for docs yet\"",
+    "clean": "node -e \"const fs=require('fs');['dist'].forEach((d)=>fs.rmSync(d,{recursive:true,force:true}))\""
+  },
+  "dependencies": {
+    "@lpcp/icons": "workspace:*",
+    "@lpcp/components": "workspace:*"
+  },
+  "devDependencies": {
+    "vitepress": "^1.6.4",
+    "vitepress-theme-demoblock": "^3.1.2",
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "@lpcp/icons",
+  "version": "0.0.2",
+  "description": "SVG icon for VT UI Icons collection.",
+  "keywords": [
+    "icon",
+    "svg"
+  ],
+  "license": "MIT",
+  "files": [
+    "*.svg"
+  ],
+  "scripts": {
+    "optimize": "svgo -f . -o ."
+  },
+  "devDependencies": {
+    "svgo": "^4.0.0"
+  }
+}

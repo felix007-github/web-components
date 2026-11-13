@@ -1,0 +1,11 @@
+import { Component, Host, h } from '@stencil/core';
+  
+  @Component({
+    tag: 'wt-icon-para_split'
+  })
+  export class VtIconParaSplit {
+    render() {
+      return <Host class="wt-svg"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><g clip-path="url(#a)"><path fill="currentColor" d="M12 9v2H9v2h3v2l3-3zM8 19H3V5h5zm13 0h-5v-2h5zm0-6v2h-5v-2zm0-8v2h-5V5zm0 4v2h-5V9z"/></g><defs><clipPath id="a"><path fill="currentColor" d="M0 0h24v24H0z"/></clipPath></defs></svg></Host>;
+    }
+  }
+  

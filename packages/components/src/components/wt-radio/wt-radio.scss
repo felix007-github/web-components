@@ -1,0 +1,149 @@
+// ============================================================
+// wt-radio – Radio button component
+// ============================================================
+// All visual tokens are sourced from root_token.scss
+// (--wt-radio-*) so the component can be themed globally.
+// ============================================================
+
+.wt-radio {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  vertical-align: middle;
+  -webkit-tap-highlight-color: transparent;
+
+  // ---------------------------------------- Circle Container
+  .wt-radio__circle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--wt-radio-size);
+    height: var(--wt-radio-size);
+    border: 2px solid var(--wt-radio-border-color);
+    border-radius: 50%;
+    background: var(--wt-radio-bg);
+    transition:
+      border-color var(--wt-radio-transition-duration) var(--wt-ease-in-out),
+      background var(--wt-radio-transition-duration) var(--wt-ease-in-out),
+      box-shadow var(--wt-radio-transition-duration) var(--wt-ease-in-out);
+    box-shadow: none;
+
+    // Hover / Focus halo (the ring around the circle)
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: calc(100% + 12px);
+      height: calc(100% + 12px);
+      border-radius: 50%;
+      border: 4px solid transparent;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition:
+        opacity var(--wt-radio-transition-duration) var(--wt-ease-in-out),
+        border-color var(--wt-radio-transition-duration) var(--wt-ease-in-out);
+      pointer-events: none;
+    }
+  }
+
+  // ---------------------------------------- Inner Dot (when checked)
+  .wt-radio__dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: var(--wt-radio-dot-size);
+    height: var(--wt-radio-dot-size);
+    border-radius: 50%;
+    background: var(--wt-radio-dot-color);
+    transition:
+      width var(--wt-radio-transition-duration) var(--wt-ease-in-out),
+      height var(--wt-radio-transition-duration) var(--wt-ease-in-out),
+      background var(--wt-radio-transition-duration) var(--wt-ease-in-out);
+  }
+
+  // Hidden input element
+  .wt-radio__original {
+    display: none;
+  }
+
+  // ========================= Hover / Focus states
+  &:hover,
+  &:focus-visible {
+    .wt-radio__circle::after {
+      opacity: 1;
+      border-color: var(--wt-radio-focus-ring-color);
+    }
+  }
+
+  // ========================= Checked state
+  &.is-checked {
+    .wt-radio__circle {
+      border-color: var(--wt-radio-border-color-checked);
+      background: var(--wt-radio-bg-checked);
+    }
+  }
+
+  // ========================= Checked + Hover state
+  &.is-checked:hover,
+  &.is-checked:focus-visible {
+    .wt-radio__circle::after {
+      border-color: var(--wt-radio-focus-ring-color-checked);
+    }
+  }
+
+  // ========================= Disabled state
+  &.is-disabled {
+    cursor: not-allowed;
+    opacity: var(--wt-radio-disabled-opacity);
+
+    .wt-radio__circle {
+      background: var(--wt-radio-bg);
+    }
+
+    // No hover ring when disabled
+    &:hover,
+    &:focus-visible {
+      .wt-radio__circle::after {
+        opacity: 0;
+      }
+    }
+
+    // Disabled + checked
+    &.is-checked {
+      .wt-radio__circle {
+        border-color: var(--wt-radio-border-color-checked);
+      }
+    }
+  }
+
+  // ========================= Small size
+  &.is-small {
+    .wt-radio__circle {
+      width: var(--wt-radio-size-sm);
+      height: var(--wt-radio-size-sm);
+    }
+
+    .wt-radio__dot {
+      width: var(--wt-radio-dot-size-sm);
+      height: var(--wt-radio-dot-size-sm);
+    }
+  }
+
+  // ========================= Large size
+  &.is-large {
+    .wt-radio__circle {
+      width: var(--wt-radio-size-lg);
+      height: var(--wt-radio-size-lg);
+    }
+
+    .wt-radio__dot {
+      width: var(--wt-radio-dot-size-lg);
+      height: var(--wt-radio-dot-size-lg);
+    }
+  }
+}

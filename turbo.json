@@ -1,0 +1,38 @@
+{
+  "$schema": "./node_modules/turbo/schema.json",
+  "globalDependencies": ["pnpm-lock.yaml"],
+  "tasks": {
+    "dev": {
+      "dependsOn": ["^build"],
+      "cache": false,
+      "persistent": true
+    },
+    "prepare:output-dirs": {
+      "cache": false
+    },
+    "build": {
+      "dependsOn": ["^build", "prepare:output-dirs"],
+      "outputs": [
+        "dist/**",
+        "loader/**",
+        "output/**",
+        "www/**",
+        "coverage/**"
+      ]
+    },
+    "test": {
+      "dependsOn": ["build"],
+      "outputs": ["coverage/**"]
+    },
+    "lint": {
+      "outputs": []
+    },
+    "typecheck": {
+      "dependsOn": ["^typecheck"],
+      "outputs": []
+    },
+    "clean": {
+      "cache": false
+    }
+  }
+}

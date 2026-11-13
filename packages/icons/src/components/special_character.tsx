@@ -1,0 +1,11 @@
+import { Component, Host, h } from '@stencil/core';
+  
+  @Component({
+    tag: 'wt-icon-special_character'
+  })
+  export class VtIconSpecialCharacter {
+    render() {
+      return <Host class="wt-svg"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><g clip-path="url(#a)"><path fill="currentColor" d="M9.929 4.533 13.143 0h3.214l-5.143 4.533zM9.286 6.8v2.267h3.857c.771 0 1.286.453 1.286 1.133h-2.572C9.8 10.2 8 11.787 8 13.6c0 1.927 1.8 3.4 3.857 3.4H17v-6.8c0-1.813-1.671-3.4-3.857-3.4m-1.286 5.667h2.572v2.266h-2.572c-.771 0-1.286-.453-1.286-1.133s.515-1.133 1.286-1.133"/></g><defs><clipPath id="a"><path fill="currentColor" d="M0 0h24v24H0z"/></clipPath></defs></svg></Host>;
+    }
+  }
+  

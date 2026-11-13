@@ -1,0 +1,16 @@
+.wt-notification-service__container{
+  position: fixed;
+  z-index: 9999;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  transform-origin: center bottom;
+  animation: wt-notification-service-enter 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wt-notification-service__container {
+    animation: none;
+  }
+}

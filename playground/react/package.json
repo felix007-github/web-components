@@ -1,0 +1,28 @@
+{
+  "name": "react-playground",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -p tsconfig.json --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "clean": "node -e \"const fs=require('fs');['dist'].forEach((d)=>fs.rmSync(d,{recursive:true,force:true}))\""
+  },
+  "dependencies": {
+    "@lpcp/icons": "workspace:*",
+    "@lpcp/components": "workspace:*",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-router-dom": "^7.14.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.0.2",
+    "sass": "^1.95.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.3"
+  }
+}

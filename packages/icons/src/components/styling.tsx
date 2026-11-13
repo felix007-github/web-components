@@ -1,0 +1,11 @@
+import { Component, Host, h } from '@stencil/core';
+  
+  @Component({
+    tag: 'wt-icon-styling'
+  })
+  export class VtIconStyling {
+    render() {
+      return <Host class="wt-svg"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><g clip-path="url(#a)"><path fill="currentColor" d="M17.952 17.28h-.864l.672-.672zm-1.92-4.896L14.016 14.4h-5.28L7.68 17.28H5.472l5.28-13.44h1.92zm-2.016.096-2.304-6.048-2.304 6.048zm.192 4.608c-.288-.288-.768-.48-1.248-.48s-.864.192-1.248.48c-.288.288-.48.768-.48 1.248 0 .768-.672 1.152-1.152 1.152.48.672 1.44 1.152 2.304 1.152.576 0 1.152-.288 1.632-.672.48-.48.672-1.056.672-1.632 0-.48-.096-.864-.48-1.248m6.72-5.856-.768-.768c-.096-.096-.288-.192-.384-.192-.192 0-.288.096-.384.192l-5.184 5.184 1.632 1.632 5.184-5.184c.096-.288.096-.672-.096-.864"/></g><defs><clipPath id="a"><path fill="currentColor" d="M0 0h24v24H0z"/></clipPath></defs></svg></Host>;
+    }
+  }
+  

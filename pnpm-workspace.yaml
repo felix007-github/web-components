@@ -1,0 +1,13 @@
+packages:
+  - "packages/*"
+  - "docs"
+  - "playground/*"
+  - "app/*"
+
+allowBuilds:
+  '@parcel/watcher': true
+  esbuild: true
+  puppeteer: true
+  unrs-resolver: true
+  vitepress-theme-demoblock: true
+  vue-demi: true

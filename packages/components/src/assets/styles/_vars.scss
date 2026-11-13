@@ -1,0 +1,6 @@
+// SCSS-only variables, no CSS output.
+// Import this file when you only need the $wtprefix variable (e.g. in function.scss).
+// The actual :root/:host CSS custom properties are defined in root_token.scss,
+// which is used exclusively by index.scss (the globalStyle entry point).
+
+$wtprefix: '--wt-';

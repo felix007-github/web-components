@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Stencil Component Starter</title>
+    <script type="module" src="/build/lpcp-components.esm.js"></script>
+    <script nomodule src="/build/lpcp-components.js"></script>
+    <link rel="shortcut icon" href="./favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/build/lpcp-components.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="ui-wt-container">
+      <div class="col-box flex">
+        <wt-button size="large" type="primary" >Button Label</wt-button>
+        <wt-button size="medium" type="dark">Button Label</wt-button>
+        <wt-button size="small" type="dark" disabled>Button Label</wt-button>
+        <wt-button size="min" plain>Button Label</wt-button>
+      </div>
+      <div class="col-box flex">
+        <wt-input size="large"></wt-input>
+        <wt-input size="medium"></wt-input>
+        <wt-input size="small" error></wt-input>
+        <wt-input size="small" disabled></wt-input>
+        <wt-input size="min"></wt-input>
+      </div>
+    </div>
+  </body>
+</html>

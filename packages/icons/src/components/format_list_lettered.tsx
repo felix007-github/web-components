@@ -1,0 +1,11 @@
+import { Component, Host, h } from '@stencil/core';
+  
+  @Component({
+    tag: 'wt-icon-format_list_lettered'
+  })
+  export class VtIconFormatListLettered {
+    render() {
+      return <Host class="wt-svg"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><g clip-path="url(#a)"><path fill="currentColor" d="M5.3 4.3c-.19-.19-.46-.3-.73-.3H3.53c-.27 0-.54.11-.73.3s-.3.46-.3.73v2.96h1.04V7.1h1.04v.89h1.04V5.03c0-.27-.11-.54-.3-.73zm-.73 1.77H3.53V5.03h1.04zm.93 5.33v-.6c0-.21-.11-.42-.29-.57S4.77 10 4.5 10h-2v4h2c.27 0 .52-.08.71-.23s.29-.35.29-.57v-.6c0-.16-.09-.31-.23-.42a.86.86 0 0 0-.52-.18c.2 0 .39-.07.52-.18a.58.58 0 0 0 .23-.42m-1 1.8h-1v-.72h1zm0-1.64h-1v-.77h1zM3.5 16c-.26 0-.52.11-.71.29a1 1 0 0 0-.29.71v2c0 .26.11.52.29.71.19.19.44.29.71.29h1c.26 0 .52-.11.71-.29A1 1 0 0 0 5.5 19v-.5h-1v.5h-1v-2h1v.5h1V17c0-.26-.11-.52-.29-.71A1 1 0 0 0 4.5 16zm4-3.01v-2h14v2zm0 6v-2h14v2zm0-12v-2h14v2z"/></g><defs><clipPath id="a"><path fill="currentColor" d="M0 0h24v24H0z"/></clipPath></defs></svg></Host>;
+    }
+  }
+  

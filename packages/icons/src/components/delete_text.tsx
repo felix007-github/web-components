@@ -1,0 +1,11 @@
+import { Component, Host, h } from '@stencil/core';
+  
+  @Component({
+    tag: 'wt-icon-delete_text'
+  })
+  export class VtIconDeleteText {
+    render() {
+      return <Host class="wt-svg"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="m17.16 4 1.16 4.35-.96.26c-.45-.87-.91-1.74-1.44-2.18C15.39 6 14.77 6 14.16 6h-2.5v10.5c0 .5 0 1 .33 1.25.34.25 1 .25 1.67.25v1h-6v-1c.67 0 1.33 0 1.67-.25.33-.25.33-.75.33-1.25V6h-2.5c-.61 0-1.23 0-1.76.43-.53.44-.99 1.31-1.44 2.18L3 8.35 4.16 4z"/><path fill="currentColor" d="M21.2 19.12 19.07 17l2.13-2.12-1.42-1.42-2.12 2.13-2.12-2.13-1.42 1.42L16.25 17l-2.13 2.12 1.42 1.42 2.12-2.13 2.12 2.13"/></svg></Host>;
+    }
+  }
+  

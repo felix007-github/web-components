@@ -1,0 +1,151 @@
+@use "sass:map";
+@use "assets/styles/function.scss" as *;
+
+$prefix: 'wt-search';
+
+// Size map
+$sizes: (
+  small: (height: 36px, font-size: 14px),
+  medium: (height: 40px, font-size: 16px),
+  large: (height: 56px, font-size: 18px),
+);
+
+:host {
+  display: inline-block;
+}
+
+.#{$prefix} {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid rgba(197, 206, 217, 1);
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: #fff;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+
+  &:hover:not(.#{$prefix}--disabled),
+  &.#{$prefix}--focused:not(.#{$prefix}--disabled) {
+    border-color: rgba(81, 181, 252, 1);
+  }
+
+  // ───── Sizes ─────
+  @each $size, $map in $sizes {
+    $h: map.get($map, height);
+    $fs: map.get($map, font-size);
+    $cs: map.get($map, clear-size);
+
+    &--#{$size} {
+      font-size: $fs;
+
+      .#{$prefix}__input-wrap {
+        height: $h;
+      }
+
+      .#{$prefix}__btn {
+        width: $h;
+        height: $h;
+
+        .#{$prefix}__search-icon {
+          width: calc($h * 0.5);
+          height: calc($h * 0.5);
+        }
+      }
+
+
+      .#{$prefix}__clear {
+        width: calc($h * 0.5);
+        height: calc($h * 0.5);
+        background: rgba(176, 190, 197, 0.24);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .#{$prefix}__clear-icon {
+          width: calc($h * 0.35);
+          height: calc($h * 0.35);
+        }
+      }
+    }
+  }
+
+  // ───── Disabled ─────
+  &--disabled {
+    background-color: rgba(240, 243, 245, 1);
+    cursor: not-allowed;
+
+    .#{$prefix}__inner {
+      color: wt-tv(disabled);
+      cursor: not-allowed;
+    }
+
+    .#{$prefix}__btn {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+  }
+}
+
+// ───── Input wrap ─────
+.#{$prefix}__input-wrap {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  padding: 0 12px;
+  box-sizing: border-box;
+  min-width: 0;
+  gap: 4px;
+}
+
+// ───── Native input ─────
+.#{$prefix}__inner {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: inherit;
+  color: rgba(69, 90, 100, 1);
+  line-height: 1;
+
+  &::placeholder {
+    color: rgba(197, 206, 217, 1);
+  }
+}
+
+// ───── Clear icon ─────
+.#{$prefix}__clear {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: opacity 0.15s ease;
+
+  &:hover {
+    opacity: 0.75;
+  }
+
+  svg {
+    display: block;
+  }
+}
+
+// ───── Search button ─────
+.#{$prefix}__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background-color: rgba(240, 243, 245, 1);
+  border-left: 1px solid rgba(197, 206, 217, 1);
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    background-color: rgba(224, 230, 234, 1);
+  }
+
+}

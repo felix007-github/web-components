@@ -1,0 +1,65 @@
+@import url('@lpcp/components/dist/lpcp-components.css');
+
+.content-body {
+  background-color: transparent !important;
+  backdrop-filter: saturate(50%) blur(8px);
+  background: rgba(255, 255, 255, .7);
+}
+
+.demo-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.icon-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  word-break: break-word;
+}
+
+.icon-item {
+  width: 115px;
+  height: 90px;
+  padding-top: 20px;
+  text-align: center;
+  background-color: #faf8f8;
+  font-size: 14px;
+}
+
+.icon-item .name {
+  padding: 0 2px;
+  line-height: 1;
+}
+
+.heat-stage1 .wt-heat-bar {
+  position: absolute;
+  top: -20px;
+  right: 12px;
+}
+
+.heat-stage2 .wt-heat-bar {
+  position: absolute;
+  top: -20px;
+  left: 12px;
+}
+
+
+/* doc的样式硬性当了 link的样式 */
+.vp-doc a.wt-link {
+  color: var(--wt-link-color, rgba(69, 90, 100, 1));
+  text-decoration: none;
+}
+
+.vp-doc a.wt-link.is-underline {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.vp-doc a.wt-link:not(.is-disabled):hover {
+  text-decoration: none;
+  border-color: rgba(81, 181, 252, 1);
+}

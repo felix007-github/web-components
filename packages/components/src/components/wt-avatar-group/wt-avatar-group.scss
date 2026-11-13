@@ -1,0 +1,92 @@
+@use 'assets/styles/function.scss' as *;
+
+$prefix: 'wt-avatar-group';
+
+.#{$prefix} {
+  display: inline-flex;
+  vertical-align: middle;
+
+  .#{$prefix}__content {
+    display: inline-flex;
+    align-items: center;
+    isolation: isolate;
+  }
+
+  .#{$prefix}__item,
+  .#{$prefix}__overflow {
+    position: relative;
+    display: inline-flex;
+    flex-shrink: 0;
+    padding: 1px;
+    z-index: 200;
+    cursor: pointer;
+    transition: all ease 0.3s;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(248, 250, 252, 0.92) 100%);
+    &--square{
+      overflow: hidden;
+      background: inherit;
+      padding: 0;
+      border: 1px solid rgba(255, 255, 255, 0.96);
+    }
+  }
+
+  .#{$prefix}__item:not(:first-child),
+  .#{$prefix}__overflow {
+    margin-left: calc(var(--wt-avatar-group-overlap) * -1);
+  }
+
+  .#{$prefix}__item:hover,
+  .#{$prefix}__overflow:hover {
+    transform: translateY(-2px);
+  }
+
+  .#{$prefix}__item--circle,
+  .#{$prefix}__overflow--circle {
+    border-radius: var(--wt-radius-full);
+  }
+
+  .#{$prefix}__item--square,
+  .#{$prefix}__overflow--square {
+    border-radius: calc(var(--wt-radius-lg) + 2px);
+  }
+
+  .#{$prefix}__item .wt-avatar {
+    display: block;
+  }
+
+  .#{$prefix}__overflow {
+    align-items: center;
+    justify-content: center;
+    min-width: calc(2.5em);
+    height: calc(2.5em);
+    padding-right: calc(wt-sv(2) + 2px);
+    padding-left: calc(wt-sv(2) + 2px);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(219, 234, 254, 0.96) 100%);
+    color: wt-cv(gray, 700);
+    font-weight: var(--wt-font-weight-semibold);
+    letter-spacing: var(--wt-letter-spacing-tight);
+    line-height: var(--wt-line-height-none);
+
+    &.large {
+      width: 3.05em;
+      height: 3.05em;
+      font-size: 18px;
+    }
+    &.medium {
+      width: 2.5em;
+      height: 2.5em;
+      font-size: 16px;
+    }
+    &.small {
+      width: 2.72em;
+      height: 2.72em;
+      font-size: 12px;
+    }
+  }
+
+  .#{$prefix}__overflow-text {
+    display: inline-block;
+    white-space: nowrap;
+    transform: translateY(-0.03em);
+  }
+}

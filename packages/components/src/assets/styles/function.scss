@@ -1,0 +1,35 @@
+@use "./_vars.scss" as *;
+
+@function wt-c($name, $level: null) {
+  @if $level == null {
+    @return #{$wtprefix}color-#{$name};
+  }
+  @return #{$wtprefix}color-#{$name}-#{$level};
+}
+
+@function wt-cv($name, $level: null) {
+  @if $level == null {
+    @return var(#{$wtprefix}color-#{$name});
+  }
+  @return var(#{$wtprefix}color-#{$name}-#{$level});
+}
+
+@function wt-t($name) {
+  @return #{$wtprefix}text-#{$name};
+}
+
+@function wt-tv($name) {
+  @return var(#{$wtprefix}text-#{$name});
+}
+
+@function wt-input($name) {
+  @return #{$wtprefix}input-#{$name};
+}
+
+@function wt-fsv($name) {
+  @return var(#{$wtprefix}font-size-#{$name});
+}
+
+@function wt-sv($level) {
+  @return var(#{$wtprefix}space-#{$level});
+}

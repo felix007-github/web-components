@@ -1,0 +1,149 @@
+// ============================================================
+// wt-switch – Toggle switch component
+// ============================================================
+// All visual tokens are sourced from root_token.scss
+// (--wt-switch-*) so the component can be themed globally.
+// ============================================================
+
+// ============================================================
+// Host
+// ============================================================
+.wt-switch {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  vertical-align: middle;
+  -webkit-tap-highlight-color: transparent;
+
+  // ---------------------------------------- Track
+  .wt-switch__track {
+    position: relative;
+    width: var(--wt-switch-track-width);
+    height: var(--wt-switch-track-height);
+    border-radius: var(--wt-radius-full);
+    background: var(--wt-switch-track-bg);
+    transition: background var(--wt-switch-transition-duration) var(--wt-ease-in-out);
+    display: flex;
+    align-items: center;
+  }
+
+  // ---------------------------------------- Thumb (the dot)
+  .wt-switch__thumb {
+    position: absolute;
+    left: calc(var(--wt-switch-thumb-offset) * -1);
+    width: var(--wt-switch-thumb-size);
+    height: var(--wt-switch-thumb-size);
+    border-radius: var(--wt-radius-full);
+    background: var(--wt-switch-thumb-bg);
+    transition:
+      left var(--wt-switch-transition-duration) var(--wt-ease-in-out),
+      background var(--wt-switch-transition-duration) var(--wt-ease-in-out),
+      box-shadow var(--wt-switch-transition-duration) var(--wt-ease-in-out);
+    box-shadow: var(--wt-switch-thumb-shadow);
+
+    // Hover / Focus halo (the ring around the thumb)
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: calc(var(--wt-switch-thumb-size) + 8px);
+      height: calc(var(--wt-switch-thumb-size) + 8px);
+      border-radius: var(--wt-radius-full);
+      border: var(--wt-switch-focus-ring-width) solid transparent;
+      transform: translate(-50%, -50%) scale(0.6);
+      opacity: 0;
+      transition:
+        opacity var(--wt-switch-transition-duration) var(--wt-ease-in-out),
+        transform var(--wt-switch-transition-duration) var(--wt-ease-in-out),
+        border-color var(--wt-switch-transition-duration) var(--wt-ease-in-out);
+      pointer-events: none;
+    }
+  }
+
+  // ========================= Hover / Focus states
+  &:hover,
+  &:focus-visible {
+    .wt-switch__thumb::after {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+      border-color: var(--wt-switch-focus-ring-color);
+    }
+  }
+
+  // ========================= Checked state
+  &.is-checked {
+    .wt-switch__track {
+      background: var(--wt-switch-track-bg-checked);
+    }
+
+    .wt-switch__thumb {
+      left: calc(100% - var(--wt-switch-thumb-size) + var(--wt-switch-thumb-offset));
+      background: var(--wt-switch-thumb-bg-checked);
+      box-shadow: var(--wt-switch-thumb-shadow-checked);
+    }
+  }
+
+  // ========================= Disabled state
+  &.is-disabled {
+    cursor: not-allowed;
+    opacity: 1;
+
+    .wt-switch__track {
+      background: var(--wt-switch-track-bg-disabled);
+    }
+
+    .wt-switch__thumb {
+      background: var(--wt-switch-thumb-bg-disabled);
+      box-shadow: none;
+    }
+
+    // No hover ring when disabled
+    &:hover,
+    &:focus-visible {
+      .wt-switch__thumb::after {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.6);
+      }
+    }
+
+    // Disabled + checked
+    &.is-checked {
+      .wt-switch__track {
+        background: var(--wt-switch-track-bg-disabled);
+      }
+
+      .wt-switch__thumb {
+        background: var(--wt-switch-thumb-bg-disabled);
+        box-shadow: none;
+      }
+    }
+  }
+
+  // ========================= Small size
+  &.is-small {
+    .wt-switch__track {
+      width: var(--wt-switch-track-width-sm);
+      height: var(--wt-switch-track-height-sm);
+      border-radius: var(--wt-radius-full);
+    }
+
+    .wt-switch__thumb {
+      width: var(--wt-switch-thumb-size-sm);
+      height: var(--wt-switch-thumb-size-sm);
+
+      &::after {
+        width: calc(var(--wt-switch-thumb-size-sm) + 6px);
+        height: calc(var(--wt-switch-thumb-size-sm) + 6px);
+      }
+    }
+
+    &.is-checked {
+      .wt-switch__thumb {
+        left: calc(100% - var(--wt-switch-thumb-size-sm) + var(--wt-switch-thumb-offset));
+      }
+    }
+  }
+}

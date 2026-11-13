@@ -1,0 +1,11 @@
+import { Component, Host, h } from '@stencil/core';
+  
+  @Component({
+    tag: 'wt-icon-both-area'
+  })
+  export class VtIconBothArea {
+    render() {
+      return <Host class="wt-svg"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M15.2 2H8.8c-.88 0-1.6.75-1.6 1.667V17c0 .917.72 1.667 1.6 1.667h9.6c.88 0 1.6-.75 1.6-1.667V7zm3.2 15H8.8V3.667h5.6v4.166h4zM5.6 5.333v15h12.8V22H5.6c-.88 0-1.6-.75-1.6-1.667v-15z"/><path fill="currentColor" d="M14.4 10.458V9.333a1.6 1.6 0 0 0-.39-1.06c-.25-.282-.59-.44-.943-.44H10.4v7.5h2.667c.353 0 .692-.158.942-.439a1.6 1.6 0 0 0 .391-1.06v-1.126c0-.6-.467-1.125-1-1.125.533 0 1-.525 1-1.125m-1.333 3.375h-1.334v-1.5h1.334zm0-3h-1.334v-1.5h1.334z"/></svg></Host>;
+    }
+  }
+  

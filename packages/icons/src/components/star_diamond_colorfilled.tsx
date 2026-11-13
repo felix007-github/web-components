@@ -1,0 +1,11 @@
+import { Component, Host, h } from '@stencil/core';
+  
+  @Component({
+    tag: 'wt-icon-star_diamond_colorfilled'
+  })
+  export class VtIconStarDiamondColorfilled {
+    render() {
+      return <Host class="wt-svg"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><g clip-path="url(#a)"><path fill="url(#b)" d="M15 6s1.193 4.112 3.04 5.96C19.889 13.806 24 15 24 15s-4.112 1.193-5.96 3.04C16.194 19.889 15 24 15 24s-1.193-4.112-3.04-5.96C10.111 16.194 6 15 6 15s4.112-1.193 5.96-3.04C13.806 10.111 15 6 15 6"/><path fill="url(#c)" d="M6 0s.795 2.741 2.027 3.973S12 6 12 6s-2.741.795-3.973 2.027S6 12 6 12s-.795-2.741-2.027-3.973S0 6 0 6s2.741-.795 3.973-2.027S6 0 6 0"/></g><defs><linearGradient id="b" x1="0" x2="24" y1="0" y2="24" gradientUnits="userSpaceOnUse"><stop offset=".18" stop-color="currentColor"/><stop offset=".4" stop-color="currentColor"/><stop offset=".45" stop-color="currentColor"/><stop offset=".58" stop-color="currentColor"/><stop offset=".75" stop-color="currentColor"/></linearGradient><linearGradient id="c" x1="0" x2="24" y1="0" y2="24" gradientUnits="userSpaceOnUse"><stop offset=".18" stop-color="currentColor"/><stop offset=".4" stop-color="currentColor"/><stop offset=".45" stop-color="currentColor"/><stop offset=".58" stop-color="currentColor"/><stop offset=".75" stop-color="currentColor"/></linearGradient><clipPath id="a"><path fill="currentColor" d="M0 0h24v24H0z"/></clipPath></defs></svg></Host>;
+    }
+  }
+  

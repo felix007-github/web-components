@@ -1,0 +1,40 @@
+@keyframes loading-shine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+@keyframes loading-rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes wt-tag-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.92);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes wt-notification-service-enter {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 16px) scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
