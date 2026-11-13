@@ -17,6 +17,13 @@
 | `text`   | `text`    |             | `string`                         | `'User'`   |
 
 
+## Slots
+
+| Slot | Description      |
+| ---- | ---------------- |
+|      | The default slot |
+
+
 ## Dependencies
 
 ### Used by

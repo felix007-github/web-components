@@ -16,6 +16,13 @@
 | `value`  | `value`   | 显示值                                      | `number \| string`                                          | `''`       |
 
 
+## Slots
+
+| Slot | Description      |
+| ---- | ---------------- |
+|      | The default slot |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

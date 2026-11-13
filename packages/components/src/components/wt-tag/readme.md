@@ -13,6 +13,13 @@
 | `variant` | `variant` |             | `"outlined" \| "solid"`                                    | `"solid"`   |
 
 
+## Slots
+
+| Slot | Description      |
+| ---- | ---------------- |
+|      | The default slot |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

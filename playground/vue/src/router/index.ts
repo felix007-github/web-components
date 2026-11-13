@@ -23,13 +23,11 @@ export const demoRoutes: DemoRoute[] = [
   { path: '/wt-notification', label: 'wt-notification', component: () => import('../views/wt-notification.vue') },
   { path: '/wt-progress', label: 'wt-progress', component: () => import('../views/wt-progress.vue') },
   { path: '/wt-radio', label: 'wt-radio', component: () => import('../views/wt-radio.vue') },
-  { path: '/wt-raw-editor', label: 'wt-raw-editor', component: () => import('../views/wt-raw-editor.vue') },
   { path: '/wt-search', label: 'wt-search', component: () => import('../views/wt-search.vue') },
   { path: '/wt-switch', label: 'wt-switch', component: () => import('../views/wt-switch.vue') },
   { path: '/wt-tab-bar', label: 'wt-tab-bar', component: () => import('../views/wt-tab-bar.vue') },
   { path: '/wt-tag', label: 'wt-tag', component: () => import('../views/wt-tag.vue') },
   { path: '/wt-tree', label: 'wt-tree', component: () => import('../views/wt-tree.vue') },
-  { path: '/wt-xml-editor', label: 'wt-xml-editor', component: () => import('../views/wt-xml-editor.vue') },
   { path: '/wt-scrollbar', label: 'wt-scrollbar', component: () => import('../views/wt-scrollbar.vue') },
 ];
 

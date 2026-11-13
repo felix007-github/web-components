@@ -35,13 +35,11 @@ const WtModalVs = lazyNamed(() => import('../views/wt-modal'), 'WtModalVs');
 const WtNotificationVs = lazyNamed(() => import('../views/wt-notification'), 'WtNotificationVs');
 const WtProgressVs = lazyNamed(() => import('../views/wt-progress'), 'WtProgressVs');
 const WtRadioVs = lazyNamed(() => import('../views/wt-radio'), 'WtRadioVs');
-const WtRawEditorVs = lazyNamed(() => import('../views/wt-raw-editor'), 'WtRawEditorVs');
 const WtSearchVs = lazyNamed(() => import('../views/wt-search'), 'WtSearchVs');
 const WtSwitchVs = lazyNamed(() => import('../views/wt-switch'), 'WtSwitchVs');
 const WtTabBarVs = lazyNamed(() => import('../views/wt-tab-bar'), 'WtTabBarVs');
 const WtTagVs = lazyNamed(() => import('../views/wt-tag'), 'WtTagVs');
 const WtTreeVs = lazyNamed(() => import('../views/wt-tree'), 'WtTreeVs');
-const WtXmlEditorVs = lazyNamed(() => import('../views/wt-xml-editor'), 'WtXmlEditorVs');
 const WtScrollbarVs = lazyNamed(() => import('../views/wt-scrollbar'), 'WtScrollbarVs');
 
 export const demoRoutes = [
@@ -121,11 +119,6 @@ export const demoRoutes = [
     element: withSuspense(WtRadioVs),
   },
   {
-    path: '/wt-raw-editor',
-    label: 'wt-raw-editor',
-    element: withSuspense(WtRawEditorVs),
-  },
-  {
     path: '/wt-search',
     label: 'wt-search',
     element: withSuspense(WtSearchVs),
@@ -149,11 +142,6 @@ export const demoRoutes = [
     path: '/wt-tree',
     label: 'wt-tree',
     element: withSuspense(WtTreeVs),
-  },
-  {
-    path: '/wt-xml-editor',
-    label: 'wt-xml-editor',
-    element: withSuspense(WtXmlEditorVs),
   },
   {
     path: '/wt-scrollbar',

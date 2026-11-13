@@ -25,6 +25,14 @@
 | `wt-open-change`   |             | `CustomEvent<boolean>` |
 
 
+## Slots
+
+| Slot        | Description |
+| ----------- | ----------- |
+| `"content"` |             |
+| `"footer"`  |             |
+
+
 ## Dependencies
 
 ### Depends on

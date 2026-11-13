@@ -11,6 +11,7 @@ import { defineCustomElement as defineWtBadge } from '@lpcp/components/dist/comp
 import { defineCustomElement as defineWtButton } from '@lpcp/components/dist/components/wt-button.js';
 import { defineCustomElement as defineWtCheckbox } from '@lpcp/components/dist/components/wt-checkbox.js';
 import { defineCustomElement as defineWtDivider } from '@lpcp/components/dist/components/wt-divider.js';
+import { defineCustomElement as defineWtGridLayout } from '@lpcp/components/dist/components/wt-grid-layout.js';
 import { defineCustomElement as defineWtHeatBar } from '@lpcp/components/dist/components/wt-heat-bar.js';
 import { defineCustomElement as defineWtIcon } from '@lpcp/components/dist/components/wt-icon.js';
 import { defineCustomElement as defineWtInput } from '@lpcp/components/dist/components/wt-input.js';
@@ -96,6 +97,25 @@ export const WtDivider: StencilVueComponent<JSX.WtDivider> = /*@__PURE__*/ defin
   'variant',
   'color',
   'borderWidth'
+]);
+
+
+export const WtGridLayout: StencilVueComponent<JSX.WtGridLayout> = /*@__PURE__*/ defineContainer<JSX.WtGridLayout>('wt-grid-layout', defineWtGridLayout, [
+  'items',
+  'columns',
+  'editable',
+  'gap',
+  'collisionTolerance',
+  'storageKey',
+  'wt-layout-change',
+  'wt-layout-save',
+  'wt-layout-error',
+  'wt-layout-interaction'
+], [
+  'wt-layout-change',
+  'wt-layout-save',
+  'wt-layout-error',
+  'wt-layout-interaction'
 ]);
 
 

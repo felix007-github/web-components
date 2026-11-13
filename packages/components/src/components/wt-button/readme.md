@@ -23,6 +23,15 @@
 | `click-btn` |             | `CustomEvent<{ time: Date; }>` |
 
 
+## Slots
+
+| Slot       | Description      |
+| ---------- | ---------------- |
+|            | The default slot |
+| `"after"`  |                  |
+| `"before"` |                  |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

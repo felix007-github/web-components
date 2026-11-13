@@ -15,6 +15,13 @@
 | `size`   | `size`    |             | `"large" \| "medium" \| "small"` | `"medium"` |
 
 
+## Slots
+
+| Slot | Description      |
+| ---- | ---------------- |
+|      | The default slot |
+
+
 ## Dependencies
 
 ### Depends on

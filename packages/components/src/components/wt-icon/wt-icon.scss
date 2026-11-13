@@ -5,6 +5,7 @@
   .wt-svg {
     width: 100%;
     height: 100%;
+    display: inline-block;
   }
   &.spin{
     animation: spin 1s linear infinite;

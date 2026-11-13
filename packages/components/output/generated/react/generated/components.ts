@@ -7,35 +7,35 @@
 
 /* eslint-disable */
 
-import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
-import { createComponent } from '@stencil/react-output-target/runtime';
 import React from 'react';
-
-import { type Event, type WtButtonCustomEvent, type WtCheckboxCustomEvent, type WtInputCustomEvent, type WtModalCustomEvent, type WtNotificationCustomEvent, type WtRadioCustomEvent, type WtScrollbarCustomEvent, type WtSearchCustomEvent, type WtSwitchCustomEvent, type WtTabBarCustomEvent, type WtTooltipCustomEvent, type WtTreeCustomEvent, type WtTreeNodeUpdateDetail } from "@lpcp/components";
-import type { Components } from "@lpcp/components/dist/components";
-import { WtAvatarGroup as WtAvatarGroupElement, defineCustomElement as defineWtAvatarGroup } from "@lpcp/components/dist/components/wt-avatar-group.js";
-import { WtAvatar as WtAvatarElement, defineCustomElement as defineWtAvatar } from "@lpcp/components/dist/components/wt-avatar.js";
-import { WtBadge as WtBadgeElement, defineCustomElement as defineWtBadge } from "@lpcp/components/dist/components/wt-badge.js";
-import { WtButton as WtButtonElement, defineCustomElement as defineWtButton } from "@lpcp/components/dist/components/wt-button.js";
-import { WtCheckbox as WtCheckboxElement, defineCustomElement as defineWtCheckbox } from "@lpcp/components/dist/components/wt-checkbox.js";
-import { WtDivider as WtDividerElement, defineCustomElement as defineWtDivider } from "@lpcp/components/dist/components/wt-divider.js";
-import { WtHeatBar as WtHeatBarElement, defineCustomElement as defineWtHeatBar } from "@lpcp/components/dist/components/wt-heat-bar.js";
-import { WtIcon as WtIconElement, defineCustomElement as defineWtIcon } from "@lpcp/components/dist/components/wt-icon.js";
-import { WtInput as WtInputElement, defineCustomElement as defineWtInput } from "@lpcp/components/dist/components/wt-input.js";
-import { WtLink as WtLinkElement, defineCustomElement as defineWtLink } from "@lpcp/components/dist/components/wt-link.js";
-import { WtLoading as WtLoadingElement, defineCustomElement as defineWtLoading } from "@lpcp/components/dist/components/wt-loading.js";
-import { WtLogo as WtLogoElement, defineCustomElement as defineWtLogo } from "@lpcp/components/dist/components/wt-logo.js";
-import { WtModal as WtModalElement, defineCustomElement as defineWtModal } from "@lpcp/components/dist/components/wt-modal.js";
-import { WtNotification as WtNotificationElement, defineCustomElement as defineWtNotification } from "@lpcp/components/dist/components/wt-notification.js";
-import { WtProgress as WtProgressElement, defineCustomElement as defineWtProgress } from "@lpcp/components/dist/components/wt-progress.js";
-import { WtRadio as WtRadioElement, defineCustomElement as defineWtRadio } from "@lpcp/components/dist/components/wt-radio.js";
-import { WtScrollbar as WtScrollbarElement, defineCustomElement as defineWtScrollbar } from "@lpcp/components/dist/components/wt-scrollbar.js";
-import { WtSearch as WtSearchElement, defineCustomElement as defineWtSearch } from "@lpcp/components/dist/components/wt-search.js";
-import { WtSwitch as WtSwitchElement, defineCustomElement as defineWtSwitch } from "@lpcp/components/dist/components/wt-switch.js";
-import { WtTabBar as WtTabBarElement, defineCustomElement as defineWtTabBar } from "@lpcp/components/dist/components/wt-tab-bar.js";
-import { WtTag as WtTagElement, defineCustomElement as defineWtTag } from "@lpcp/components/dist/components/wt-tag.js";
-import { WtTooltip as WtTooltipElement, defineCustomElement as defineWtTooltip } from "@lpcp/components/dist/components/wt-tooltip.js";
-import { WtTree as WtTreeElement, defineCustomElement as defineWtTree } from "@lpcp/components/dist/components/wt-tree.js";
+import { createComponent } from '@stencil/react-output-target/runtime';
+import type { Components } from '@lpcp/components/dist/components';
+import { WtAvatar as WtAvatarElement, defineCustomElement as defineWtAvatar } from '@lpcp/components/dist/components/wt-avatar.js';
+import { WtAvatarGroup as WtAvatarGroupElement, defineCustomElement as defineWtAvatarGroup } from '@lpcp/components/dist/components/wt-avatar-group.js';
+import { WtBadge as WtBadgeElement, defineCustomElement as defineWtBadge } from '@lpcp/components/dist/components/wt-badge.js';
+import { WtButton as WtButtonElement, defineCustomElement as defineWtButton } from '@lpcp/components/dist/components/wt-button.js';
+import { WtCheckbox as WtCheckboxElement, defineCustomElement as defineWtCheckbox } from '@lpcp/components/dist/components/wt-checkbox.js';
+import { WtDivider as WtDividerElement, defineCustomElement as defineWtDivider } from '@lpcp/components/dist/components/wt-divider.js';
+import { WtGridLayout as WtGridLayoutElement, defineCustomElement as defineWtGridLayout } from '@lpcp/components/dist/components/wt-grid-layout.js';
+import { WtHeatBar as WtHeatBarElement, defineCustomElement as defineWtHeatBar } from '@lpcp/components/dist/components/wt-heat-bar.js';
+import { WtIcon as WtIconElement, defineCustomElement as defineWtIcon } from '@lpcp/components/dist/components/wt-icon.js';
+import { WtInput as WtInputElement, defineCustomElement as defineWtInput } from '@lpcp/components/dist/components/wt-input.js';
+import { WtLink as WtLinkElement, defineCustomElement as defineWtLink } from '@lpcp/components/dist/components/wt-link.js';
+import { WtLoading as WtLoadingElement, defineCustomElement as defineWtLoading } from '@lpcp/components/dist/components/wt-loading.js';
+import { WtLogo as WtLogoElement, defineCustomElement as defineWtLogo } from '@lpcp/components/dist/components/wt-logo.js';
+import { WtModal as WtModalElement, defineCustomElement as defineWtModal } from '@lpcp/components/dist/components/wt-modal.js';
+import { WtNotification as WtNotificationElement, defineCustomElement as defineWtNotification } from '@lpcp/components/dist/components/wt-notification.js';
+import { WtProgress as WtProgressElement, defineCustomElement as defineWtProgress } from '@lpcp/components/dist/components/wt-progress.js';
+import { WtRadio as WtRadioElement, defineCustomElement as defineWtRadio } from '@lpcp/components/dist/components/wt-radio.js';
+import { WtScrollbar as WtScrollbarElement, defineCustomElement as defineWtScrollbar } from '@lpcp/components/dist/components/wt-scrollbar.js';
+import { WtSearch as WtSearchElement, defineCustomElement as defineWtSearch } from '@lpcp/components/dist/components/wt-search.js';
+import { WtSwitch as WtSwitchElement, defineCustomElement as defineWtSwitch } from '@lpcp/components/dist/components/wt-switch.js';
+import { WtTabBar as WtTabBarElement, defineCustomElement as defineWtTabBar } from '@lpcp/components/dist/components/wt-tab-bar.js';
+import { WtTag as WtTagElement, defineCustomElement as defineWtTag } from '@lpcp/components/dist/components/wt-tag.js';
+import { WtTooltip as WtTooltipElement, defineCustomElement as defineWtTooltip } from '@lpcp/components/dist/components/wt-tooltip.js';
+import { WtTree as WtTreeElement, defineCustomElement as defineWtTree } from '@lpcp/components/dist/components/wt-tree.js';
+import type { WtButtonCustomEvent, WtCheckboxCustomEvent, GridLayoutItem, WtGridLayoutCustomEvent, WtInputCustomEvent, WtModalCustomEvent, WtNotificationCustomEvent, WtRadioCustomEvent, Event, WtScrollbarCustomEvent, WtSearchCustomEvent, WtSwitchCustomEvent, WtTabBarCustomEvent, WtTooltipCustomEvent, WtTreeNodeUpdateDetail, WtTreeCustomEvent } from '@lpcp/components';
+import type { StencilReactComponent, EventName } from '@stencil/react-output-target/runtime';
 
 export type WtAvatarEvents = NonNullable<unknown>;
 
@@ -45,7 +45,7 @@ export const WtAvatar: StencilReactComponent<WtAvatarElement, WtAvatarEvents, Co
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as WtAvatarEvents,
-    defineCustomElement: defineWtAvatar
+    defineCustomElement: defineWtAvatar,
 });
 
 export type WtAvatarGroupEvents = NonNullable<unknown>;
@@ -56,7 +56,7 @@ export const WtAvatarGroup: StencilReactComponent<WtAvatarGroupElement, WtAvatar
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as WtAvatarGroupEvents,
-    defineCustomElement: defineWtAvatarGroup
+    defineCustomElement: defineWtAvatarGroup,
 });
 
 export type WtBadgeEvents = NonNullable<unknown>;
@@ -67,23 +67,27 @@ export const WtBadge: StencilReactComponent<WtBadgeElement, WtBadgeEvents, Compo
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as WtBadgeEvents,
-    defineCustomElement: defineWtBadge
+    defineCustomElement: defineWtBadge,
 });
 
-export type WtButtonEvents = { onClickBtn: EventName<WtButtonCustomEvent<{ time: Date }>> };
+export type WtButtonEvents = {
+  onClickBtn: EventName<WtButtonCustomEvent<{ time: Date }>>
+};
 
 export const WtButton: StencilReactComponent<WtButtonElement, WtButtonEvents, Components.WtButton> = /*@__PURE__*/ createComponent<WtButtonElement, WtButtonEvents, Components.WtButton>({
     tagName: 'wt-button',
     elementClass: WtButtonElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
-    events: { onClickBtn: 'click-btn' } as WtButtonEvents,
-    defineCustomElement: defineWtButton
+    events: {
+      onClickBtn: 'click-btn'
+    } as WtButtonEvents,
+    defineCustomElement: defineWtButton,
 });
 
 export type WtCheckboxEvents = {
-    onWtChange: EventName<WtCheckboxCustomEvent<any>>,
-    onUpdateModelValue: EventName<WtCheckboxCustomEvent<any>>
+  onWtChange: EventName<WtCheckboxCustomEvent<any>>,
+  onUpdateModelValue: EventName<WtCheckboxCustomEvent<any>>
 };
 
 export const WtCheckbox: StencilReactComponent<WtCheckboxElement, WtCheckboxEvents, Components.WtCheckbox> = /*@__PURE__*/ createComponent<WtCheckboxElement, WtCheckboxEvents, Components.WtCheckbox>({
@@ -92,10 +96,10 @@ export const WtCheckbox: StencilReactComponent<WtCheckboxElement, WtCheckboxEven
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
-        onWtChange: 'wt-change',
-        onUpdateModelValue: 'updateModelValue'
+      onWtChange: 'wt-change',
+      onUpdateModelValue: 'updateModelValue'
     } as WtCheckboxEvents,
-    defineCustomElement: defineWtCheckbox
+    defineCustomElement: defineWtCheckbox,
 });
 
 export type WtDividerEvents = NonNullable<unknown>;
@@ -106,35 +110,56 @@ export const WtDivider: StencilReactComponent<WtDividerElement, WtDividerEvents,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as WtDividerEvents,
-    defineCustomElement: defineWtDivider
+    defineCustomElement: defineWtDivider,
+});
+
+export type WtGridLayoutEvents = {
+  onWtLayoutChange: EventName<WtGridLayoutCustomEvent<GridLayoutItem[]>>,
+  onWtLayoutSave: EventName<WtGridLayoutCustomEvent<GridLayoutItem[]>>,
+  onWtLayoutError: EventName<WtGridLayoutCustomEvent<{ message: string }>>,
+  onWtLayoutInteraction: EventName<WtGridLayoutCustomEvent<{ id: string; action: 'move' | 'resize'; phase: 'start' | 'end' | 'cancel' }>>
+};
+
+export const WtGridLayout: StencilReactComponent<WtGridLayoutElement, WtGridLayoutEvents, Components.WtGridLayout> = /*@__PURE__*/ createComponent<WtGridLayoutElement, WtGridLayoutEvents, Components.WtGridLayout>({
+    tagName: 'wt-grid-layout',
+    elementClass: WtGridLayoutElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {
+      onWtLayoutChange: 'wt-layout-change',
+      onWtLayoutSave: 'wt-layout-save',
+      onWtLayoutError: 'wt-layout-error',
+      onWtLayoutInteraction: 'wt-layout-interaction'
+    } as WtGridLayoutEvents,
+    defineCustomElement: defineWtGridLayout,
 });
 
 export type WtHeatBarEvents = NonNullable<unknown>;
 
-export const WtHeatBar: StencilReactComponent<WtHeatBarElement, WtHeatBarEvents, Components.WtHeatBar> = /*@__PURE__*/ createComponent<WtHeatBarElement, WtHeatBarEvents, Components.WtHeatBar>({
+export const WtHeatBar: StencilReactComponent<WtHeatBarElement, WtHeatBarEvents, Components.WtHeatBar, 'blinkClass' | 'containerSelector'> = /*@__PURE__*/ createComponent<WtHeatBarElement, WtHeatBarEvents, Components.WtHeatBar, 'blinkClass' | 'containerSelector'>({
     tagName: 'wt-heat-bar',
     elementClass: WtHeatBarElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as WtHeatBarEvents,
-    defineCustomElement: defineWtHeatBar
+    defineCustomElement: defineWtHeatBar,
 });
 
 export type WtIconEvents = NonNullable<unknown>;
 
-export const WtIcon: StencilReactComponent<WtIconElement, WtIconEvents, Components.WtIcon> = /*@__PURE__*/ createComponent<WtIconElement, WtIconEvents, Components.WtIcon>({
+export const WtIcon: StencilReactComponent<WtIconElement, WtIconEvents, Components.WtIcon, 'name'> = /*@__PURE__*/ createComponent<WtIconElement, WtIconEvents, Components.WtIcon, 'name'>({
     tagName: 'wt-icon',
     elementClass: WtIconElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as WtIconEvents,
-    defineCustomElement: defineWtIcon
+    defineCustomElement: defineWtIcon,
 });
 
 export type WtInputEvents = {
-    onWtFocus: EventName<WtInputCustomEvent<{ time: Date }>>,
-    onWtInput: EventName<WtInputCustomEvent<string>>,
-    onUpdateModelValue: EventName<WtInputCustomEvent<string>>
+  onWtFocus: EventName<WtInputCustomEvent<{ time: Date }>>,
+  onWtInput: EventName<WtInputCustomEvent<string>>,
+  onUpdateModelValue: EventName<WtInputCustomEvent<string>>
 };
 
 export const WtInput: StencilReactComponent<WtInputElement, WtInputEvents, Components.WtInput> = /*@__PURE__*/ createComponent<WtInputElement, WtInputEvents, Components.WtInput>({
@@ -143,11 +168,11 @@ export const WtInput: StencilReactComponent<WtInputElement, WtInputEvents, Compo
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
-        onWtFocus: 'wt-focus',
-        onWtInput: 'wt-input',
-        onUpdateModelValue: 'updateModelValue'
+      onWtFocus: 'wt-focus',
+      onWtInput: 'wt-input',
+      onUpdateModelValue: 'updateModelValue'
     } as WtInputEvents,
-    defineCustomElement: defineWtInput
+    defineCustomElement: defineWtInput,
 });
 
 export type WtLinkEvents = NonNullable<unknown>;
@@ -158,7 +183,7 @@ export const WtLink: StencilReactComponent<WtLinkElement, WtLinkEvents, Componen
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as WtLinkEvents,
-    defineCustomElement: defineWtLink
+    defineCustomElement: defineWtLink,
 });
 
 export type WtLoadingEvents = NonNullable<unknown>;
@@ -169,7 +194,7 @@ export const WtLoading: StencilReactComponent<WtLoadingElement, WtLoadingEvents,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as WtLoadingEvents,
-    defineCustomElement: defineWtLoading
+    defineCustomElement: defineWtLoading,
 });
 
 export type WtLogoEvents = NonNullable<unknown>;
@@ -180,12 +205,12 @@ export const WtLogo: StencilReactComponent<WtLogoElement, WtLogoEvents, Componen
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as WtLogoEvents,
-    defineCustomElement: defineWtLogo
+    defineCustomElement: defineWtLogo,
 });
 
 export type WtModalEvents = {
-    onWtOpenChange: EventName<WtModalCustomEvent<boolean>>,
-    onUpdateModelValue: EventName<WtModalCustomEvent<boolean>>
+  onWtOpenChange: EventName<WtModalCustomEvent<boolean>>,
+  onUpdateModelValue: EventName<WtModalCustomEvent<boolean>>
 };
 
 export const WtModal: StencilReactComponent<WtModalElement, WtModalEvents, Components.WtModal> = /*@__PURE__*/ createComponent<WtModalElement, WtModalEvents, Components.WtModal>({
@@ -194,15 +219,15 @@ export const WtModal: StencilReactComponent<WtModalElement, WtModalEvents, Compo
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
-        onWtOpenChange: 'wt-open-change',
-        onUpdateModelValue: 'updateModelValue'
+      onWtOpenChange: 'wt-open-change',
+      onUpdateModelValue: 'updateModelValue'
     } as WtModalEvents,
-    defineCustomElement: defineWtModal
+    defineCustomElement: defineWtModal,
 });
 
 export type WtNotificationEvents = {
-    onWtClose: EventName<WtNotificationCustomEvent<any>>,
-    onWtAction: EventName<WtNotificationCustomEvent<any>>
+  onWtClose: EventName<WtNotificationCustomEvent<any>>,
+  onWtAction: EventName<WtNotificationCustomEvent<any>>
 };
 
 export const WtNotification: StencilReactComponent<WtNotificationElement, WtNotificationEvents, Components.WtNotification> = /*@__PURE__*/ createComponent<WtNotificationElement, WtNotificationEvents, Components.WtNotification>({
@@ -211,10 +236,10 @@ export const WtNotification: StencilReactComponent<WtNotificationElement, WtNoti
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
-        onWtClose: 'wt-close',
-        onWtAction: 'wt-action'
+      onWtClose: 'wt-close',
+      onWtAction: 'wt-action'
     } as WtNotificationEvents,
-    defineCustomElement: defineWtNotification
+    defineCustomElement: defineWtNotification,
 });
 
 export type WtProgressEvents = NonNullable<unknown>;
@@ -225,12 +250,12 @@ export const WtProgress: StencilReactComponent<WtProgressElement, WtProgressEven
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as WtProgressEvents,
-    defineCustomElement: defineWtProgress
+    defineCustomElement: defineWtProgress,
 });
 
 export type WtRadioEvents = {
-    onWtChange: EventName<WtRadioCustomEvent<any>>,
-    onUpdateModelValue: EventName<WtRadioCustomEvent<any>>
+  onWtChange: EventName<WtRadioCustomEvent<any>>,
+  onUpdateModelValue: EventName<WtRadioCustomEvent<any>>
 };
 
 export const WtRadio: StencilReactComponent<WtRadioElement, WtRadioEvents, Components.WtRadio> = /*@__PURE__*/ createComponent<WtRadioElement, WtRadioEvents, Components.WtRadio>({
@@ -239,28 +264,32 @@ export const WtRadio: StencilReactComponent<WtRadioElement, WtRadioEvents, Compo
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
-        onWtChange: 'wt-change',
-        onUpdateModelValue: 'updateModelValue'
+      onWtChange: 'wt-change',
+      onUpdateModelValue: 'updateModelValue'
     } as WtRadioEvents,
-    defineCustomElement: defineWtRadio
+    defineCustomElement: defineWtRadio,
 });
 
-export type WtScrollbarEvents = { onWtScroll: EventName<WtScrollbarCustomEvent<{ scrollTop: number; scrollLeft: number; originalEvent: Event; }>> };
+export type WtScrollbarEvents = {
+  onWtScroll: EventName<WtScrollbarCustomEvent<{ scrollTop: number; scrollLeft: number; originalEvent: Event; }>>
+};
 
 export const WtScrollbar: StencilReactComponent<WtScrollbarElement, WtScrollbarEvents, Components.WtScrollbar> = /*@__PURE__*/ createComponent<WtScrollbarElement, WtScrollbarEvents, Components.WtScrollbar>({
     tagName: 'wt-scrollbar',
     elementClass: WtScrollbarElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
-    events: { onWtScroll: 'wt-scroll' } as WtScrollbarEvents,
-    defineCustomElement: defineWtScrollbar
+    events: {
+      onWtScroll: 'wt-scroll'
+    } as WtScrollbarEvents,
+    defineCustomElement: defineWtScrollbar,
 });
 
 export type WtSearchEvents = {
-    onWtInput: EventName<WtSearchCustomEvent<string>>,
-    onWtClear: EventName<WtSearchCustomEvent<void>>,
-    onWtSearch: EventName<WtSearchCustomEvent<string>>,
-    onUpdateModelValue: EventName<WtSearchCustomEvent<string>>
+  onWtInput: EventName<WtSearchCustomEvent<string>>,
+  onWtClear: EventName<WtSearchCustomEvent<void>>,
+  onWtSearch: EventName<WtSearchCustomEvent<string>>,
+  onUpdateModelValue: EventName<WtSearchCustomEvent<string>>
 };
 
 export const WtSearch: StencilReactComponent<WtSearchElement, WtSearchEvents, Components.WtSearch> = /*@__PURE__*/ createComponent<WtSearchElement, WtSearchEvents, Components.WtSearch>({
@@ -269,17 +298,17 @@ export const WtSearch: StencilReactComponent<WtSearchElement, WtSearchEvents, Co
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
-        onWtInput: 'wt-input',
-        onWtClear: 'wt-clear',
-        onWtSearch: 'wt-search',
-        onUpdateModelValue: 'updateModelValue'
+      onWtInput: 'wt-input',
+      onWtClear: 'wt-clear',
+      onWtSearch: 'wt-search',
+      onUpdateModelValue: 'updateModelValue'
     } as WtSearchEvents,
-    defineCustomElement: defineWtSearch
+    defineCustomElement: defineWtSearch,
 });
 
 export type WtSwitchEvents = {
-    onUpdateModelValue: EventName<WtSwitchCustomEvent<boolean>>,
-    onWtChange: EventName<WtSwitchCustomEvent<boolean>>
+  onUpdateModelValue: EventName<WtSwitchCustomEvent<boolean>>,
+  onWtChange: EventName<WtSwitchCustomEvent<boolean>>
 };
 
 export const WtSwitch: StencilReactComponent<WtSwitchElement, WtSwitchEvents, Components.WtSwitch> = /*@__PURE__*/ createComponent<WtSwitchElement, WtSwitchEvents, Components.WtSwitch>({
@@ -288,21 +317,25 @@ export const WtSwitch: StencilReactComponent<WtSwitchElement, WtSwitchEvents, Co
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
-        onUpdateModelValue: 'updateModelValue',
-        onWtChange: 'wt-change'
+      onUpdateModelValue: 'updateModelValue',
+      onWtChange: 'wt-change'
     } as WtSwitchEvents,
-    defineCustomElement: defineWtSwitch
+    defineCustomElement: defineWtSwitch,
 });
 
-export type WtTabBarEvents = { onWtChange: EventName<WtTabBarCustomEvent<any>> };
+export type WtTabBarEvents = {
+  onWtChange: EventName<WtTabBarCustomEvent<any>>
+};
 
 export const WtTabBar: StencilReactComponent<WtTabBarElement, WtTabBarEvents, Components.WtTabBar> = /*@__PURE__*/ createComponent<WtTabBarElement, WtTabBarEvents, Components.WtTabBar>({
     tagName: 'wt-tab-bar',
     elementClass: WtTabBarElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
-    events: { onWtChange: 'wt-change' } as WtTabBarEvents,
-    defineCustomElement: defineWtTabBar
+    events: {
+      onWtChange: 'wt-change'
+    } as WtTabBarEvents,
+    defineCustomElement: defineWtTabBar,
 });
 
 export type WtTagEvents = NonNullable<unknown>;
@@ -313,12 +346,12 @@ export const WtTag: StencilReactComponent<WtTagElement, WtTagEvents, Components.
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as WtTagEvents,
-    defineCustomElement: defineWtTag
+    defineCustomElement: defineWtTag,
 });
 
 export type WtTooltipEvents = {
-    onWtOpenChange: EventName<WtTooltipCustomEvent<boolean>>,
-    onUpdateModelValue: EventName<WtTooltipCustomEvent<boolean>>
+  onWtOpenChange: EventName<WtTooltipCustomEvent<boolean>>,
+  onUpdateModelValue: EventName<WtTooltipCustomEvent<boolean>>
 };
 
 export const WtTooltip: StencilReactComponent<WtTooltipElement, WtTooltipEvents, Components.WtTooltip> = /*@__PURE__*/ createComponent<WtTooltipElement, WtTooltipEvents, Components.WtTooltip>({
@@ -327,15 +360,15 @@ export const WtTooltip: StencilReactComponent<WtTooltipElement, WtTooltipEvents,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
-        onWtOpenChange: 'wt-open-change',
-        onUpdateModelValue: 'updateModelValue'
+      onWtOpenChange: 'wt-open-change',
+      onUpdateModelValue: 'updateModelValue'
     } as WtTooltipEvents,
-    defineCustomElement: defineWtTooltip
+    defineCustomElement: defineWtTooltip,
 });
 
 export type WtTreeEvents = {
-    onNodeUpdate: EventName<WtTreeCustomEvent<WtTreeNodeUpdateDetail>>,
-    onActiveChange: EventName<WtTreeCustomEvent<string | number>>
+  onNodeUpdate: EventName<WtTreeCustomEvent<WtTreeNodeUpdateDetail>>,
+  onActiveChange: EventName<WtTreeCustomEvent<string | number>>
 };
 
 export const WtTree: StencilReactComponent<WtTreeElement, WtTreeEvents, Components.WtTree> = /*@__PURE__*/ createComponent<WtTreeElement, WtTreeEvents, Components.WtTree>({
@@ -344,8 +377,8 @@ export const WtTree: StencilReactComponent<WtTreeElement, WtTreeEvents, Componen
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
-        onNodeUpdate: 'nodeUpdate',
-        onActiveChange: 'activeChange'
+      onNodeUpdate: 'nodeUpdate',
+      onActiveChange: 'activeChange'
     } as WtTreeEvents,
-    defineCustomElement: defineWtTree
+    defineCustomElement: defineWtTree,
 });

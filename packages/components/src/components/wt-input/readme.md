@@ -28,6 +28,14 @@
 | `wt-input`         |             | `CustomEvent<string>`          |
 
 
+## Slots
+
+| Slot       | Description |
+| ---------- | ----------- |
+| `"after"`  |             |
+| `"before"` |             |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
