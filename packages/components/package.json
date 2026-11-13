@@ -1,6 +1,6 @@
 {
   "name": "@mache-hangar/components",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "WT UI Web Components 组件库：基于 Stencil 构建，提供 React / Vue 适配层与按需加载的 loader。",
   "keywords": [
     "web-components",

@@ -1,5 +1,5 @@
 import { MsgType } from './types';
-import { preFix, WT_NOTIFICATION } from "@/utils";
+import { preFix, WT_NOTIFICATION } from '@/utils';
 export interface WtNotificationOptions {
   type?: MsgType;
   title?: string;
@@ -20,7 +20,7 @@ export interface WtNotificationHandle {
 
 export const WtNotificationService = {
   open(options: WtNotificationOptions = {}): WtNotificationHandle {
-    let bottom = "20px";
+    let bottom = '20px';
     const className = `${preFix}notification-service__container`;
     const existingContainer = document.querySelectorAll(`.${className}`);
     if (existingContainer.length > 0) {
@@ -94,5 +94,17 @@ export const WtNotificationService = {
       element: notification,
       close: handleClose,
     };
+  },
+  success(text: string): WtNotificationHandle {
+    return this.open({ message: text, type: 'success' });
+  },
+  info(text: string): WtNotificationHandle {
+    return this.open({ message: text, type: 'info' });
+  },
+  warning(text: string): WtNotificationHandle {
+    return this.open({ message: text, type: 'warning' });
+  },
+  error(text: string): WtNotificationHandle {
+    return this.open({ message: text, type: 'error' });
   },
 };
