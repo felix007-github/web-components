@@ -1,9 +1,6 @@
 # wt-tab-bar
 
-
-
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
@@ -12,14 +9,12 @@
 | `activeValue` | `active-value` |             | `string`             | `''`    |
 | `list`        | --             |             | `WtTabBarListItem[]` | `[]`    |
 
-
 ## Events
 
 | Event       | Description | Type               |
 | ----------- | ----------- | ------------------ |
 | `wt-change` |             | `CustomEvent<any>` |
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

@@ -148,6 +148,7 @@ git commit --no-verify -m "wip"
 ## 构建与发布
 
 - 构建：`pnpm build`（Turbo 会按 `^build` 依赖顺序先构建被依赖的包；`dist/**`、`loader/**`、`output/**` 会作为缓存产物）
+- components / icons 的构建会在 Stencil 生成 README 后，自动按仓库的 Prettier 配置格式化。也可在仓库根目录运行 `pnpm --filter @mache-hangar/components --filter @mache-hangar/icons format:readmes` 单独统一生成文档的格式。
 - 发布：见 [PUBLISHING.md](PUBLISHING.md)，核心命令是
 
 ```bash

@@ -65,13 +65,14 @@ wt-grid-layout {
   --wt-grid-card-color: #4d5a75;
   --wt-grid-line-color: #425ef218;
 }
-wt-grid-layout::part(header) { margin-bottom: 12px; }
+wt-grid-layout::part(header) {
+  margin-bottom: 12px;
+}
 ```
 
 业务数据、图表内容及应用自身的历史版本迁移由消费者管理，公共组件仅管理卡片布局与交互。
 
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
@@ -84,7 +85,6 @@ wt-grid-layout::part(header) { margin-bottom: 12px; }
 | `items`              | --                    | Initial/externally controlled cards. Replace the array to apply new data. | `GridLayoutItem[]` | `[]`        |
 | `storageKey`         | `storage-key`         | Optional persistence key. Storage is only written by saveLayout().        | `string`           | `undefined` |
 
-
 ## Events
 
 | Event                   | Description | Type                                                                                            |
@@ -93,7 +93,6 @@ wt-grid-layout::part(header) { margin-bottom: 12px; }
 | `wt-layout-error`       |             | `CustomEvent<{ message: string; }>`                                                             |
 | `wt-layout-interaction` |             | `CustomEvent<{ id: string; action: "resize" \| "move"; phase: "start" \| "end" \| "cancel"; }>` |
 | `wt-layout-save`        |             | `CustomEvent<GridLayoutItem[]>`                                                                 |
-
 
 ## Methods
 
@@ -105,8 +104,6 @@ Current committed geometry; during a gesture returns its pre-drag snapshot.
 
 Type: `Promise<GridLayoutItem[]>`
 
-
-
 ### `resetLayout() => Promise<void>`
 
 Restore the initial items. Call saveLayout() to persist the reset.
@@ -114,8 +111,6 @@ Restore the initial items. Call saveLayout() to persist the reset.
 #### Returns
 
 Type: `Promise<void>`
-
-
 
 ### `restoreLayout() => Promise<void>`
 
@@ -125,8 +120,6 @@ Discard edits made since the last save or items replacement.
 
 Type: `Promise<void>`
 
-
-
 ### `saveLayout() => Promise<GridLayoutItem[]>`
 
 Save a baseline, optionally persist it using storageKey. Rejects storage failures.
@@ -134,8 +127,6 @@ Save a baseline, optionally persist it using storageKey. Rejects storage failure
 #### Returns
 
 Type: `Promise<GridLayoutItem[]>`
-
-
 
 ### `setLayout(items: GridLayoutItem[]) => Promise<void>`
 
@@ -151,9 +142,6 @@ Set geometry without replacing the original reset target.
 
 Type: `Promise<void>`
 
-
-
-
 ## Shadow Parts
 
 | Part              | Description |
@@ -164,7 +152,6 @@ Type: `Promise<void>`
 | `"header"`        |             |
 | `"resize-handle"` |             |
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

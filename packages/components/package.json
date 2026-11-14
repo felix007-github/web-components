@@ -74,7 +74,8 @@
   "scripts": {
     "dev": "pnpm --filter @mache-hangar/icons build && stencil build --watch --serve",
     "build": "pnpm run build:stencil && pnpm run build:react && pnpm run build:vue",
-    "build:stencil": "pnpm --filter @mache-hangar/icons build && pnpm run prepare:output-dirs && stencil build && pnpm run sync:component-assets",
+    "build:stencil": "pnpm --filter @mache-hangar/icons build && pnpm run prepare:output-dirs && stencil build && pnpm run format:readmes && pnpm run sync:component-assets",
+    "format:readmes": "node ../../scripts/format-stencil-readmes.mjs",
     "sync:component-assets": "node ../../scripts/tasks.cjs sync-component-assets",
     "build:vue": "tsc -p tsconfig.vue.json && tsc -p tsconfig.vue.cjs.json",
     "build:react": "tsc -p tsconfig.react.json && tsc -p tsconfig.react.cjs.json",

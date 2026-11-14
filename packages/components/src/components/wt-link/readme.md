@@ -1,9 +1,6 @@
 # wt-link
 
-
-
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
@@ -18,14 +15,12 @@
 | `text`      | `text`      |             | `string`                                     | `''`                     |
 | `underline` | `underline` |             | `boolean`                                    | `false`                  |
 
-
 ## Slots
 
 | Slot | Description      |
 | ---- | ---------------- |
 |      | The default slot |
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

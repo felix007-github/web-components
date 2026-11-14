@@ -2,7 +2,7 @@
 
 ## 当前准备的输出命名迁移（2026-11-14）
 
-components 0.1.4、icons 0.1.3 已准备，尚未发布。Stencil namespace 分别为
+components 0.1.4、icons 0.1.3 已发布，并已通过官方 npm registry 核对。Stencil namespace 分别为
 `mache-hangar-components`、`mache-hangar-icons`，输出目录与文件使用相同名称。
 应用推荐统一使用 `@mache-hangar/components/styles.css`，避免依赖输出目录结构。
 仅保留当前样式入口，不提供旧命名的兼容别名。Logo 默认不显示文字，日志与注册标识也使用当前命名。
@@ -12,8 +12,8 @@ components 0.1.4、icons 0.1.3 已准备，尚未发布。Stencil namespace 分�
 
 | 包                         | 目录                  | 当前版本 | 已发布版本 |
 | -------------------------- | --------------------- | -------- | ---------- |
-| `@mache-hangar/components` | `packages/components` | 0.1.4    | 0.1.3      |
-| `@mache-hangar/icons`      | `packages/icons`      | 0.1.3    | 0.1.2      |
+| `@mache-hangar/components` | `packages/components` | 0.1.4    | 0.1.4      |
+| `@mache-hangar/icons`      | `packages/icons`      | 0.1.3    | 0.1.3      |
 
 > 包名决定发布位置：只有 `name` 为 `@mache-hangar/...` 时才会发到这个 scope 下。
 > 仓库内部的自引用（React/Vue 适配层 `import '@mache-hangar/components/...'`、`stencil.config.ts` 的 `stencilPackageName`、`tsconfig` 的 paths）必须与包名一致，改包名时请一起改并重新构建，否则发布出去的适配层会引用一个不存在的包。

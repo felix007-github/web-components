@@ -1,9 +1,6 @@
 # wt-progress
 
-
-
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
@@ -14,7 +11,6 @@
 | `shape`      | `shape`      |             | `"circle" \| "line"`                | `'line'`    |
 | `type`       | `type`       |             | `"error" \| "primary" \| "success"` | `"primary"` |
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

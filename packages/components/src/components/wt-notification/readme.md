@@ -1,9 +1,6 @@
 # wt-notification
 
-
-
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
@@ -16,14 +13,12 @@
 | `titleText`   | `title-text`    |             | `string`                                                   | `''`     |
 | `type`        | `type`          |             | `"error" \| "info" \| "primary" \| "success" \| "warning"` | `'info'` |
 
-
 ## Events
 
 | Event       | Description | Type               |
 | ----------- | ----------- | ------------------ |
 | `wt-action` |             | `CustomEvent<any>` |
 | `wt-close`  |             | `CustomEvent<any>` |
-
 
 ## Dependencies
 
@@ -32,12 +27,13 @@
 - [wt-icon](../wt-icon)
 
 ### Graph
+
 ```mermaid
 graph TD;
   wt-notification --> wt-icon
   style wt-notification fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

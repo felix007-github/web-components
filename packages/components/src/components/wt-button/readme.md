@@ -1,9 +1,6 @@
 # wt-button
 
-
-
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
@@ -15,13 +12,11 @@
 | `size`     | `size`     |             | `"large" \| "medium" \| "min" \| "small"` | `'medium'`  |
 | `type`     | `type`     |             | `"dark" \| "primary"`                     | `'primary'` |
 
-
 ## Events
 
 | Event       | Description | Type                           |
 | ----------- | ----------- | ------------------------------ |
 | `click-btn` |             | `CustomEvent<{ time: Date; }>` |
-
 
 ## Slots
 
@@ -31,7 +26,6 @@
 | `"after"`  |                  |
 | `"before"` |                  |
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

@@ -1,9 +1,6 @@
 # wt-heat-bar
 
-
-
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
@@ -15,40 +12,26 @@
 | `heatItemData`                   | --                   |             | `HeatItemData[]`    | `[]`        |
 | `position`                       | `position`           |             | `"left" \| "right"` | `'left'`    |
 
-
 ## Methods
 
 ### `destroyed() => Promise<void>`
-
-
 
 #### Returns
 
 Type: `Promise<void>`
 
-
-
 ### `getHeatBarInstance() => Promise<HeatBar>`
-
-
 
 #### Returns
 
 Type: `Promise<HeatBar>`
 
-
-
 ### `mounted() => Promise<void>`
-
-
 
 #### Returns
 
 Type: `Promise<void>`
 
+---
 
-
-
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

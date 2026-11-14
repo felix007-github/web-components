@@ -57,7 +57,8 @@
   },
   "scripts": {
     "start": "stencil build --prod --es5 --watch --serve",
-    "build": "pnpm run transform && stencil build --docs",
+    "build": "pnpm run transform && stencil build --docs && pnpm run format:readmes",
+    "format:readmes": "node ../../scripts/format-stencil-readmes.mjs",
     "test": "stencil test --spec --runInBand",
     "test:e2e": "stencil test --e2e",
     "test.watch": "stencil test --spec --watchAll",

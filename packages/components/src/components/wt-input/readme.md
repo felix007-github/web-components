@@ -1,9 +1,6 @@
 # wt-input
 
-
-
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
@@ -18,7 +15,6 @@
 | `size`         | `size`          |             | `"large" \| "medium" \| "min" \| "small"` | `'medium'`       |
 | `type`         | `type`          |             | `"password" \| "text"`                    | `'text'`         |
 
-
 ## Events
 
 | Event              | Description | Type                           |
@@ -27,7 +23,6 @@
 | `wt-focus`         |             | `CustomEvent<{ time: Date; }>` |
 | `wt-input`         |             | `CustomEvent<string>`          |
 
-
 ## Slots
 
 | Slot       | Description |
@@ -35,7 +30,6 @@
 | `"after"`  |             |
 | `"before"` |             |
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

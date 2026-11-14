@@ -1,9 +1,6 @@
 # wt-loading
 
-
-
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
@@ -13,7 +10,6 @@
 | `size`     | `size`      |             | `"large" \| "medium" \| "small" \| number` | `24`           |
 | `text`     | `text`      |             | `string`                                   | `"Loading..."` |
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
