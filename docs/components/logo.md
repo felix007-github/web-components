@@ -5,6 +5,7 @@
 ## Basic Usage
 
 :::demo
+
 ```vue
 <template>
   <div class="demo-row">
@@ -24,6 +25,7 @@ import { WtLogo } from '@mache-hangar/components/vue';
 }
 </style>
 ```
+
 :::
 
 ## Different Environments
@@ -31,6 +33,7 @@ import { WtLogo } from '@mache-hangar/components/vue';
 Use the `environment` prop to switch logo styles. Supported environments are `prod`, `dev`, and `cert`.
 
 :::demo
+
 ```vue
 <template>
   <div class="demo-row">
@@ -48,7 +51,6 @@ Use the `environment` prop to switch logo styles. Supported environments are `pr
     </div>
   </div>
 </template>
-
 
 <script setup>
 import { WtLogo } from '@mache-hangar/components/vue';
@@ -74,6 +76,7 @@ import { WtLogo } from '@mache-hangar/components/vue';
 }
 </style>
 ```
+
 :::
 
 ## Custom Size
@@ -81,6 +84,7 @@ import { WtLogo } from '@mache-hangar/components/vue';
 Use the `size` prop in pixels to customize the logo size.
 
 :::demo
+
 ```vue
 <template>
   <div class="demo-row">
@@ -103,17 +107,19 @@ import { WtLogo } from '@mache-hangar/components/vue';
 }
 </style>
 ```
+
 :::
 
 ## Custom Text
 
-Use the `text` prop to customize the text displayed next to the logo, or pass an empty string to hide it.
+The logo displays no text by default. Use the `text` prop to provide your own label.
 
 :::demo
+
 ```vue
 <template>
   <div class="demo-row">
-    <WtLogo text="L+CP"></WtLogo>
+    <WtLogo text="Workspace"></WtLogo>
     <WtLogo text="Company"></WtLogo>
     <WtLogo :text="''"></WtLogo>
   </div>
@@ -131,17 +137,19 @@ import { WtLogo } from '@mache-hangar/components/vue';
 }
 </style>
 ```
+
 :::
 
 ## Complete Example
 
 :::demo
+
 ```vue
 <template>
   <div class="demo-column">
     <div class="logo-card">
       <p>Standard Setup</p>
-      <WtLogo environment="prod" :size="48" text="L+CP"></WtLogo>
+      <WtLogo environment="prod" :size="48" text="Workspace"></WtLogo>
     </div>
     <div class="logo-card">
       <p>Development Environment</p>
@@ -178,4 +186,5 @@ import { WtLogo } from '@mache-hangar/components/vue';
 }
 </style>
 ```
+
 :::

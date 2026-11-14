@@ -171,7 +171,7 @@ pnpm --filter @mache-hangar/components publish --access public
 仓库只允许 pnpm，用 `corepack enable` 切到 `pnpm@11.1.3`。
 
 **组件没有样式 / 主题不生效？**
-使用方需要引入一次 `@mache-hangar/components/dist/lpcp-components.css`（playground 在 `styles/dependence.scss` 里引了）。
+使用方需要引入一次 `@mache-hangar/components/styles.css`（playground 在 `styles/dependence.scss` 里引了）。
 
 **图标不显示？**
 `wt-icon` 需要传 `name`；可用图标名见 `packages/icons` 的构建产物或 docs 的图标页。

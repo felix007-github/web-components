@@ -4,15 +4,9 @@ import { readdirSync } from 'node:fs';
 import { join, relative } from 'node:path';
 
 function entries(directory: string): string[] {
-  return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+  return readdirSync(directory, { withFileTypes: true }).flatMap(entry => {
     const file = join(directory, entry.name);
-    return entry.isDirectory()
-      ? entry.name === '__tests__'
-        ? []
-        : entries(file)
-      : file.endsWith('.ts') && !file.endsWith('.d.ts')
-      ? [file]
-      : [];
+    return entry.isDirectory() ? (entry.name === '__tests__' ? [] : entries(file)) : file.endsWith('.ts') && !file.endsWith('.d.ts') ? [file] : [];
   });
 }
 
@@ -25,7 +19,7 @@ export default defineConfig({
           if (
             /(?:^|[/\\])(?:react|react-dom|vue|@stencil)(?:[/\\]|$)/.test(id) ||
             /[/\\]app[/\\]src[/\\]/.test(id) ||
-            /^@(?:lpcp|mache-hangar)\/(?:html-editor(?:-react)?|lunar-editor-react)(?:\/|$)/.test(id)
+            /^@[^/]+\/(?:html-editor(?:-react)?|lunar-editor-react)(?:\/|$)/.test(id)
           ) {
             this.error(`lunar-editor-core must not import a UI framework: ${id}`);
           }
@@ -38,16 +32,10 @@ export default defineConfig({
     emptyOutDir: !process.argv.includes('--watch'),
     sourcemap: true,
     lib: {
-      entry: Object.fromEntries(
-        entries('src').map((file) => [
-          relative('src', file).replaceAll('\\', '/').slice(0, -3),
-          file,
-        ])
-      ),
+      entry: Object.fromEntries(entries('src').map(file => [relative('src', file).replaceAll('\\', '/').slice(0, -3), file])),
     },
     rollupOptions: {
-      external: (id) =>
-        !id.startsWith('.') && !isAbsolute(id) && !id.startsWith('\0'),
+      external: id => !id.startsWith('.') && !isAbsolute(id) && !id.startsWith('\0'),
       output: [
         {
           format: 'es',

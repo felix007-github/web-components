@@ -1,9 +1,9 @@
-@import url('@mache-hangar/components/dist/lpcp-components.css');
+@import url('@mache-hangar/components/styles.css');
 
 .content-body {
   background-color: transparent !important;
   backdrop-filter: saturate(50%) blur(8px);
-  background: rgba(255, 255, 255, .7);
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .demo-row {
@@ -46,7 +46,6 @@
   top: -20px;
   left: 12px;
 }
-
 
 /* doc的样式硬性当了 link的样式 */
 .vp-doc a.wt-link {

@@ -1,5 +1,5 @@
 import { Component, h, Host, Prop } from '@stencil/core';
-import { WT_LOGO } from "@/utils"
+import { WT_LOGO } from '@/utils';
 @Component({
   tag: 'wt-logo',
   styleUrl: 'wt-logo.scss',
@@ -7,7 +7,7 @@ import { WT_LOGO } from "@/utils"
 export class WtLogo {
   @Prop() size: number = 40;
   @Prop() environment: 'dev' | 'prod' | 'cert' = 'prod';
-  @Prop() text: string = 'L+CP';
+  @Prop() text: string = '';
   render() {
     const logoMap = {
       prod: new URL('./assets/logo.png', import.meta.url).href,

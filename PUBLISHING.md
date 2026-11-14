@@ -1,11 +1,19 @@
 # 发布到 npm
 
+## 当前准备的输出命名迁移（2026-11-14）
+
+components 0.1.4、icons 0.1.3 已准备，尚未发布。Stencil namespace 分别为
+`mache-hangar-components`、`mache-hangar-icons`，输出目录与文件使用相同名称。
+应用推荐统一使用 `@mache-hangar/components/styles.css`，避免依赖输出目录结构。
+仅保留当前样式入口，不提供旧命名的兼容别名。Logo 默认不显示文字，日志与注册标识也使用当前命名。
+发布前先构建、检查 tarball；发布 icons 后再发布 components，发布操作单独执行。
+
 仓库里的基础组件包如下；两个 Lunar Editor 包的发布流程见下方说明，其余应用 workspace 保持 `private: true`。
 
 | 包                         | 目录                  | 当前版本 | 已发布版本 |
 | -------------------------- | --------------------- | -------- | ---------- |
-| `@mache-hangar/components` | `packages/components` | 0.1.2    | 0.1.1      |
-| `@mache-hangar/icons`      | `packages/icons`      | 1.0.0    | 0.1.1      |
+| `@mache-hangar/components` | `packages/components` | 0.1.4    | 0.1.3      |
+| `@mache-hangar/icons`      | `packages/icons`      | 0.1.3    | 0.1.2      |
 
 > 包名决定发布位置：只有 `name` 为 `@mache-hangar/...` 时才会发到这个 scope 下。
 > 仓库内部的自引用（React/Vue 适配层 `import '@mache-hangar/components/...'`、`stencil.config.ts` 的 `stencilPackageName`、`tsconfig` 的 paths）必须与包名一致，改包名时请一起改并重新构建，否则发布出去的适配层会引用一个不存在的包。
@@ -36,7 +44,7 @@ npm view @mache-hangar/lunar-editor-react@0.0.1 version --registry=https://regis
 
 - 拥有 npm 账号，并且是该 scope（`@mache-hangar`）的成员/所有者
 - 账号已开启 2FA（发布时要输入一次性验证码）
-- 目标版本号必须大于已发布版本（当前 0.1.2 > 0.1.1，可直接发）
+- 目标版本号必须大于已发布版本（发布前用 npm view 核对，准备版本不代表已发布）
 
 ## 1. 登录（只做一次）
 
@@ -62,10 +70,10 @@ pnpm --filter @mache-hangar/components build
 
 # 2) 自检：打一个本地 tarball 看内容
 pnpm --filter @mache-hangar/components pack --pack-destination /tmp/pkgs
-tar -tzf /tmp/pkgs/mache-hangar-components-0.1.2.tgz | head -30   # 应包含 dist/ loader/ output/ LICENSE readme.md
+tar -tzf /tmp/pkgs/mache-hangar-components-0.1.4.tgz | head -30   # 应包含 dist/ loader/ output/ LICENSE readme.md
 
 # 3) 提交（publish 前保持工作区干净，避免 pnpm 的 git 检查失败）
-git add -A && git commit -m "chore: release 0.1.2"
+git add -A && git commit -m "chore: release 0.1.4"
 
 # 4) 发布
 pnpm --filter @mache-hangar/components publish --access public
@@ -80,7 +88,7 @@ pnpm --filter @mache-hangar/components publish --access public
 ```bash
 npm view @mache-hangar/components version
 npm view @mache-hangar/components dist.tarball
-npx -y --package=@mache-hangar/components@0.1.2 node -e "console.log(require.resolve('@mache-hangar/components/package.json'))"
+npx -y --package=@mache-hangar/components@0.1.4 node -e "console.log(require.resolve('@mache-hangar/components/package.json'))"
 ```
 
 ## 3. 发布 icons（可选）
@@ -136,13 +144,13 @@ pnpm release                   # = changeset version && turbo run build && chang
 | `E404 Not found` / `Scope not found`            | scope 拼错、不存在，或包名被改成了别人拥有的 scope                                                  |
 | `EPUBLISHCONFLICT`                              | 该版本已发布，提升 `version` 后重试（已发布版本号不能复用）                                         |
 | 安装后 `Cannot find module '@mache-hangar/...'` | 构建产物里的自引用没更新，重跑 `build` 再发（检查 `output/react`、`output/vue`、`dist/collection`） |
-| 安装后组件无样式                                | 使用方没引入 `@mache-hangar/components/dist/lpcp-components.css`                                    |
+| 安装后组件无样式                                | 使用方没引入 `@mache-hangar/components/styles.css`                                                  |
 
 ## 7. 撤销 / 弃用
 
 ```bash
 # 发布 72 小时内可以彻底删除（同版本号仍不可复用）
-npm unpublish @mache-hangar/components@0.1.2 --force
+npm unpublish @mache-hangar/components@0.1.4 --force
 
 # 推荐做法：标记弃用并提示升级
 npm deprecate @mache-hangar/components@"<0.1.2" "use 0.1.2+ instead"

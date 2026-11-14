@@ -1,6 +1,6 @@
 {
   "name": "@mache-hangar/components",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "WT UI Web Components 组件库：基于 Stencil 构建，提供 React / Vue 适配层与按需加载的 loader。",
   "keywords": [
     "web-components",
@@ -26,12 +26,12 @@
   "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/lpcp-components/lpcp-components.esm.js",
+  "unpkg": "dist/mache-hangar-components/mache-hangar-components.esm.js",
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",
-      "import": "./dist/lpcp-components/lpcp-components.esm.js",
-      "require": "./dist/cjs/lpcp-components.cjs.js"
+      "import": "./dist/mache-hangar-components/mache-hangar-components.esm.js",
+      "require": "./dist/cjs/mache-hangar-components.cjs.js"
     },
     "./core": {
       "types": "./dist/types/index.d.ts",
@@ -59,7 +59,8 @@
       "require": "./dist/components/index.js"
     },
     "./dist/components/*": "./dist/components/*",
-    "./dist/lpcp-components.css": "./dist/lpcp-components/lpcp-components.css",
+    "./styles.css": "./dist/mache-hangar-components/mache-hangar-components.css",
+    "./dist/mache-hangar-components.css": "./dist/mache-hangar-components/mache-hangar-components.css",
     "./package.json": "./package.json"
   },
   "files": [

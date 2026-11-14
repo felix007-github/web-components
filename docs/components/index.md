@@ -238,28 +238,28 @@ pnpm add @mache-hangar/components
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { WtButton, WtInput, WtIcon } from '@mache-hangar/components/vue'
+import { ref } from 'vue';
+import { WtButton, WtInput, WtIcon } from '@mache-hangar/components/vue';
 
-const value = ref('')
+const value = ref('');
 </script>
 ```
 
 ### Using With React
 
 ```jsx
-import { WtButton, WtInput, WtIcon } from '@mache-hangar/components/react'
+import { WtButton, WtInput, WtIcon } from '@mache-hangar/components/react';
 
 export function App() {
-  const [value, setValue] = useState('')
-  
+  const [value, setValue] = useState('');
+
   return (
     <div>
       <WtButton type="primary">Click me</WtButton>
-      <WtInput value={value} onChange={(e) => setValue(e.target.value)} />
+      <WtInput value={value} onChange={e => setValue(e.target.value)} />
       <WtIcon name="add" size="24" />
     </div>
-  )
+  );
 }
 ```
 
@@ -268,16 +268,16 @@ export function App() {
 ```html
 <!DOCTYPE html>
 <html>
-<head>
-  <link rel="stylesheet" href="https://unpkg.com/@mache-hangar/components@latest/dist/lpcp-components/lpcp-components.css">
-</head>
-<body>
-  <wt-button type="primary">Click me</wt-button>
-  <wt-input placeholder="Type here..."></wt-input>
-  <wt-icon name="add" size="24"></wt-icon>
+  <head>
+    <link rel="stylesheet" href="https://unpkg.com/@mache-hangar/components@latest/dist/mache-hangar-components/mache-hangar-components.css" />
+  </head>
+  <body>
+    <wt-button type="primary">Click me</wt-button>
+    <wt-input placeholder="Type here..."></wt-input>
+    <wt-icon name="add" size="24"></wt-icon>
 
-  <script crossorigin src="https://unpkg.com/@mache-hangar/components@latest/dist/lpcp-components.esm.js"></script>
-</body>
+    <script crossorigin src="https://unpkg.com/@mache-hangar/components@latest/dist/mache-hangar-components.esm.js"></script>
+  </body>
 </html>
 ```
 

@@ -4,11 +4,11 @@ import { reactOutputTarget } from '@stencil/react-output-target';
 import { vueOutputTarget } from '@stencil/vue-output-target';
 
 export const config: Config = {
-  namespace: 'lpcp-components',
+  namespace: 'mache-hangar-components',
   srcIndexHtml: 'public/index.html',
   globalStyle: 'src/assets/styles/index.scss',
-  hydratedFlag: { name: "wt-component", selector: "class" },
-  plugins: [sass({ includePaths: ["src"] })],
+  hydratedFlag: { name: 'wt-component', selector: 'class' },
+  plugins: [sass({ includePaths: ['src'] })],
   outputTargets: [
     reactOutputTarget({
       outDir: 'output/generated/react/generated',
@@ -68,19 +68,19 @@ export const config: Config = {
       type: 'www',
       copy: [
         { src: '../public/style.css', dest: 'style.css' },
-        { src: '../public/favicon.png', dest: 'favicon.png' }
+        { src: '../public/favicon.png', dest: 'favicon.png' },
       ],
       serviceWorker: null, // disable service workers
     },
   ],
   devServer: {
     reloadStrategy: 'hmr', // 尝试使用热模块替换 (Hot Module Replacement)
-    openBrowser: false,     // 启动时自动打开浏览器
+    openBrowser: false, // 启动时自动打开浏览器
   },
   extras: {
     addGlobalStyleToComponents: false,
   },
   testing: {
-    browserHeadless: "shell",
+    browserHeadless: 'shell',
   },
 };

@@ -4,15 +4,15 @@ const path = require('path');
 const task = process.argv[2];
 
 function prepareOutputDirs() {
-  ['output/react', 'output/react-cjs', 'output/vue', 'output/vue-cjs'].forEach((dir) => {
+  ['output/react', 'output/react-cjs', 'output/vue', 'output/vue-cjs'].forEach(dir => {
     fs.mkdirSync(dir, { recursive: true });
   });
 }
 
 function syncComponentAssets() {
   const candidates = ['src/images', 'src/assets/images'];
-  const sourceDir = candidates.find((candidate) => fs.existsSync(candidate));
-  const targetDirs = ['dist/lpcp-components/assets', 'dist/components/assets', 'dist/esm/assets'];
+  const sourceDir = candidates.find(candidate => fs.existsSync(candidate));
+  const targetDirs = ['dist/mache-hangar-components/assets', 'dist/components/assets', 'dist/esm/assets'];
 
   if (!sourceDir) {
     return;
@@ -28,7 +28,7 @@ function syncComponentAssets() {
 }
 
 function clean() {
-  ['src/components.d.ts', 'dist', 'loader', 'output/react', 'output/react-cjs', 'output/vue', 'output/vue-cjs', 'www'].forEach((dir) => {
+  ['src/components.d.ts', 'dist', 'loader', 'output/react', 'output/react-cjs', 'output/vue', 'output/vue-cjs', 'www'].forEach(dir => {
     fs.rmSync(dir, { recursive: true, force: true });
   });
 }

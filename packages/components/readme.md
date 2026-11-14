@@ -22,14 +22,13 @@ React / Vue 适配层是可选入口，只装你用到的那一个即可（React
 
 ```ts
 import { defineCustomElements } from '@mache-hangar/components/loader';
-import '@mache-hangar/components/dist/lpcp-components.css';
+import '@mache-hangar/components/styles.css';
 
 defineCustomElements(window);
 ```
 
 ```html
-<wt-button type="primary" size="large">提交</wt-button>
-<wt-tag type="success">已完成</wt-tag>
+<wt-button type="primary" size="large">提交</wt-button> <wt-tag type="success">已完成</wt-tag>
 ```
 
 `defineCustomElements()` 会按需注册组件，首屏只加载实际渲染的组件代码。
@@ -38,12 +37,12 @@ defineCustomElements(window);
 
 ```tsx
 import { WtButton, WtInput, WtTag } from '@mache-hangar/components/react';
-import '@mache-hangar/components/dist/lpcp-components.css';
+import '@mache-hangar/components/styles.css';
 
 export function Example() {
   return (
     <>
-      <WtInput placeholder="请输入" onUpdateModelValue={(event) => console.log(event.detail)} />
+      <WtInput placeholder="请输入" onUpdateModelValue={event => console.log(event.detail)} />
       <WtButton onClickBtn={() => console.log('clicked')}>提交</WtButton>
       <WtTag type="success">已完成</WtTag>
     </>
@@ -61,7 +60,7 @@ export function Example() {
 <script setup lang="ts">
 import { WtInput, WtSwitch } from '@mache-hangar/components/vue';
 import { ref } from 'vue';
-import '@mache-hangar/components/dist/lpcp-components.css';
+import '@mache-hangar/components/styles.css';
 
 const keyword = ref('');
 const enabled = ref(false);
@@ -81,7 +80,7 @@ const enabled = ref(false);
 组件自带样式（含 Shadow DOM 隔离），需要引入一次全局样式表来加载设计变量与基础样式：
 
 ```ts
-import '@mache-hangar/components/dist/lpcp-components.css';
+import '@mache-hangar/components/styles.css';
 ```
 
 覆盖主题变量：
@@ -96,29 +95,31 @@ import '@mache-hangar/components/dist/lpcp-components.css';
 需要深入定制组件内部结构时使用 Shadow Parts：
 
 ```css
-wt-button::part(header) { margin-bottom: 12px; }
+wt-button::part(header) {
+  margin-bottom: 12px;
+}
 ```
 
 ## 组件一览
 
-| 组件 | 说明 |
-| --- | --- |
-| `wt-avatar` / `wt-avatar-group` | 头像、头像组 |
-| `wt-badge` | 徽标 |
-| `wt-button` | 按钮 |
-| `wt-checkbox` / `wt-radio` / `wt-switch` | 表单控件（支持 v-model） |
-| `wt-divider` | 分割线 |
-| `wt-grid-layout` | 可拖动/缩放的卡片网格布局 |
-| `wt-heat-bar` | 热力条 |
-| `wt-icon` | 图标（内置图标集） |
-| `wt-input` / `wt-search` | 输入框、搜索框 |
-| `wt-link` | 链接 |
-| `wt-loading` / `wt-logo` | 加载、Logo |
-| `wt-modal` / `wt-notification` | 弹窗、通知（含 `WtNotificationService` 服务式调用） |
-| `wt-progress` | 进度条（线形 / 环形） |
-| `wt-scrollbar` | 自定义滚动容器 |
-| `wt-tab-bar` / `wt-tag` / `wt-tooltip` | 标签栏、标签、气泡提示 |
-| `wt-tree` | 树形控件 |
+| 组件                                     | 说明                                                |
+| ---------------------------------------- | --------------------------------------------------- |
+| `wt-avatar` / `wt-avatar-group`          | 头像、头像组                                        |
+| `wt-badge`                               | 徽标                                                |
+| `wt-button`                              | 按钮                                                |
+| `wt-checkbox` / `wt-radio` / `wt-switch` | 表单控件（支持 v-model）                            |
+| `wt-divider`                             | 分割线                                              |
+| `wt-grid-layout`                         | 可拖动/缩放的卡片网格布局                           |
+| `wt-heat-bar`                            | 热力条                                              |
+| `wt-icon`                                | 图标（内置图标集）                                  |
+| `wt-input` / `wt-search`                 | 输入框、搜索框                                      |
+| `wt-link`                                | 链接                                                |
+| `wt-loading` / `wt-logo`                 | 加载、Logo                                          |
+| `wt-modal` / `wt-notification`           | 弹窗、通知（含 `WtNotificationService` 服务式调用） |
+| `wt-progress`                            | 进度条（线形 / 环形）                               |
+| `wt-scrollbar`                           | 自定义滚动容器                                      |
+| `wt-tab-bar` / `wt-tag` / `wt-tooltip`   | 标签栏、标签、气泡提示                              |
+| `wt-tree`                                | 树形控件                                            |
 
 组件级文档在仓库 `docs/` 目录，交互示例见 `playground/react` 与 `playground/vue`。
 
@@ -130,10 +131,26 @@ wt-button::part(header) { margin-bottom: 12px; }
 
 ## 常见问题
 
-- **组件没有样式**：忘记引入 `@mache-hangar/components/dist/lpcp-components.css`
+- **组件没有样式**：忘记引入 `@mache-hangar/components/styles.css`
 - **图标不显示**：`wt-icon` 需要传入图标名，图标集已随组件包打包；如需单独使用图标包见 `@mache-hangar/icons`
 - **Vue 事件不触发**：自定义事件名是 kebab-case（如 `wt-change`），Vue 模板中用 `@wt-change` 而非 `@change`
 
 ## License
 
 MIT
+
+## Vite React 接入
+
+使用 `@mache-hangar/components/react` 的组件时，适配层会按需注册自定义元素，
+应用不再同时调用全量 `@mache-hangar/components/loader`。组件内部的 Logo URL
+相对发布模块定位，Vite 项目应保留该模块地址：
+
+```ts
+// vite.config.ts
+optimizeDeps: {
+  exclude: ['@mache-hangar/components'];
+}
+```
+
+全局样式使用稳定入口 `@mache-hangar/components/styles.css`。
+构建后的包已带有三种环境的 Logo 与图标资源，无需复制源码图片到应用。

@@ -1,8 +1,8 @@
 import { Config } from '@stencil/core';
 
 export const config: Config = {
-  namespace: 'lpcp-icons',
-  hydratedFlag: { name: "wt-icon", selector: "class" },
+  namespace: 'mache-hangar-icons',
+  hydratedFlag: { name: 'wt-icon', selector: 'class' },
   extras: {
     // fixes VitePress doc build
     enableImportInjection: true,
@@ -31,6 +31,6 @@ export const config: Config = {
   },
   testing: {
     modulePathIgnorePatterns: ['<rootDir>/svg/'],
-    browserHeadless: "shell",
+    browserHeadless: 'shell',
   },
 };
