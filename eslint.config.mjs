@@ -15,6 +15,7 @@ export default tseslint.config(
       '**/.turbo/**',
       '**/.stencil/**',
       '**/.pnpm-store/**',
+      '**/.codex-temp/**',
       '**/coverage/**',
       '**/.vitepress/cache/**',
       '**/.vitepress/dist/**',

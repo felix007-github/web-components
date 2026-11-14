@@ -1,14 +1,36 @@
 # 发布到 npm
 
-仓库里有两个可发布的包（其余 workspace 包都是 `private: true`）：
+仓库里的基础组件包如下；两个 Lunar Editor 包的发布流程见下方说明，其余应用 workspace 保持 `private: true`。
 
-| 包 | 目录 | 当前版本 | 已发布版本 |
-| --- | --- | --- | --- |
-| `@mache-hangar/components` | `packages/components` | 0.1.2 | 0.1.1 |
-| `@mache-hangar/icons` | `packages/icons` | 1.0.0 | 0.1.1 |
+| 包                         | 目录                  | 当前版本 | 已发布版本 |
+| -------------------------- | --------------------- | -------- | ---------- |
+| `@mache-hangar/components` | `packages/components` | 0.1.2    | 0.1.1      |
+| `@mache-hangar/icons`      | `packages/icons`      | 1.0.0    | 0.1.1      |
 
 > 包名决定发布位置：只有 `name` 为 `@mache-hangar/...` 时才会发到这个 scope 下。
 > 仓库内部的自引用（React/Vue 适配层 `import '@mache-hangar/components/...'`、`stencil.config.ts` 的 `stencilPackageName`、`tsconfig` 的 paths）必须与包名一致，改包名时请一起改并重新构建，否则发布出去的适配层会引用一个不存在的包。
+
+## Lunar Editor 首次发布
+
+`@mache-hangar/lunar-editor-core` 与 `@mache-hangar/lunar-editor-react` 当前版本均为 `0.0.1`，
+已设置 MIT 许可、`publishConfig.access: public`、npm 官方 registry 和发布前自动构建。
+React 包会随包附带字体及样式的第三方许可说明。
+
+在仓库根目录执行；先完成 npm 登录、检查，并提交发布配置以保持工作区干净：
+
+```bash
+pnpm exec turbo run build typecheck test --filter=@mache-hangar/lunar-editor-react...
+pnpm --filter @mache-hangar/lunar-editor-core --filter @mache-hangar/lunar-editor-react pack
+
+# Core 成功发布、且能查询到目标版本后，再发布 React。
+pnpm --filter @mache-hangar/lunar-editor-core publish --access public
+npm view @mache-hangar/lunar-editor-core@0.0.1 version --registry=https://registry.npmjs.org
+pnpm --filter @mache-hangar/lunar-editor-react publish --access public
+npm view @mache-hangar/lunar-editor-react@0.0.1 version --registry=https://registry.npmjs.org
+```
+
+后续发布须提升对应包版本。`pnpm pack` / `pnpm publish` 会自动将 React 对 Core 的
+`workspace:*` 依赖转换成 Core 的实际版本号。
 
 ## 0. 前置条件
 
@@ -74,7 +96,7 @@ pnpm --filter @mache-hangar/icons publish --access public
 注意：本地 icons 版本是 `1.0.0`，已发布的是 `0.1.1`，发布后是大版本跳跃。
 如果只是想发个补丁，先把 `packages/icons/package.json` 的 version 改成 `0.1.2`。
 
-> 根目录的 `pnpm run publish` 会递归发布 `packages/*` 下的两个包。
+> 根目录的 `pnpm run publish` 会递归发布 `packages/*` 下所有符合发布条件的包，包括两个 Lunar Editor 包。
 > 只想发组件库时请用上面的 `--filter @mache-hangar/components` 写法。
 
 ## 4. 后续版本：用 changesets 管版本和 changelog
@@ -94,27 +116,27 @@ pnpm release                   # = changeset version && turbo run build && chang
 
 `packages/components/package.json` 里这些字段决定产物是否可用，改动时注意：
 
-| 字段 | 作用 |
-| --- | --- |
-| `name` / `version` | 发布位置与版本 |
-| `exports` | `.`（ESM 构建）、`./core`、`./react`、`./vue`、`./loader`、`./dist/components/*`、CSS 入口 |
-| `files` | 只发 `dist/`、`loader/`、`output/`（加自动附带的 README/LICENSE） |
-| `publishConfig.access: public` | scoped 包必须显式公开，否则发布后是私有包 |
-| `dependencies` | `@stencil/react-output-target`、`@stencil/vue-output-target` 是运行时依赖，必须在这里（devDependencies 不会被安装） |
-| `peerDependencies` | `react` / `vue`，且 `peerDependenciesMeta.optional`，避免只装其中一个框架时报错 |
-| `prepublishOnly` | 发布前自动构建 |
-| `types` / `exports.*.types` | TS 类型入口，缺失会导致使用方 `any` 或类型报错 |
+| 字段                           | 作用                                                                                                                |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------- |
+| `name` / `version`             | 发布位置与版本                                                                                                      |
+| `exports`                      | `.`（ESM 构建）、`./core`、`./react`、`./vue`、`./loader`、`./dist/components/*`、CSS 入口                          |
+| `files`                        | 只发 `dist/`、`loader/`、`output/`（加自动附带的 README/LICENSE）                                                   |
+| `publishConfig.access: public` | scoped 包必须显式公开，否则发布后是私有包                                                                           |
+| `dependencies`                 | `@stencil/react-output-target`、`@stencil/vue-output-target` 是运行时依赖，必须在这里（devDependencies 不会被安装） |
+| `peerDependencies`             | `react` / `vue`，且 `peerDependenciesMeta.optional`，避免只装其中一个框架时报错                                     |
+| `prepublishOnly`               | 发布前自动构建                                                                                                      |
+| `types` / `exports.*.types`    | TS 类型入口，缺失会导致使用方 `any` 或类型报错                                                                      |
 
 ## 6. 常见报错对照
 
-| 报错 | 原因 / 处理 |
-| --- | --- |
-| `E401 Unauthorized` | 未登录或 token 失效，重新 `npm login` |
-| `E403 Forbidden` | 账号没有该 scope/包权限；或 scoped 包没加 `--access public` |
-| `E404 Not found` / `Scope not found` | scope 拼错、不存在，或包名被改成了别人拥有的 scope |
-| `EPUBLISHCONFLICT` | 该版本已发布，提升 `version` 后重试（已发布版本号不能复用） |
+| 报错                                            | 原因 / 处理                                                                                         |
+| ----------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `E401 Unauthorized`                             | 未登录或 token 失效，重新 `npm login`                                                               |
+| `E403 Forbidden`                                | 账号没有该 scope/包权限；或 scoped 包没加 `--access public`                                         |
+| `E404 Not found` / `Scope not found`            | scope 拼错、不存在，或包名被改成了别人拥有的 scope                                                  |
+| `EPUBLISHCONFLICT`                              | 该版本已发布，提升 `version` 后重试（已发布版本号不能复用）                                         |
 | 安装后 `Cannot find module '@mache-hangar/...'` | 构建产物里的自引用没更新，重跑 `build` 再发（检查 `output/react`、`output/vue`、`dist/collection`） |
-| 安装后组件无样式 | 使用方没引入 `@mache-hangar/components/dist/lpcp-components.css` |
+| 安装后组件无样式                                | 使用方没引入 `@mache-hangar/components/dist/lpcp-components.css`                                    |
 
 ## 7. 撤销 / 弃用
 

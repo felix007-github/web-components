@@ -1,7 +1,6 @@
 {
   "name": "@mache-hangar/lunar-editor-core",
   "version": "0.0.1",
-  "private": true,
   "type": "module",
   "description": "Framework-independent HTML editing engine, source compiler, sessions and controllers",
   "exports": {
@@ -59,7 +58,8 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "jest --runInBand",
     "dev": "node ../../scripts/watch-editor.mjs",
-    "clean": "node ../../scripts/tasks.cjs clean"
+    "clean": "node ../../scripts/tasks.cjs clean",
+    "prepublishOnly": "pnpm run build"
   },
   "dependencies": {
     "@codemirror/autocomplete": "^6.20.3",
@@ -92,5 +92,19 @@
     "vite": "^7.2.4",
     "ts-jest": "^29.4.0",
     "jest-environment-jsdom": "^29.7.0"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/felix007-github/web-components/tree/main/packages/lunar-editor-core#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felix007-github/web-components.git",
+    "directory": "packages/lunar-editor-core"
+  },
+  "bugs": {
+    "url": "https://github.com/felix007-github/web-components/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }

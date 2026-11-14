@@ -2,6 +2,9 @@
 
 通用 React 适配器及可复用编辑扩展，依赖 lunar-editor-core；不导入 App 或 Redline 规则。
 
+采用 [MIT 许可](LICENSE)，随包资源的许可说明见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
+npm 发布配置为公开访问，`prepublishOnly` 会自动执行构建。
+
 ## 通用入口
 
 RichEditor 提供基础富文本挂载、生命周期、source/history 回调和类型化 ref。
@@ -47,7 +50,7 @@ import '@mache-hangar/lunar-editor-react/extensions/table.css';
 
 // 在组件外创建，或在组件内用稳定的 memo 引用。
 const extensions = [createMathExtension(), createTableExtension()];
-<RichEditor content={html} extensions={extensions} />
+<RichEditor content={html} extensions={extensions} />;
 ```
 
 ## App 业务

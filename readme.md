@@ -178,7 +178,7 @@ pnpm --filter @mache-hangar/components publish --access public
 
 ## Lunar Editor
 
-编辑器已迁入本仓库的 pnpm workspace，包名分别为 `@mache-hangar/lunar-editor-core` 和 `@mache-hangar/lunar-editor-react`。源码、测试、样式及包内设计文档一并维护，两个包暂保持 private。
+编辑器已迁入本仓库的 pnpm workspace，包名分别为 `@mache-hangar/lunar-editor-core` 和 `@mache-hangar/lunar-editor-react`。源码、测试、样式及包内设计文档一并维护，两个包均已配置为 MIT 许可、公开 npm 发布，并在发布前自动构建。
 
 ```bash
 pnpm build:lunar-editor-react   # 按依赖顺序构建 core 和 React（含声明、CSS、公式字体）

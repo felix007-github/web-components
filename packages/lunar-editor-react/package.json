@@ -1,7 +1,6 @@
 {
   "name": "@mache-hangar/lunar-editor-react",
   "version": "0.0.1",
-  "private": true,
   "type": "module",
   "description": "Native React HTML editor components backed by lunar-editor-core",
   "exports": {
@@ -35,14 +34,16 @@
     "./extensions/table.css": "./dist/extensions/table.css"
   },
   "files": [
-    "dist"
+    "dist",
+    "THIRD_PARTY_NOTICES.md"
   ],
   "scripts": {
     "build": "vite build && tsc -p tsconfig.json && node scripts/build-styles.cjs",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "node --test --test-concurrency=1 test/*.test.cjs",
     "dev": "node ../../scripts/watch-editor.mjs",
-    "clean": "node ../../scripts/tasks.cjs clean"
+    "clean": "node ../../scripts/tasks.cjs clean",
+    "prepublishOnly": "pnpm run build"
   },
   "dependencies": {
     "@mache-hangar/lunar-editor-core": "workspace:*",
@@ -62,5 +63,19 @@
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",
     "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/felix007-github/web-components/tree/main/packages/lunar-editor-react#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felix007-github/web-components.git",
+    "directory": "packages/lunar-editor-react"
+  },
+  "bugs": {
+    "url": "https://github.com/felix007-github/web-components/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }

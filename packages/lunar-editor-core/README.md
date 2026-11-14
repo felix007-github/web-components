@@ -3,6 +3,8 @@
 基础 HTML 编辑内核，负责 SourceDocument、SourceMap、通用投影、事务编译、
 版本校验和 Undo/Redo。运行、构建和测试均不依赖 React、Stencil 或 App。
 
+采用 [MIT 许可](LICENSE)。npm 发布配置为公开访问，`prepublishOnly` 会自动执行构建。
+
 ## 边界
 
 - src/source：无损源码、mutation、父索引、增量映射、局部及结构编译。
@@ -75,14 +77,14 @@ SourceMutationStep。清理以显式 `replace-nodes` 删除加入 forward；inve
 原有类型导出，负责串联阶段、构建 mutation、更新 SourceMap、追加最终 Step。
 SourceUnit、格式化和 App AI 调用方继续使用此入口。阶段实现位于 `src/source/structural/`：
 
-| 模块 | 职责 |
-|---|---|
-| [range.ts](src/source/structural/range.ts) | 受影响 block、稳定父级、旧/新范围及直接 children 规划 |
-| [identity.ts](src/source/structural/identity.ts) | 受影响范围内的 sourceKey 保留、分配与去重 |
-| [import.ts](src/source/structural/import.ts) | 局部 PM 序列化、SourceNode 导入及未修改邻居复用 |
-| [projection.ts](src/source/structural/projection.ts) | 局部投影验证、必要的父级范围回退及协调 |
-| [selection.ts](src/source/structural/selection.ts) | text/node selection 意图捕获与恢复 |
-| [types.ts](src/source/structural/types.ts) | 编译结果、诊断和选项的类型定义，由原入口继续重导出 |
+| 模块                                                 | 职责                                                  |
+| ---------------------------------------------------- | ----------------------------------------------------- |
+| [range.ts](src/source/structural/range.ts)           | 受影响 block、稳定父级、旧/新范围及直接 children 规划 |
+| [identity.ts](src/source/structural/identity.ts)     | 受影响范围内的 sourceKey 保留、分配与去重             |
+| [import.ts](src/source/structural/import.ts)         | 局部 PM 序列化、SourceNode 导入及未修改邻居复用       |
+| [projection.ts](src/source/structural/projection.ts) | 局部投影验证、必要的父级范围回退及协调                |
+| [selection.ts](src/source/structural/selection.ts)   | text/node selection 意图捕获与恢复                    |
+| [types.ts](src/source/structural/types.ts)           | 编译结果、诊断和选项的类型定义，由原入口继续重导出    |
 
 阶段模块不反向依赖编排入口。源码导入不修改输入 SourceDocument；投影协调先在临时
 Transform 上验证，成功后由入口追加到原 transaction，保持失败不提交部分源码修改。
