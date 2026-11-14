@@ -1,0 +1,55 @@
+{
+  "name": "@mache-hangar/lunar-editor-react",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Native React HTML editor components backed by lunar-editor-core",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./styles.css": "./dist/styles.css",
+    "./extensions/math": {
+      "types": "./dist/types/extensions/math/index.d.ts",
+      "import": "./dist/extensions/math/index.js",
+      "require": "./dist/extensions/math/index.cjs"
+    },
+    "./extensions/math.css": "./dist/extensions/math.css",
+    "./extensions/table": {
+      "types": "./dist/types/extensions/table/index.d.ts",
+      "import": "./dist/extensions/table/index.js",
+      "require": "./dist/extensions/table/index.cjs"
+    },
+    "./extensions/table.css": "./dist/extensions/table.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build && tsc -p tsconfig.json && node scripts/build-styles.cjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node --test --test-concurrency=1 test/*.test.cjs",
+    "dev": "node ../../scripts/watch-editor.mjs"
+  },
+  "dependencies": {
+    "@mache-hangar/lunar-editor-core": "workspace:*",
+    "mathlive": "0.110.0"
+  },
+  "devDependencies": {
+    "jsdom": "^26.1.0",
+    "@types/node": "^22.13.5",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "sass": "^1.95.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.2.4"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  }
+}

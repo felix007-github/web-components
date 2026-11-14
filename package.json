@@ -25,7 +25,11 @@
     "prepare": "husky",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "build:lunar-editor-core": "turbo run build --filter=@mache-hangar/lunar-editor-core...",
+    "dev:lunar-editor-core": "turbo run dev --filter=@mache-hangar/lunar-editor-core",
+    "build:lunar-editor-react": "turbo run build --filter=@mache-hangar/lunar-editor-react...",
+    "dev:lunar-editor-react": "turbo run dev --filter=@mache-hangar/lunar-editor-react"
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.6",

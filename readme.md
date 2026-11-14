@@ -15,6 +15,8 @@
 web-components/
 ├── packages/
 │   ├── components/          # @mache-hangar/components —— Stencil 组件库（含 React/Vue 适配层）
+│   ├── lunar-editor-core/   # @mache-hangar/lunar-editor-core —— 框架无关的 HTML 编辑内核
+│   ├── lunar-editor-react/  # @mache-hangar/lunar-editor-react —— React 编辑器及公式、表格扩展
 │   └── icons/               # @mache-hangar/icons —— SVG 图标集合（构建时打入组件包）
 ├── docs/                    # VitePress 组件文档站
 ├── playground/
@@ -173,3 +175,17 @@ pnpm --filter @mache-hangar/components publish --access public
 
 **图标不显示？**
 `wt-icon` 需要传 `name`；可用图标名见 `packages/icons` 的构建产物或 docs 的图标页。
+
+## Lunar Editor
+
+编辑器已迁入本仓库的 pnpm workspace，包名分别为 `@mache-hangar/lunar-editor-core` 和 `@mache-hangar/lunar-editor-react`。源码、测试、样式及包内设计文档一并维护，两个包暂保持 private。
+
+```bash
+pnpm build:lunar-editor-react   # 按依赖顺序构建 core 和 React（含声明、CSS、公式字体）
+pnpm dev:lunar-editor-react     # 先构建 core，再监听 React 源码、类型和样式
+pnpm dev:lunar-editor-core      # 单独监听 core；联调内核时另开终端运行
+pnpm --filter "./packages/lunar-editor-*" typecheck
+pnpm exec turbo run test --filter="./packages/lunar-editor-*"
+```
+
+使用方式见 [Core 文档](packages/lunar-editor-core/README.md) 和 [React 文档](packages/lunar-editor-react/README.md)。业务层的修订、AI、PDF 联动仍由使用方实现。

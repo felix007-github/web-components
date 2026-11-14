@@ -1,0 +1,95 @@
+{
+  "name": "@mache-hangar/lunar-editor-core",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Framework-independent HTML editing engine, source compiler, sessions and controllers",
+  "exports": {
+    "./code/theme": {
+      "types": "./dist/types/code/theme/index.d.ts",
+      "import": "./dist/esm/code/theme/index.js",
+      "require": "./dist/cjs/code/theme/index.cjs"
+    },
+    "./formatting": {
+      "types": "./dist/types/formatting/index.d.ts",
+      "import": "./dist/esm/formatting/index.js",
+      "require": "./dist/cjs/formatting/index.cjs"
+    },
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.cjs"
+    },
+    "./schema": {
+      "types": "./dist/types/schema/index.d.ts",
+      "import": "./dist/esm/schema/index.js",
+      "require": "./dist/cjs/schema/index.cjs"
+    },
+    "./source": {
+      "types": "./dist/types/source/index.d.ts",
+      "import": "./dist/esm/source/index.js",
+      "require": "./dist/cjs/source/index.cjs"
+    },
+    "./utils": {
+      "types": "./dist/types/utils/index.d.ts",
+      "import": "./dist/esm/utils/index.js",
+      "require": "./dist/cjs/utils/index.cjs"
+    },
+    "./*": {
+      "types": "./dist/types/*.d.ts",
+      "import": "./dist/esm/*.js",
+      "require": "./dist/cjs/*.cjs"
+    },
+    "./extensions": {
+      "types": "./dist/types/extensions/index.d.ts",
+      "import": "./dist/esm/extensions/index.js",
+      "require": "./dist/cjs/extensions/index.cjs"
+    },
+    "./pm": {
+      "types": "./dist/types/pm.d.ts",
+      "import": "./dist/esm/pm.js",
+      "require": "./dist/cjs/pm.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build && tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "jest --runInBand",
+    "dev": "node ../../scripts/watch-editor.mjs"
+  },
+  "dependencies": {
+    "@codemirror/autocomplete": "^6.20.3",
+    "@codemirror/commands": "^6.10.3",
+    "@codemirror/lang-html": "^6.4.11",
+    "@codemirror/lang-json": "^6.0.2",
+    "@codemirror/lang-xml": "^6.1.0",
+    "@codemirror/language": "^6.12.3",
+    "@codemirror/merge": "^6.12.2",
+    "@codemirror/search": "^6.7.0",
+    "@codemirror/state": "^6.6.0",
+    "@codemirror/view": "^6.43.1",
+    "entities": "6.0.1",
+    "parse5": "7.3.0",
+    "prettier": "^2.8.8",
+    "prosemirror-commands": "^1.7.1",
+    "prosemirror-history": "^1.5.0",
+    "prosemirror-keymap": "^1.2.3",
+    "prosemirror-model": "^1.25.11",
+    "prosemirror-state": "^1.4.4",
+    "prosemirror-transform": "^1.12.0",
+    "prosemirror-view": "^1.42.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.13.5",
+    "jest": "^29.7.0",
+    "jest-cli": "^29.7.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.2.4",
+    "ts-jest": "^29.4.0",
+    "jest-environment-jsdom": "^29.7.0"
+  }
+}

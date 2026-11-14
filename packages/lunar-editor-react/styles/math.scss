@@ -1,0 +1,68 @@
+@use 'mathlive/mathlive-fonts.css';
+.lunar-editor__document {
+  .lunar-math-block {
+    box-sizing: border-box;
+    display: flex;
+    min-height: 52px;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    white-space: normal;
+  }
+
+  .lunar-math-block:hover,
+  .lunar-math-block.ProseMirror-selectednode {
+    border-color: #84a9ff;
+    outline: none;
+  }
+
+  .lunar-math-inline {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 2px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    vertical-align: middle;
+    white-space: normal;
+  }
+
+  .lunar-math-inline:hover,
+  .lunar-math-inline.ProseMirror-selectednode {
+    border-color: #84a9ff;
+    outline: none;
+  }
+
+  .lunar-math-field {
+    display: inline-block;
+    min-width: 120px;
+    max-width: 100%;
+    padding: 4px 8px;
+    border: 0;
+    background: transparent;
+    font-size: 1.1em;
+    outline: none;
+  }
+
+  .lunar-math-field--inline {
+    min-width: 1.5em;
+    padding: 0 2px;
+    font-size: 1em;
+  }
+
+  .lunar-math-node:not(.lunar-math-node--editing)
+    .lunar-math-field::part(virtual-keyboard-toggle),
+  .lunar-math-node:not(.lunar-math-node--editing)
+    .lunar-math-field::part(menu-toggle) {
+    display: none;
+  }
+
+  .lunar-math-node.lunar-math-node--editing
+    .lunar-math-field::part(virtual-keyboard-toggle),
+  .lunar-math-node.lunar-math-node--editing
+    .lunar-math-field::part(menu-toggle) {
+    display: flex !important;
+  }
+}

@@ -1,0 +1,140 @@
+.lunar-editor__document {
+  .lunar-table-scroll {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .lunar-table-scroll--fixed
+    > table
+    > :is(thead, tbody, tfoot)
+    > tr
+    > :is(td, th),
+  .lunar-table-scroll--fixed > table > tr > :is(td, th) {
+    min-width: 0;
+    max-width: none;
+  }
+
+  .lunar-table-resize-controls {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  // Controls are editor UI, not document blocks. Keep application-level div
+  // indentation, paragraph spacing and outline borders out of their geometry.
+  .lunar-table-scroll > .lunar-table-resize-controls,
+  .lunar-table-scroll
+    > .lunar-table-resize-controls
+    > .lunar-table-column-handle {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    min-width: 0;
+    min-height: 0;
+  }
+
+  &[contenteditable='false'] .lunar-table-resize-controls {
+    display: none;
+  }
+
+  .lunar-table-column-handle {
+    position: absolute;
+    z-index: 3;
+    width: 10px;
+    transform: translateX(-50%);
+    cursor: col-resize;
+    touch-action: none;
+    pointer-events: auto;
+    outline: none;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 4px;
+      width: 2px;
+      background: #7b83df;
+      opacity: 0;
+    }
+
+    &:hover::after,
+    &:focus-visible::after,
+    &--active::after {
+      opacity: 1;
+      width: 3px;
+    }
+  }
+
+  .lunar-table-scroll--resizing {
+    cursor: col-resize;
+    user-select: none;
+
+    .lunar-table-column-handle:not(.lunar-table-column-handle--active)::after {
+      opacity: 0;
+    }
+  }
+
+  div > .lunar-table-scroll {
+    width: calc(100% - 24px);
+  }
+
+  table {
+    display: table;
+    width: max-content;
+    min-width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+    margin: 0;
+    color: inherit;
+    border: 1px solid #c8cdd2;
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: auto;
+
+    td,
+    th {
+      position: relative;
+      min-width: 120px;
+      max-width: 350px;
+      box-sizing: border-box;
+      padding: 10px;
+      color: inherit;
+      border: 1px solid #c8cdd2;
+      line-height: 1.7;
+      overflow-wrap: anywhere;
+      vertical-align: top;
+      white-space: normal;
+      word-break: normal;
+
+      > * {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        line-height: inherit;
+        overflow-wrap: inherit;
+        white-space: inherit;
+      }
+
+      p {
+        border-left: none;
+      }
+    }
+
+    th {
+      background: rgb(0 0 0 / 5%);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-align: left;
+    }
+
+    td {
+      border-bottom-color: #c8cdd2;
+    }
+  }
+}

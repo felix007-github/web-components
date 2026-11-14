@@ -1,0 +1,19 @@
+@use './components/code-editor';
+.rich-editor-host {
+  display: flex;
+  position: relative;
+  height: 100%;
+  min-height: 0;
+}
+.rich-editor__mount {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+}
+.rich-editor__document {
+  flex: 1;
+  min-width: 0;
+  overflow: auto;
+  outline: none;
+}
