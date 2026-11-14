@@ -58,7 +58,8 @@
     "build": "vite build && tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "jest --runInBand",
-    "dev": "node ../../scripts/watch-editor.mjs"
+    "dev": "node ../../scripts/watch-editor.mjs",
+    "clean": "node ../../scripts/tasks.cjs clean"
   },
   "dependencies": {
     "@codemirror/autocomplete": "^6.20.3",

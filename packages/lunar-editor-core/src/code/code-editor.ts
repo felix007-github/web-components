@@ -169,6 +169,17 @@ export class CodeEditor {
     }
   }
 
+  setLanguage(language: string) {
+    if (this.option.language === language) return;
+    this.option.language = language;
+    this.formatVersion++;
+    for (const view of [this.codeEditor, this.mergeView?.a, this.mergeView?.b]) {
+      view?.dispatch({
+        effects: this.languageCompartment.reconfigure(this.getLanguageExtension()),
+      });
+    }
+  }
+
   private getActiveValue() {
     return this.mergeView?.b.state.doc.toString() ?? this.codeEditor?.state.doc.toString() ?? this.option.content ?? '';
   }

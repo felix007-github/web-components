@@ -2,10 +2,7 @@ import { lazy, Suspense, type ComponentType, type ReactNode } from 'react';
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import App from '../App';
 
-const lazyNamed = <TModule extends object, TExport extends keyof TModule>(
-  loader: () => Promise<TModule>,
-  exportName: TExport,
-) =>
+const lazyNamed = <TModule extends object, TExport extends keyof TModule>(loader: () => Promise<TModule>, exportName: TExport) =>
   lazy(async () => {
     const module = await loader();
 
@@ -42,8 +39,14 @@ const WtTabBarVs = lazyNamed(() => import('../views/wt-tab-bar'), 'WtTabBarVs');
 const WtTagVs = lazyNamed(() => import('../views/wt-tag'), 'WtTagVs');
 const WtTreeVs = lazyNamed(() => import('../views/wt-tree'), 'WtTreeVs');
 const WtScrollbarVs = lazyNamed(() => import('../views/wt-scrollbar'), 'WtScrollbarVs');
+const LunarEditorDemo = lazyNamed(() => import('../views/lunar-editor'), 'LunarEditorDemo');
 
 export const demoRoutes = [
+  {
+    path: '/lunar-editor',
+    label: 'lunar-editor',
+    element: withSuspense(LunarEditorDemo),
+  },
   {
     path: '/wt-avatar',
     label: 'wt-avatar',

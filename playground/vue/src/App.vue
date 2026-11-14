@@ -13,13 +13,13 @@
         >
           <nav class="playground-nav" aria-label="Component demo routes">
             <RouterLink
-              v-for="route in demoRoutes"
-              :key="route.path"
-              :to="route.path"
+              v-for="demoRoute in demoRoutes"
+              :key="demoRoute.path"
+              :to="demoRoute.path"
               class="playground-nav__link"
               active-class="is-active"
             >
-              <span class="playground-nav__title">{{ route.label }}</span>
+              <span class="playground-nav__title">{{ demoRoute.label }}</span>
             </RouterLink>
           </nav>
         </WtScrollbar>

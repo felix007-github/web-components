@@ -7,6 +7,10 @@
 RichEditor 提供基础富文本挂载、生命周期、source/history 回调和类型化 ref。
 CodeEditor 提供源码编辑适配。useController 等 hooks 可用于 App 自己的组合组件。
 
+只使用一种编辑器时，可以从 `@mache-hangar/lunar-editor-react/rich-editor`
+或 `@mache-hangar/lunar-editor-react/code-editor` 子入口导入。源码编辑器、
+公式扩展和格式化器支持按需加载，普通富文本页面无需预先加载这些能力。
+
 基础样式从 @mache-hangar/lunar-editor-react/styles.css 引入。
 RichEditor 的 content 表示外部文档输入；普通父组件重渲染保留 view/history，
 修改 content/source version 则重置输入。Schema 和 extensions 使用稳定引用。

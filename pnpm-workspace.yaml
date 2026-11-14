@@ -4,6 +4,10 @@ packages:
   - "playground/*"
   - "app/*"
 
+# VitePress 1.x bundles the MarkdownIt 14.1 type surface.
+overrides:
+  '@types/markdown-it': '14.1.2'
+
 allowBuilds:
   '@parcel/watcher': true
   esbuild: true

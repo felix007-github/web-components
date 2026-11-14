@@ -12,6 +12,7 @@
     "lint": "eslint src"
   },
   "dependencies": {
+    "@mache-hangar/lunar-editor-react": "workspace:*",
     "@mache-hangar/icons": "workspace:*",
     "@mache-hangar/components": "workspace:*",
     "react": "^19.1.1",

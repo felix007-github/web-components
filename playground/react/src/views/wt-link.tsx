@@ -1,8 +1,6 @@
-import { useState } from "react";
 import { WtLink } from "@mache-hangar/components/react";
 
 export const WtLinkVs = () => {
-  const [count, setCount] = useState(0);
 
   return (
     <article className="demo-card" style={{ gap: "18px", display: "flex", flexDirection: "column" }}>

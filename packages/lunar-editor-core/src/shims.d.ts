@@ -1,4 +1,4 @@
-declare module 'prettier/standalone' {
+declare module 'prettier/standalone.js' {
   export type Parser = 'html';
 
   export type Plugin = Record<string, unknown>;
@@ -14,10 +14,13 @@ declare module 'prettier/standalone' {
   };
 
   export function format(source: string, options: Options): string;
+
+  const standalone: { format: typeof format };
+  export default standalone;
 }
 
-declare module 'prettier/parser-html' {
-  import type { Plugin } from 'prettier/standalone';
+declare module 'prettier/parser-html.js' {
+  import type { Plugin } from 'prettier/standalone.js';
 
   const plugin: Plugin;
   export = plugin;

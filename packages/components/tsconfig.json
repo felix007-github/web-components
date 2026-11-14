@@ -17,7 +17,8 @@
     "jsxFactory": "h",
     "jsxFragmentFactory": "h.Fragment",
     "types": [
-      "node"
+      "node",
+      "jest"
     ],
     "paths": {
       "@/*": ["./src/*"]

@@ -33,6 +33,8 @@ export default defineConfig({
     lib: {
       entry: {
         index: 'src/index.ts',
+        'rich-editor': 'src/rich-editor.tsx',
+        'code-editor': 'src/code-editor.tsx',
         'extensions/math/index': 'src/extensions/math/index.ts',
         'extensions/table/index': 'src/extensions/table/index.ts',
       },

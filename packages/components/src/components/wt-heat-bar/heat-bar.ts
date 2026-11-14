@@ -311,7 +311,7 @@ export class HeatBar {
     const hoverItem = this.heatItems.find((heatItem) => heatItem.hover === true)
     if (hoverItem) hoverItem.hover = false
     const item = this.checkBoundary(offsetX, offsetY)
-    let cursor = 'default'
+    let cursor: string
     if (item) {
       this._hoverHeatItem = item
       item.hover = true

@@ -173,6 +173,7 @@ export class CodeEditorController extends EditorController {
       tasks.push(Promise.resolve(this.onReadonlyChange(this.readonly)));
     if (changed.has('isShowDiff'))
       tasks.push(Promise.resolve(this.onIsShowDiffChange(this.isShowDiff)));
+    if (changed.has('language')) this.editor?.setLanguage(this.language);
     if (changed.size) this.notifyView();
     return Promise.all(tasks).then(() => undefined);
   }

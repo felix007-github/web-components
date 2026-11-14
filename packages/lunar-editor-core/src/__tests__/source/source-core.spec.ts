@@ -226,7 +226,6 @@ describe('source-aware HTML core', () => {
     const html = '<p id="a">One</p><p id="b">Two</p>';
     const original = parseSourceHtml(html);
     const first = findElement(original, 'a');
-    const second = findElement(original, 'b');
     const secondText = findText(original, 'Two');
     const root = original.nodes.get(original.rootKey)!;
     const batch = createSourceMutationBatch([

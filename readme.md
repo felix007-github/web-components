@@ -189,3 +189,5 @@ pnpm exec turbo run test --filter="./packages/lunar-editor-*"
 ```
 
 使用方式见 [Core 文档](packages/lunar-editor-core/README.md) 和 [React 文档](packages/lunar-editor-react/README.md)。业务层的修订、AI、PDF 联动仍由使用方实现。
+
+运行 `pnpm dev:react`，访问终端显示地址下的 `/lunar-editor`，或点击侧边栏的 `lunar-editor`。演示默认展示富文本、表格和 HTML 源码预览；点击“编辑源码”加载源码编辑器，点击“启用公式”加载公式扩展并追加示例。修改源码后点击“应用源码”更新富文本；修改富文本会实时更新源码。应用源码、重置示例和启用公式会清空富文本历史。

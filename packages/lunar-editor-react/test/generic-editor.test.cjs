@@ -152,6 +152,17 @@ test('base React entry does not load MathLive or Redline capabilities', async ()
   }
 });
 
+test('rich-editor subpath does not load source editing, math or formatting dependencies', () => {
+  const { spawnSync } = require('node:child_process');
+  const result = spawnSync(process.execPath, [
+    '-e',
+    "require(process.argv[1]); console.log(JSON.stringify(Object.keys(require.cache).filter(file => /@codemirror|mathlive|prettier/.test(file))));",
+    require.resolve('@mache-hangar/lunar-editor-react/rich-editor'),
+  ], { encoding: 'utf8' });
+  assert.equal(result.status, 0, result.stderr);
+  assert.deepEqual(JSON.parse(result.stdout), []);
+});
+
 test('table presentation can be explicitly enabled without changing exported HTML', async () => {
   const {
     createTableExtension,

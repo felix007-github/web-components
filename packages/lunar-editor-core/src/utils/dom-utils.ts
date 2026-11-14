@@ -56,7 +56,7 @@ export function queryElementById(container: HTMLElement, id: string) {
 }
 
 export function getHashTargetId(href: string) {
-  let hash = '';
+  let hash: string;
   try {
     hash = href.startsWith('#')
       ? href.slice(1)

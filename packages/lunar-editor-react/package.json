@@ -5,6 +5,16 @@
   "type": "module",
   "description": "Native React HTML editor components backed by lunar-editor-core",
   "exports": {
+    "./rich-editor": {
+      "types": "./dist/types/rich-editor.d.ts",
+      "import": "./dist/rich-editor.js",
+      "require": "./dist/rich-editor.cjs"
+    },
+    "./code-editor": {
+      "types": "./dist/types/code-editor.d.ts",
+      "import": "./dist/code-editor.js",
+      "require": "./dist/code-editor.cjs"
+    },
     ".": {
       "types": "./dist/types/index.d.ts",
       "import": "./dist/index.js",
@@ -31,7 +41,8 @@
     "build": "vite build && tsc -p tsconfig.json && node scripts/build-styles.cjs",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "node --test --test-concurrency=1 test/*.test.cjs",
-    "dev": "node ../../scripts/watch-editor.mjs"
+    "dev": "node ../../scripts/watch-editor.mjs",
+    "clean": "node ../../scripts/tasks.cjs clean"
   },
   "dependencies": {
     "@mache-hangar/lunar-editor-core": "workspace:*",

@@ -7,6 +7,7 @@ import {
 } from 'react';
 import { useController, useControllerProps } from './controller-hooks';
 import type { CodeEditorApi, CodeEditorProps } from './code-editor-types';
+export type { CodeEditorApi, CodeEditorProps } from './code-editor-types';
 
 export const CodeEditor = forwardRef<CodeEditorApi, CodeEditorProps>(
   function CodeEditor(props, ref) {

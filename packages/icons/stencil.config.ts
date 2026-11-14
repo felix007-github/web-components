@@ -30,6 +30,7 @@ export const config: Config = {
     openBrowser: false,
   },
   testing: {
+    modulePathIgnorePatterns: ['<rootDir>/svg/'],
     browserHeadless: "shell",
   },
 };

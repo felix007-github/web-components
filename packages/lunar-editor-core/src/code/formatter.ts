@@ -1,12 +1,8 @@
 
-import * as prettier from 'prettier/standalone';
-import * as htmlParser from 'prettier/parser-html';
 import {
   formatXml as fallbackFormatXml,
   minifyXml,
 } from './formatter-util';
-
-const prettierPlugins = [htmlParser];
 
 export class Formatter {
   async minifyXml(xmlString: string) {
@@ -15,9 +11,14 @@ export class Formatter {
 
   async formatXml(xmlString: string) {
     try {
+      const [standalone, htmlParser] = await Promise.all([
+        import('prettier/standalone.js'),
+        import('prettier/parser-html.js'),
+      ]);
+      const prettier = standalone.default ?? standalone;
       return prettier.format(xmlString, {
         parser: 'html',
-        plugins: prettierPlugins,
+        plugins: [htmlParser.default ?? htmlParser],
         printWidth: 120,
         tabWidth: 2,
         useTabs: false,
