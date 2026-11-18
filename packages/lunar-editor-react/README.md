@@ -22,7 +22,7 @@ ref 提供 getView/getHtml/getSourceState/undo/redo。
 ## 可选通用扩展
 
 - @mache-hangar/lunar-editor-react/extensions/math：createMathExtension，公式节点、输入与 MathLive 视图。
-- @mache-hangar/lunar-editor-react/extensions/table：createTableExtension，表格滚动视图和列宽拖拽。
+- @mache-hangar/lunar-editor-react/extensions/table：createTableExtension，表格选区、结构命令、属性、滚动视图和列宽拖拽。
 - 样式分别从 extensions/math.css 和 extensions/table.css 引入。
 
 扩展实现遵守 core 的 EditorExtension 接口，普通 TS 引擎逻辑与 React 挂载分开。
@@ -64,3 +64,28 @@ const extensions = [createMathExtension(), createTableExtension()];
 测试命令为 pnpm --filter @mache-hangar/lunar-editor-react test，
 覆盖 StrictMode/重渲染、文档切换、源码与历史、基础入口隔离、
 表格拖拽预览、合并单元格、列属性、保存重载、取消和只读状态。
+
+## 表格命令与状态
+
+通用命令通过表格逻辑网格处理 rowspan/colspan，保留 caption、thead/tbody/tfoot、列组和已有属性。
+createTableExtension({ onStateChange }) 回调提供 TableState；getTableState(view) 可主动读取。
+工具栏由应用绘制，调用 runTableCommand(view, command)，返回是否实际应用。
+
+- insert：rows、columns（1–50），可选 headerRow。
+- row_before/row_after/delete_rows、column_before/column_after/delete_columns、delete_table。
+- merge/split：矩形选区合并、按原跨度拆分；合并按阅读顺序保留所有内容。
+- header_row/header_column、caption：切换选中行列的 th/scope 和可编辑标题。
+- cell_style：textAlign、verticalAlign、backgroundColor（#RRGGBB 或 transparent）。
+- table_style：align（left/center/right）、width（25%/50%/75%/100%）。
+- clear_cells：清空选中格内容，保留表格结构。
+
+跨单元格拖选（包含空单元格）或 Shift + 单击可建立矩形选区；单格内保留原生文字选择。
+跨格拖选由表格接管鼠标，选区限制在当前表格，避免选中后续正文或滚动跳动。
+格内拖选文字、双击单词与三击段落保留；Escape 收起为光标，多格选中时输入或 Delete 替换/清空内容。
+Tab/Shift+Tab 在单元格间移动，末格 Tab 新增一行并移动到第一格。
+结构编辑上限为 200 行、100 列（单格 rowspan/colspan 上限 100）。
+不规则/超限表格保留原 HTML 并禁用网格结构命令；跨行组无法合并。
+只读、源码不同步或无法编译源码事务时命令返回 false，避免只改视图未改源码。
+每条修改命令独立支持撤销/重做，并保持表格外源码内容。
+
+这是可复用的命令与交互层；按钮、尺寸选择器、属性面板和本地化由消费应用提供。

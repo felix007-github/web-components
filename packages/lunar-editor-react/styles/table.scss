@@ -8,11 +8,7 @@
     overflow-y: hidden;
   }
 
-  .lunar-table-scroll--fixed
-    > table
-    > :is(thead, tbody, tfoot)
-    > tr
-    > :is(td, th),
+  .lunar-table-scroll--fixed > table > :is(thead, tbody, tfoot) > tr > :is(td, th),
   .lunar-table-scroll--fixed > table > tr > :is(td, th) {
     min-width: 0;
     max-width: none;
@@ -27,9 +23,7 @@
   // Controls are editor UI, not document blocks. Keep application-level div
   // indentation, paragraph spacing and outline borders out of their geometry.
   .lunar-table-scroll > .lunar-table-resize-controls,
-  .lunar-table-scroll
-    > .lunar-table-resize-controls
-    > .lunar-table-column-handle {
+  .lunar-table-scroll > .lunar-table-resize-controls > .lunar-table-column-handle {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -87,7 +81,7 @@
   table {
     display: table;
     width: max-content;
-    min-width: 100%;
+    min-width: 0;
     max-width: none;
     box-sizing: border-box;
     margin: 0;
@@ -137,4 +131,28 @@
       border-bottom-color: #c8cdd2;
     }
   }
+}
+
+.lunar-editor__document .lunar-table-cell--selected::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgb(102 126 234 / 18%);
+  box-shadow: inset 0 0 0 2px rgb(102 126 234 / 65%);
+  pointer-events: none;
+}
+
+// Cross-cell selection is painted as a rectangle, including empty cells.
+.lunar-editor__document .lunar-table-cell--selected::selection,
+.lunar-editor__document .lunar-table-cell--selected ::selection {
+  background: transparent;
+}
+
+// A rectangular range owns the selection; hide the linear DOM range behind it.
+.lunar-editor__document.lunar-table-cell-selection::selection,
+.lunar-editor__document.lunar-table-cell-selection ::selection {
+  background: transparent;
+}
+.lunar-editor__document.lunar-table-dragging .lunar-table-column-handle {
+  pointer-events: none;
 }

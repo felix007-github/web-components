@@ -1,6 +1,6 @@
 {
   "name": "@mache-hangar/lunar-editor-core",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "description": "Framework-independent HTML editing engine, source compiler, sessions and controllers",
   "exports": {

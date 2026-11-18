@@ -1,10 +1,14 @@
 import type { EditorExtension } from '@mache-hangar/lunar-editor-core/extensions';
 import { TableNodeView } from './table-node-view';
-export function createTableExtension(): EditorExtension {
+import { createTableInteraction, type TableExtensionOptions } from './interaction';
+export { EMPTY_TABLE_STATE, getTableState, runTableCommand } from './commands';
+export type { TableAction, TableCommand, TableState } from './commands';
+export type { TableExtensionOptions } from './interaction';
+
+export function createTableExtension(options: TableExtensionOptions = {}): EditorExtension {
   return {
     name: 'table-view',
-    nodeViews: {
-      table: (node, view, getPos) => new TableNodeView(node, view, getPos),
-    },
+    plugins: () => [createTableInteraction(options)],
+    nodeViews: { table: (node, view, getPos) => new TableNodeView(node, view, getPos) },
   };
 }

@@ -1,22 +1,8 @@
-import {
-  registerEditorSchema,
-  composeEditorSchemaConfigurations,
-  validateEditorExtensions,
-  type EditorSchemaConfiguration,
-  type EditorExtension,
-} from '../extensions';
+import { registerEditorSchema, composeEditorSchemaConfigurations, validateEditorExtensions, type EditorSchemaConfiguration, type EditorExtension } from '../extensions';
 import { type DOMOutputSpec, type NodeSpec, Schema } from 'prosemirror-model';
 import { getDomSourceKey } from '../source/dom-projection';
 import { parseAttrs, readHtmlAttributes } from './dom-attributes';
-import {
-  HTML_SPECIALIZED_TAGS,
-  htmlElementTag,
-  isHtmlBlockElement,
-  isHtmlBlockVoidTag,
-  isHtmlInlineElement,
-  isHtmlInlineVoidTag,
-  isHtmlRawTag,
-} from './html-content-model';
+import { HTML_SPECIALIZED_TAGS, htmlElementTag, isHtmlBlockElement, isHtmlBlockVoidTag, isHtmlInlineElement, isHtmlInlineVoidTag, isHtmlRawTag } from './html-content-model';
 import { sourceWhitespaceBlocks } from './source-whitespace';
 
 function elementSpec(tagName: string, content = 'inline*'): NodeSpec {
@@ -33,10 +19,7 @@ function elementSpec(tagName: string, content = 'inline*'): NodeSpec {
         tag: tagName,
         priority: 60,
         preserveWhitespace: true,
-        getAttrs: (element) =>
-          sourceWhitespaceBlocks.has(element as HTMLElement)
-            ? getAttributes(element as HTMLElement)
-            : false,
+        getAttrs: element => (sourceWhitespaceBlocks.has(element as HTMLElement) ? getAttributes(element as HTMLElement) : false),
       },
       { tag: tagName, getAttrs: getAttributes },
     ],
@@ -60,26 +43,19 @@ function aliasedTextBlockSpec(tagNames: string[]): NodeSpec {
     },
     content: 'inline*',
     group: 'block',
-    parseDOM: tagNames.flatMap((tagName) => [
+    parseDOM: tagNames.flatMap(tagName => [
       {
         tag: tagName,
         priority: 60,
         preserveWhitespace: true,
-        getAttrs: (element: HTMLElement) =>
-          sourceWhitespaceBlocks.has(element) ? readAttributes(element) : false,
+        getAttrs: (element: HTMLElement) => (sourceWhitespaceBlocks.has(element) ? readAttributes(element) : false),
       },
       {
         tag: tagName,
         getAttrs: (element: HTMLElement) => readAttributes(element),
       },
     ]),
-    toDOM: (node): DOMOutputSpec => [
-      tagNames.includes(node.attrs.localName)
-        ? node.attrs.localName
-        : defaultTag,
-      node.attrs.htmlAttrs,
-      0,
-    ],
+    toDOM: (node): DOMOutputSpec => [tagNames.includes(node.attrs.localName) ? node.attrs.localName : defaultTag, node.attrs.htmlAttrs, 0],
   };
 }
 
@@ -124,7 +100,7 @@ function fallbackContentSpec(group: 'block' | 'inline'): NodeSpec {
       {
         tag: '*',
         priority: 1,
-        getAttrs: (element) => {
+        getAttrs: element => {
           const htmlElement = element as HTMLElement;
           const tag = htmlElementTag(htmlElement);
           if (
@@ -132,9 +108,7 @@ function fallbackContentSpec(group: 'block' | 'inline'): NodeSpec {
             isHtmlRawTag(tag) ||
             isHtmlInlineVoidTag(tag) ||
             isHtmlBlockVoidTag(tag) ||
-            (inline
-              ? !isHtmlInlineElement(htmlElement)
-              : !isHtmlBlockElement(htmlElement))
+            (inline ? !isHtmlInlineElement(htmlElement) : !isHtmlBlockElement(htmlElement))
           ) {
             return false;
           }
@@ -142,11 +116,7 @@ function fallbackContentSpec(group: 'block' | 'inline'): NodeSpec {
         },
       },
     ],
-    toDOM: (node): DOMOutputSpec => [
-      node.attrs.localName || (inline ? 'span' : 'div'),
-      node.attrs.htmlAttrs,
-      0,
-    ],
+    toDOM: (node): DOMOutputSpec => [node.attrs.localName || (inline ? 'span' : 'div'), node.attrs.htmlAttrs, 0],
   };
 }
 
@@ -165,24 +135,17 @@ function fallbackLeafSpec(group: 'block' | 'inline'): NodeSpec {
       {
         tag: '*',
         priority: 2,
-        getAttrs: (element) => {
+        getAttrs: element => {
           const htmlElement = element as HTMLElement;
           const tag = htmlElementTag(htmlElement);
-          if (
-            HTML_SPECIALIZED_TAGS.has(tag) ||
-            isHtmlRawTag(tag) ||
-            (inline ? !isHtmlInlineVoidTag(tag) : !isHtmlBlockVoidTag(tag))
-          ) {
+          if (HTML_SPECIALIZED_TAGS.has(tag) || isHtmlRawTag(tag) || (inline ? !isHtmlInlineVoidTag(tag) : !isHtmlBlockVoidTag(tag))) {
             return false;
           }
           return fallbackAttrs(htmlElement);
         },
       },
     ],
-    toDOM: (node): DOMOutputSpec => [
-      node.attrs.localName || (inline ? 'span' : 'div'),
-      node.attrs.htmlAttrs,
-    ],
+    toDOM: (node): DOMOutputSpec => [node.attrs.localName || (inline ? 'span' : 'div'), node.attrs.htmlAttrs],
   };
 }
 
@@ -204,9 +167,7 @@ const textBlockNodes: Record<string, NodeSpec> = {
     ...elementSpec('pre', 'text*'),
     code: true,
     marks: '',
-    parseDOM: [
-      { tag: 'pre', preserveWhitespace: 'full', getAttrs: parseAttrs() },
-    ],
+    parseDOM: [{ tag: 'pre', preserveWhitespace: 'full', getAttrs: parseAttrs() }],
   },
 };
 
@@ -229,17 +190,14 @@ const containerNodes: Record<string, NodeSpec> = {
 };
 
 const tableNodes: Record<string, NodeSpec> = {
-  table: containerSpec(
-    'table',
-    'caption? colgroup* table_head? table_body* table_foot? table_row*'
-  ),
+  table: containerSpec('table', 'caption? colgroup* table_head? table_body* table_foot? table_row*'),
   caption: containerSpec('caption'),
   colgroup: containerSpec('colgroup', 'col*'),
   col: leafSpec('col'),
   table_head: containerSpec('thead', 'table_row+'),
   table_body: containerSpec('tbody', 'table_row+'),
   table_foot: containerSpec('tfoot', 'table_row+'),
-  table_row: containerSpec('tr', '(table_header | table_cell)+'),
+  table_row: containerSpec('tr', '(table_header | table_cell)*'),
   table_header: containerSpec('th', 'block+'),
   table_cell: containerSpec('td', 'block+'),
 };
@@ -252,15 +210,9 @@ const nodes: Record<string, NodeSpec> = {
   ...tableNodes,
 };
 
-export function createEditorSchema(
-  configuration: EditorSchemaConfiguration = {},
-  extensions: readonly EditorExtension[] = []
-) {
+export function createEditorSchema(configuration: EditorSchemaConfiguration = {}, extensions: readonly EditorExtension[] = []) {
   validateEditorExtensions(extensions);
-  const combined = composeEditorSchemaConfigurations([
-    ...extensions,
-    configuration,
-  ]);
+  const combined = composeEditorSchemaConfigurations([...extensions, configuration]);
   const schema = new Schema({ nodes: { ...nodes, ...combined.nodes } });
   registerEditorSchema(schema, combined);
   return schema;
