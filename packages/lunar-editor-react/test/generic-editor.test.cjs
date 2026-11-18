@@ -62,28 +62,15 @@ const React = require('react');
 const { act } = React;
 const { createRoot } = require('react-dom/client');
 const { RichEditor } = require('../dist/index.cjs');
-const {
-  EditorState,
-  EditorView,
-  Node: ProseMirrorNode,
-  TextSelection,
-} = require('@mache-hangar/lunar-editor-core/pm');
+const { EditorState, EditorView, Node: ProseMirrorNode, TextSelection } = require('@mache-hangar/lunar-editor-core/pm');
 
 async function mount(props) {
   const host = document.createElement('div');
   document.body.append(host);
   const root = createRoot(host);
   const ref = React.createRef();
-  const render = async (next) => {
-    await act(async () =>
-      root.render(
-        React.createElement(
-          React.StrictMode,
-          null,
-          React.createElement(RichEditor, { ...next, ref })
-        )
-      )
-    );
+  const render = async next => {
+    await act(async () => root.render(React.createElement(React.StrictMode, null, React.createElement(RichEditor, { ...next, ref }))));
   };
   await render(props);
   return {
@@ -108,13 +95,7 @@ test('generic editor preserves markup, view and history through React rerenders'
     assert.ok(view instanceof EditorView);
     assert.ok(view.state instanceof EditorState);
     assert.ok(view.state.doc instanceof ProseMirrorNode);
-    await act(async () =>
-      view.dispatch(
-        view.state.tr
-          .setSelection(TextSelection.create(view.state.doc, 6))
-          .insertText('!')
-      )
-    );
+    await act(async () => view.dispatch(view.state.tr.setSelection(TextSelection.create(view.state.doc, 6)).insertText('!')));
     assert.equal(api.getHtml(), html.replace('Alpha', 'Alpha!'));
     await fixture.render({ content: html, readonly: true });
     assert.equal(api.getView(), view);
@@ -133,51 +114,43 @@ test('generic editor preserves markup, view and history through React rerenders'
 test('base React entry does not load MathLive or Redline capabilities', async () => {
   const fixture = await mount({ content: '<p>Plain HTML</p>' });
   try {
+    assert.equal(fixture.ref.current.getView().state.schema.nodes.review_add, undefined);
+    assert.equal(fixture.ref.current.getView().state.schema.nodes.math_inline, undefined);
     assert.equal(
-      fixture.ref.current.getView().state.schema.nodes.review_add,
-      undefined
-    );
-    assert.equal(
-      fixture.ref.current.getView().state.schema.nodes.math_inline,
-      undefined
-    );
-    assert.equal(
-      Object.keys(require.cache).some((file) =>
-        /[/\\]mathlive[/\\]/.test(file)
-      ),
-      false
+      Object.keys(require.cache).some(file => /[/\\]mathlive[/\\]/.test(file)),
+      false,
     );
   } finally {
     await fixture.close();
   }
 });
 
-test('rich-editor subpath does not load source editing, math or formatting dependencies', () => {
+test('rich-editor and table command entries keep optional UI and heavy capabilities unloaded', () => {
   const { spawnSync } = require('node:child_process');
-  const result = spawnSync(process.execPath, [
-    '-e',
-    "require(process.argv[1]); console.log(JSON.stringify(Object.keys(require.cache).filter(file => /@codemirror|mathlive|prettier/.test(file))));",
-    require.resolve('@mache-hangar/lunar-editor-react/rich-editor'),
-  ], { encoding: 'utf8' });
-  assert.equal(result.status, 0, result.stderr);
-  assert.deepEqual(JSON.parse(result.stdout), []);
+  for (const entry of ['rich-editor', 'extensions/table']) {
+    const result = spawnSync(
+      process.execPath,
+      [
+        '-e',
+        'require(process.argv[1]); console.log(JSON.stringify(Object.keys(require.cache).filter(file => /@codemirror|mathlive|prettier|antd|@mache-hangar[+\\/]components/.test(file))));',
+        require.resolve('@mache-hangar/lunar-editor-react/' + entry),
+      ],
+      { encoding: 'utf8' },
+    );
+    assert.equal(result.status, 0, result.stderr);
+    assert.deepEqual(JSON.parse(result.stdout), []);
+  }
 });
 
 test('table presentation can be explicitly enabled without changing exported HTML', async () => {
-  const {
-    createTableExtension,
-  } = require('../dist/extensions/table/index.cjs');
-  const html =
-    "<table data-x='1'><tbody><tr><td>Cell</td></tr></tbody></table>";
+  const { createTableExtension } = require('../dist/extensions/table/index.cjs');
+  const html = "<table data-x='1'><tbody><tr><td>Cell</td></tr></tbody></table>";
   const fixture = await mount({
     content: html,
     extensions: [createTableExtension()],
   });
   try {
-    assert.equal(
-      fixture.host.querySelectorAll('.lunar-table-scroll table').length,
-      1
-    );
+    assert.equal(fixture.host.querySelectorAll('.lunar-table-scroll table').length, 1);
     assert.equal(fixture.ref.current.getHtml(), html);
   } finally {
     await fixture.close();
@@ -187,10 +160,7 @@ test('table presentation can be explicitly enabled without changing exported HTM
 function tableGeometry(table, widths, cells) {
   const currentWidths = () => {
     const cols = Array.from(table.querySelectorAll(':scope > colgroup > col'));
-    return cols.length === widths.length &&
-      cols.every((col) => col.style.width.endsWith('px'))
-      ? cols.map((col) => parseFloat(col.style.width))
-      : widths;
+    return cols.length === widths.length && cols.every(col => col.style.width.endsWith('px')) ? cols.map(col => parseFloat(col.style.width)) : widths;
   };
   const rect = (left, right, top = 100, bottom = 200) => ({
     x: left,
@@ -203,15 +173,11 @@ function tableGeometry(table, widths, cells) {
     height: bottom - top,
   });
   table.parentElement.getBoundingClientRect = () => rect(10, 610);
-  table.getBoundingClientRect = () =>
-    rect(10, 10 + currentWidths().reduce((a, b) => a + b, 0));
+  table.getBoundingClientRect = () => rect(10, 10 + currentWidths().reduce((a, b) => a + b, 0));
   cells.forEach(([cell, from, to]) => {
     cell.getBoundingClientRect = () => {
       const columns = currentWidths();
-      return rect(
-        10 + columns.slice(0, from).reduce((a, b) => a + b, 0),
-        10 + columns.slice(0, to).reduce((a, b) => a + b, 0)
-      );
+      return rect(10 + columns.slice(0, from).reduce((a, b) => a + b, 0), 10 + columns.slice(0, to).reduce((a, b) => a + b, 0));
     };
   });
 }
@@ -228,9 +194,7 @@ function pointer(target, type, clientX, pointerId = 1) {
 }
 
 async function resizeFixture(html, widths, cellRanges, extra = {}) {
-  const {
-    createTableExtension,
-  } = require('../dist/extensions/table/index.cjs');
+  const { createTableExtension } = require('../dist/extensions/table/index.cjs');
   const fixture = await mount({
     content: html,
     extensions: [createTableExtension()],
@@ -241,19 +205,18 @@ async function resizeFixture(html, widths, cellRanges, extra = {}) {
     table,
     widths,
     Array.from(table.rows)
-      .flatMap((row) => Array.from(row.cells))
-      .map((cell, index) => [cell, ...cellRanges[index]])
+      .flatMap(row => Array.from(row.cells))
+      .map((cell, index) => [cell, ...cellRanges[index]]),
   );
   pointer(table, 'pointerover', 20);
   return {
     ...fixture,
     table,
-    handle: (column = 0) =>
-      fixture.host.querySelectorAll('.lunar-table-column-handle')[column],
+    handle: (column = 0) => fixture.host.querySelectorAll('.lunar-table-column-handle')[column],
   };
 }
 
-const tick = () => new Promise((resolve) => setTimeout(resolve, 30));
+const tick = () => new Promise(resolve => setTimeout(resolve, 30));
 
 test('merged table column drag previews without edits and commits one reversible source update', async () => {
   const html =
@@ -272,7 +235,7 @@ test('merged table column drag previews without edits and commits one reversible
     ],
     {
       onDocChanged: () => changes++,
-    }
+    },
   );
   try {
     const api = fixture.ref.current;
@@ -281,18 +244,9 @@ test('merged table column drag previews without edits and commits one reversible
     view.state.doc.descendants((node, pos) => {
       if (node.isText && node.text === 'Alpha') textPosition = pos;
     });
-    await act(async () =>
-      view.dispatch(
-        view.state.tr.setSelection(
-          TextSelection.create(view.state.doc, textPosition, textPosition + 5)
-        )
-      )
-    );
+    await act(async () => view.dispatch(view.state.tr.setSelection(TextSelection.create(view.state.doc, textPosition, textPosition + 5))));
     pointer(fixture.table, 'pointerover', 20);
-    assert.equal(
-      fixture.host.querySelectorAll('.lunar-table-column-handle').length,
-      2
-    );
+    assert.equal(fixture.host.querySelectorAll('.lunar-table-column-handle').length, 2);
     const before = view.state.doc;
     await act(async () => {
       pointer(fixture.handle(1), 'pointerdown', 290);
@@ -304,10 +258,8 @@ test('merged table column drag previews without edits and commits one reversible
     assert.equal(api.getHtml(), html);
     assert.equal(changes, 0);
     assert.deepEqual(
-      Array.from(fixture.table.querySelectorAll('col')).map(
-        (col) => col.style.width
-      ),
-      ['120px', '200px', '160px']
+      Array.from(fixture.table.querySelectorAll('col')).map(col => col.style.width),
+      ['120px', '200px', '160px'],
     );
     await act(async () => {
       pointer(document, 'pointerup', 330);
@@ -323,17 +275,8 @@ test('merged table column drag previews without edits and commits one reversible
     assert.match(saved, /colspan=['"]2['"]/);
     assert.match(saved, /<a href='\/keep'>Alpha<\/a>/);
     assert.match(saved, /color: red/);
-    assert.equal(
-      view.state.doc.textBetween(
-        view.state.selection.from,
-        view.state.selection.to
-      ),
-      'Alpha'
-    );
-    assert.equal(
-      require('@mache-hangar/lunar-editor-core/pm').undoDepth(view.state),
-      1
-    );
+    assert.equal(view.state.doc.textBetween(view.state.selection.from, view.state.selection.to), 'Alpha');
+    assert.equal(require('@mache-hangar/lunar-editor-core/pm').undoDepth(view.state), 1);
     await act(async () => assert.equal(api.undo(), true));
     assert.equal(api.getHtml(), html);
     assert.equal(fixture.table.querySelector('colgroup'), null);
@@ -341,9 +284,7 @@ test('merged table column drag previews without edits and commits one reversible
     assert.equal(api.getHtml(), saved);
     const reloaded = await mount({
       content: saved,
-      extensions: [
-        require('../dist/extensions/table/index.cjs').createTableExtension(),
-      ],
+      extensions: [require('../dist/extensions/table/index.cjs').createTableExtension()],
     });
     try {
       assert.equal(reloaded.ref.current.getHtml(), saved);
@@ -367,7 +308,7 @@ test('existing column groups, attributes and spans survive resize; adjacent edit
     [
       [0, 1],
       [1, 2],
-    ]
+    ],
   );
   try {
     const api = fixture.ref.current;
@@ -414,7 +355,7 @@ test('cancelled drags and clicks do not change HTML or add history; resizing cla
     [
       [0, 1],
       [1, 2],
-    ]
+    ],
   );
   try {
     for (const cancel of ['Escape', 'pointercancel', 'blur', 'click']) {
@@ -422,26 +363,13 @@ test('cancelled drags and clicks do not change HTML or add history; resizing cla
       await act(async () => {
         pointer(fixture.handle(), 'pointerdown', 130);
         if (cancel !== 'click') pointer(document, 'pointermove', 170);
-        if (cancel === 'Escape')
-          document.dispatchEvent(
-            new KeyboardEvent('keydown', { key: 'Escape', bubbles: true })
-          );
+        if (cancel === 'Escape') document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
         else if (cancel === 'blur') window.dispatchEvent(new Event('blur'));
-        else
-          pointer(
-            document,
-            cancel === 'click' ? 'pointerup' : 'pointercancel',
-            130
-          );
+        else pointer(document, cancel === 'click' ? 'pointerup' : 'pointercancel', 130);
         await tick();
       });
       assert.equal(fixture.ref.current.getHtml(), html);
-      assert.equal(
-        require('@mache-hangar/lunar-editor-core/pm').undoDepth(
-          fixture.ref.current.getView().state
-        ),
-        0
-      );
+      assert.equal(require('@mache-hangar/lunar-editor-core/pm').undoDepth(fixture.ref.current.getView().state), 0);
       assert.equal(fixture.table.querySelector('colgroup'), null);
     }
     await act(async () => {
@@ -450,10 +378,8 @@ test('cancelled drags and clicks do not change HTML or add history; resizing cla
       await tick();
     });
     assert.deepEqual(
-      Array.from(fixture.table.querySelectorAll('col')).map(
-        (col) => col.style.width
-      ),
-      ['192px', '48px']
+      Array.from(fixture.table.querySelectorAll('col')).map(col => col.style.width),
+      ['192px', '48px'],
     );
   } finally {
     await fixture.close();
@@ -468,7 +394,7 @@ test('read-only tables have no resize controls', async () => {
       [0, 1],
       [1, 2],
     ],
-    { readonly: true }
+    { readonly: true },
   );
   try {
     assert.equal(fixture.handle(), undefined);
@@ -484,7 +410,7 @@ test('resize handles use their overlay origin after indentation and horizontal s
     [
       [0, 1],
       [1, 2],
-    ]
+    ],
   );
   try {
     const controls = fixture.host.querySelector('.lunar-table-resize-controls');
@@ -533,28 +459,23 @@ test('rowspan zero stops at its row group; fully merged boundaries can be resize
       [1, 3],
       [0, 1],
       [1, 3],
-    ]
+    ],
   );
   try {
-    assert.equal(
-      fixture.host.querySelectorAll('.lunar-table-column-handle').length,
-      2
-    );
+    assert.equal(fixture.host.querySelectorAll('.lunar-table-column-handle').length, 2);
     await act(async () => {
       fixture.handle(1).dispatchEvent(
         new KeyboardEvent('keydown', {
           key: 'ArrowRight',
           bubbles: true,
           cancelable: true,
-        })
+        }),
       );
       await tick();
     });
     assert.deepEqual(
-      Array.from(fixture.table.querySelectorAll('col')).map(
-        (col) => col.style.width
-      ),
-      ['100px', '110px', '90px']
+      Array.from(fixture.table.querySelectorAll('col')).map(col => col.style.width),
+      ['100px', '110px', '90px'],
     );
     assert.match(fixture.ref.current.getHtml(), /rowspan="0"/);
     await act(async () => fixture.ref.current.undo());
@@ -572,7 +493,7 @@ test('destroying or changing a document during a drag discards its preview and d
     [
       [0, 1],
       [1, 2],
-    ]
+    ],
   );
   try {
     await act(async () => {

@@ -69,7 +69,7 @@ const extensions = [createMathExtension(), createTableExtension()];
 
 通用命令通过表格逻辑网格处理 rowspan/colspan，保留 caption、thead/tbody/tfoot、列组和已有属性。
 createTableExtension({ onStateChange }) 回调提供 TableState；getTableState(view) 可主动读取。
-工具栏由应用绘制，调用 runTableCommand(view, command)，返回是否实际应用。
+工具栏可从可选的 table-ui 入口使用，也可自定义 UI 调用 runTableCommand(view, command)，返回是否实际应用。
 
 - insert：rows、columns（1–50），可选 headerRow。
 - row_before/row_after/delete_rows、column_before/column_after/delete_columns、delete_table。
@@ -88,4 +88,42 @@ Tab/Shift+Tab 在单元格间移动，末格 Tab 新增一行并移动到第一�
 只读、源码不同步或无法编译源码事务时命令返回 false，避免只改视图未改源码。
 每条修改命令独立支持撤销/重做，并保持表格外源码内容。
 
-这是可复用的命令与交互层；按钮、尺寸选择器、属性面板和本地化由消费应用提供。
+## 可选表格工具栏
+
+`extensions/table-ui` 提供 `InsertTableButton`、`TableToolbar` 和 props 类型。
+包含尺寸选择器、浮动工具栏、行列菜单、合并/拆分、属性面板、选区边框及键盘焦点交互。
+UI 使用 Ant Design 5 和组件库的 WtIcon；仅使用该入口时需要安装可选 peer dependencies
+`antd@^5.27.6`、`@mache-hangar/components@^0.1.4`。基础编辑器和 table 命令入口不加载这两个 UI 包。
+引入 `extensions/table-ui.css`，配合 `extensions/table.css` 使用。
+
+```tsx
+import { useRef, useState } from 'react';
+import { RichEditor } from '@mache-hangar/lunar-editor-react/rich-editor';
+import { createTableExtension, EMPTY_TABLE_STATE, runTableCommand } from '@mache-hangar/lunar-editor-react/extensions/table';
+import { InsertTableButton, TableToolbar } from '@mache-hangar/lunar-editor-react/extensions/table-ui';
+import '@mache-hangar/lunar-editor-react/styles.css';
+import '@mache-hangar/lunar-editor-react/extensions/table.css';
+import '@mache-hangar/lunar-editor-react/extensions/table-ui.css';
+
+function Editor({ html }: { html: string }) {
+  const rootRef = useRef<HTMLDivElement>(null);
+  const editorRef = useRef<import('@mache-hangar/lunar-editor-react/rich-editor').RichEditorApi>(null);
+  const [state, setState] = useState(EMPTY_TABLE_STATE);
+  const [extensions] = useState(() => [createTableExtension({ onStateChange: setState })]);
+  const onCommand = (command: import('@mache-hangar/lunar-editor-react/extensions/table').TableCommand) => {
+    runTableCommand(editorRef.current?.getView(), command);
+  };
+  return (
+    <div ref={rootRef}>
+      <InsertTableButton state={state} onCommand={onCommand} />
+      <RichEditor ref={editorRef} content={html} extensions={extensions} />
+      <TableToolbar rootRef={rootRef} state={state} onCommand={onCommand} />
+    </div>
+  );
+}
+```
+
+`state` 来自表格扩展回调，`onCommand` 交由宿主执行并处理失败提示，`disabled` 用于只读或模式切换。
+`rootRef` 指向编辑器根元素或包含编辑器及其工具栏的容器。组件自行定位表格、跟随滚动并清理监听器，
+不依赖应用页面类名。浮层通过 portal 挂到编辑区域外，不会进入保存 HTML。
+保存、AI、PDF 联动及业务通知仍由消费应用维护。

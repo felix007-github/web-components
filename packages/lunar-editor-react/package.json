@@ -1,6 +1,6 @@
 {
   "name": "@mache-hangar/lunar-editor-react",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
   "description": "Native React HTML editor components backed by lunar-editor-core",
   "exports": {
@@ -31,7 +31,13 @@
       "import": "./dist/extensions/table/index.js",
       "require": "./dist/extensions/table/index.cjs"
     },
-    "./extensions/table.css": "./dist/extensions/table.css"
+    "./extensions/table.css": "./dist/extensions/table.css",
+    "./extensions/table-ui": {
+      "types": "./dist/types/extensions/table-ui/index.d.ts",
+      "import": "./dist/extensions/table-ui/index.js",
+      "require": "./dist/extensions/table-ui/index.cjs"
+    },
+    "./extensions/table-ui.css": "./dist/extensions/table-ui.css"
   },
   "files": [
     "dist",
@@ -58,11 +64,15 @@
     "react-dom": "^19.1.1",
     "sass": "^1.95.0",
     "typescript": "^5.9.3",
-    "vite": "^7.2.4"
+    "vite": "^7.2.4",
+    "@mache-hangar/components": "workspace:*",
+    "antd": "5.29.3"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",
-    "react-dom": "^18.0.0 || ^19.0.0"
+    "react-dom": "^18.0.0 || ^19.0.0",
+    "@mache-hangar/components": "^0.1.4",
+    "antd": "^5.27.6"
   },
   "license": "MIT",
   "homepage": "https://github.com/felix007-github/web-components/tree/main/packages/lunar-editor-react#readme",
@@ -77,5 +87,13 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
+  },
+  "peerDependenciesMeta": {
+    "@mache-hangar/components": {
+      "optional": true
+    },
+    "antd": {
+      "optional": true
+    }
   }
 }

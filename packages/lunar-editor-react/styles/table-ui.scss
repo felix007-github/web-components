@@ -1,0 +1,282 @@
+.lunar-table-toolbar {
+  position: fixed;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  max-width: calc(100vw - 16px);
+  padding: 4px;
+  border: 1px solid #cbd2dd;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 0 3px 12px rgb(24 39 65 / 17%);
+  color: #27384e;
+  font-size: 12px;
+}
+
+.lunar-table-selection {
+  position: fixed;
+  z-index: 30;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.lunar-table-selection__frame,
+.lunar-table-selection__cell {
+  position: absolute;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.lunar-table-selection__frame {
+  border: 2px solid #efb72e;
+}
+.lunar-table-selection__cell {
+  border: 1px solid #627bf2;
+  background: rgb(98 123 242 / 6%);
+}
+
+.lunar-table-toolbar__tool {
+  height: 30px;
+  min-width: 32px;
+  padding: 3px 6px;
+  gap: 3px;
+}
+
+.lunar-table-toolbar__icon {
+  position: relative;
+  display: inline-flex;
+}
+.lunar-table-toolbar__icon--cell::after {
+  position: absolute;
+  left: 10px;
+  top: 6px;
+  width: 5px;
+  height: 4px;
+  background: currentColor;
+  content: '';
+}
+.lunar-table-toolbar__property-mark {
+  position: absolute;
+  right: -3px;
+  bottom: -2px;
+  background: #fff;
+  border-radius: 50%;
+}
+.lunar-table-toolbar__chevron {
+  color: #42536a;
+}
+.lunar-table-toolbar__divider {
+  width: 1px;
+  height: 22px;
+  margin-inline: 3px;
+  background: #e0e5ec;
+}
+.lunar-table-toolbar__help {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.lunar-table-button {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  min-height: 28px;
+  padding: 3px 8px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  color: #435466;
+  background: transparent;
+  font: inherit;
+  white-space: nowrap;
+  cursor: pointer;
+
+  &:hover:not(:disabled) {
+    background: #e8efff;
+  }
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  &:focus-visible {
+    outline: 2px solid #667eea;
+    outline-offset: 1px;
+  }
+  &[aria-pressed='true'] {
+    color: #1e4db7;
+    background: #e8efff;
+  }
+}
+
+.lunar-table-popover {
+  .ant-dropdown-menu {
+    min-width: 190px;
+    padding: 5px;
+  }
+  .ant-dropdown-menu-item {
+    min-height: 32px;
+    font-size: 13px;
+  }
+  .ant-dropdown-menu-item-selected {
+    color: #274bbb;
+    background: #edf1ff;
+  }
+  .ant-popover-inner {
+    padding: 16px;
+    border: 1px solid #dfe4eb;
+    border-radius: 6px;
+    box-shadow: 0 4px 18px rgb(24 39 65 / 14%);
+  }
+}
+
+.lunar-table-cell-menu {
+  width: 246px;
+  padding-bottom: 4px;
+  border: 1px solid #dfe4eb;
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0 4px 18px rgb(24 39 65 / 14%);
+  .ant-dropdown-menu {
+    box-shadow: none;
+  }
+}
+
+.lunar-table-cell-menu__hint {
+  display: grid;
+  gap: 4px;
+  margin: 0 8px 4px;
+  padding: 10px 4px;
+  border-bottom: 1px solid #e6e9ef;
+  color: #6d7b8d;
+  font-size: 12px;
+  line-height: 1.5;
+  strong {
+    color: #435466;
+    font-weight: 500;
+  }
+}
+
+.lunar-table-picker {
+  width: 224px;
+  color: #435466;
+}
+.lunar-table-picker__dimensions {
+  float: right;
+  color: #667eea;
+}
+.lunar-table-picker__grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 4px;
+  margin: 12px 0;
+}
+.lunar-table-picker__cell {
+  aspect-ratio: 1;
+  padding: 0;
+  border: 1px solid #c8d0df;
+  border-radius: 2px;
+  background: #fff;
+  cursor: pointer;
+  &.is-active {
+    border-color: #667eea;
+    background: #dfe7ff;
+  }
+  &:focus-visible {
+    outline: 2px solid #667eea;
+  }
+}
+.lunar-table-picker__custom {
+  display: flex;
+  align-items: end;
+  gap: 8px;
+  label {
+    display: grid;
+    gap: 4px;
+    font-size: 12px;
+  }
+  input {
+    width: 66px;
+    padding: 4px;
+    border: 1px solid #c8d0df;
+    border-radius: 4px;
+  }
+  button {
+    padding: 5px 8px;
+    border: 0;
+    border-radius: 4px;
+    color: #fff;
+    background: #667eea;
+    cursor: pointer;
+  }
+}
+.lunar-table-properties {
+  display: grid;
+  width: 250px;
+  gap: 10px;
+  color: #435466;
+  strong {
+    margin-bottom: 2px;
+    color: #27384e;
+    font-size: 14px;
+  }
+  label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  select {
+    width: 108px;
+    padding: 3px;
+    border: 1px solid #c8d0df;
+    border-radius: 4px;
+  }
+}
+.lunar-table-properties__colors {
+  display: flex;
+  gap: 8px;
+  button {
+    width: 28px;
+    height: 28px;
+    border: 1px solid #c8d0df;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+}
+.lunar-table-properties__row {
+  display: flex;
+  gap: 5px;
+  button {
+    min-width: 40px;
+    border-color: #dfe4eb;
+  }
+}
+.lunar-table-properties__label {
+  color: #6d7b8d;
+  font-size: 12px;
+}
+.lunar-table-properties__footer {
+  padding-top: 10px;
+  border-top: 1px solid #e6e9ef;
+}
+.lunar-table-properties__notice {
+  max-width: 250px;
+  margin: 0;
+  color: #6d7b8d;
+  font-size: 12px;
+}
+.lunar-table-button--danger {
+  gap: 6px;
+  color: #c84343;
+}
+.lunar-table-properties__reset {
+  justify-self: start;
+  padding-left: 0;
+  color: #4263c5;
+  font-size: 12px;
+}
