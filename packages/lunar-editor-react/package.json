@@ -1,6 +1,6 @@
 {
   "name": "@mache-hangar/lunar-editor-react",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "type": "module",
   "description": "Native React HTML editor components backed by lunar-editor-core",
   "exports": {
