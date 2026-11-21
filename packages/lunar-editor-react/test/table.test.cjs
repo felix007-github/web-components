@@ -266,11 +266,11 @@ test('editing columns preserves multiple column groups and expands spanned colum
   }
 });
 
-function startCellDrag(f, id) {
+function startCellDrag(f, id, position, clicks = 1) {
   const target = f.view.dom.querySelector('#' + id);
   f.dragTestTarget = target;
-  f.view.posAtCoords = () => ({ pos: f.view.posAtDOM(f.dragTestTarget, 0) + 1, inside: -1 });
-  const event = new MouseEvent('mousedown', { button: 0, buttons: 1, bubbles: true, cancelable: true });
+  f.view.posAtCoords = () => ({ pos: position ?? f.view.posAtDOM(f.dragTestTarget, 0) + 1, inside: -1 });
+  const event = new MouseEvent('mousedown', { button: 0, buttons: 1, detail: clicks, bubbles: true, cancelable: true });
   Object.defineProperty(event, 'target', { value: target });
   // Exercise the extension without JSDOM's missing native caret hit-testing.
   f.view.someProp('handleDOMEvents', handlers => handlers.mousedown?.(f.view, event));
@@ -284,6 +284,108 @@ async function endCellDrag() {
   document.dispatchEvent(new MouseEvent('mouseup', { button: 0, bubbles: true }));
   await new Promise(resolve => requestAnimationFrame(resolve));
 }
+
+function assertSelectionCell(f, id) {
+  for (const position of [f.view.state.selection.$anchor, f.view.state.selection.$head]) {
+    const cell = Array.from({ length: position.depth }, (_, index) => position.node(position.depth - index)).find(node => ['table_cell', 'table_header'].includes(node.type.name));
+    assert.equal(cell?.attrs.htmlAttrs?.id, id, 'The ProseMirror selection must stay in the clicked DOM cell');
+    assert.equal(position.parent.inlineContent, true, 'A text selection must resolve to inline content');
+  }
+  const native = document.getSelection();
+  for (const node of [native.anchorNode, native.focusNode]) {
+    const element = node?.nodeType === Node.ELEMENT_NODE ? node : node?.parentElement;
+    assert.equal(element?.closest('td, th')?.id, id, 'The native caret must stay in the clicked DOM cell');
+  }
+}
+
+test('blank cell boundary clicks keep single, double and triple selections in the DOM target', async () => {
+  const cases = [
+    { name: 'paragraph', cell: '<td id="a"><p>Alpha</p></td>', paragraph: 'Alpha' },
+    { name: 'empty', cell: '<td id="a"></td>', paragraph: '' },
+    { name: 'direct text', cell: '<td id="a">Alpha</td>', paragraph: 'Alpha' },
+    { name: 'paragraphs', cell: '<td id="a"><p>Alpha</p><p>Beta</p></td>', paragraph: 'Beta' },
+    { name: 'list', cell: '<td id="a"><ul><li><p>Alpha</p></li><li><p>Beta</p></li></ul></td>', paragraph: 'Beta' },
+    { name: 'header', cell: '<th id="a"><p>Alpha</p></th>', paragraph: 'Alpha' },
+    { name: 'merged', cell: '<td id="a" rowspan="2" colspan="2"><p>Alpha</p></td>', paragraph: 'Alpha', next: '<tr><td>Later</td></tr>' },
+  ];
+  for (const item of cases)
+    for (const clicks of [1, 2, 3]) {
+      const f = fixture(`<table><tbody><tr>${item.cell}<td id="b"><p>Following</p></td></tr>${item.next || ''}</tbody></table>`);
+      try {
+        const html = f.html();
+        const start = f.view.posAtDOM(f.view.dom.querySelector('#a'), 0);
+        const cell = f.view.state.doc.resolve(start).parent;
+        // Browser caret hit-testing can return the structural position after the
+        // last paragraph when the pointer is in a cell's bottom padding.
+        const event = startCellDrag(f, 'a', start + cell.content.size, clicks);
+        assert.equal(event.defaultPrevented, true, item.name);
+        await endCellDrag();
+        assertSelectionCell(f, 'a');
+        assert.equal(getTableState(f.view).column, 1, item.name);
+        if (clicks === 1) assert.equal(f.view.state.selection.empty, true, item.name);
+        if (clicks === 3) assert.equal(f.view.state.doc.textBetween(f.view.state.selection.from, f.view.state.selection.to), item.paragraph, item.name);
+        assert.equal(f.html(), html, item.name);
+        assert.equal(undo(f.view.state, f.view.dispatch), false, item.name);
+      } finally {
+        f.close();
+      }
+    }
+});
+
+test('same-cell dragging into bottom padding ends inside the original cell', async () => {
+  const f = fixture();
+  try {
+    const html = f.html();
+    startCellDrag(f, 'a');
+    const start = f.view.posAtDOM(f.view.dom.querySelector('#a'), 0);
+    const cell = f.view.state.doc.resolve(start).parent;
+    f.view.posAtCoords = () => ({ pos: start + cell.content.size, inside: -1 });
+    moveCellDrag(f, 'a');
+    await endCellDrag();
+    assertSelectionCell(f, 'a');
+    assert.equal(f.view.state.doc.textBetween(f.view.state.selection.from, f.view.state.selection.to), 'A');
+    assert.equal(getTableState(f.view).selectedCells, 1);
+    assert.equal(f.html(), html);
+  } finally {
+    f.close();
+  }
+});
+
+test('cell text double and triple clicks keep word and paragraph selection', async () => {
+  for (const [clicks, expected] of [
+    [2, 'Alpha'],
+    [3, 'Alpha beta'],
+  ]) {
+    const f = fixture('<table><tbody><tr><td id="a"><p>Alpha beta</p><p>Second paragraph</p></td><td id="b"><p>Following</p></td></tr></tbody></table>');
+    try {
+      const html = f.html();
+      const text = f.view.dom.querySelector('#a p').firstChild;
+      startCellDrag(f, 'a', f.view.posAtDOM(text, 3), clicks);
+      await endCellDrag();
+      assertSelectionCell(f, 'a');
+      assert.equal(f.view.state.doc.textBetween(f.view.state.selection.from, f.view.state.selection.to), expected);
+      assert.equal(f.html(), html);
+    } finally {
+      f.close();
+    }
+  }
+});
+
+test('an atom-only cell does not fabricate a text caret in another cell', () => {
+  const f = fixture('<table><tbody><tr><td id="a"><hr></td><td id="b"><p>Following</p></td></tr></tbody></table>');
+  try {
+    f.select('b');
+    const html = f.html(),
+      selection = f.view.state.selection;
+    const start = f.view.posAtDOM(f.view.dom.querySelector('#a'), 0);
+    const cell = f.view.state.doc.resolve(start).parent;
+    assert.equal(startCellDrag(f, 'a', start + cell.content.size).defaultPrevented, false);
+    assert.equal(f.view.state.selection.eq(selection), true);
+    assert.equal(f.html(), html);
+  } finally {
+    f.close();
+  }
+});
 
 test('dragging empty cells selects a visible rectangle that merges, splits and undoes', async () => {
   const f = fixture('<table><tbody><tr><td id="a"><p></p></td><td id="b"><p></p></td></tr><tr><td id="c"><p></p></td><td id="d"><p></p></td></tr></tbody></table>');

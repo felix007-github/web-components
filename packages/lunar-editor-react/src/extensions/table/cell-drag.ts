@@ -13,6 +13,25 @@ function hitCell(view: EditorView, target: EventTarget | null) {
   return grid && cell && tableElement ? { grid, cell, tableElement } : undefined;
 }
 
+/** Cell padding can resolve to a block boundary; never search beyond this cell. */
+function cellTextPosition(cell: Cell, position: number): number | undefined {
+  let nearest: number | undefined;
+  cell.node.descendants((node, offset) => {
+    if (node.isAtom) return false;
+    if (!node.inlineContent) return;
+    const from = cell.pos + offset + 2;
+    const candidate = Math.max(from, Math.min(position, from + node.content.size));
+    if (
+      nearest === undefined ||
+      Math.abs(candidate - position) < Math.abs(nearest - position) ||
+      (Math.abs(candidate - position) === Math.abs(nearest - position) && candidate > nearest)
+    )
+      nearest = candidate;
+    return false;
+  });
+  return nearest;
+}
+
 /** Resolve a word without handing the mouse gesture back to native HTML selection. */
 function clickSelection(view: EditorView, pos: number, count: number) {
   const $pos = view.state.doc.resolve(pos);
@@ -36,7 +55,7 @@ function clickSelection(view: EditorView, pos: number, count: number) {
       if (from !== undefined && to !== undefined) return TextSelection.create(view.state.doc, from, to);
     }
   }
-  return TextSelection.near($pos);
+  return TextSelection.create(view.state.doc, pos);
 }
 
 type Drag = {
@@ -64,7 +83,8 @@ export class CellDragSelection {
     const hit = hitCell(view, event.target);
     if (!hit) return false;
     const at = view.posAtCoords({ left: event.clientX, top: event.clientY })?.pos;
-    const pos = at !== undefined && cellAt(hit.grid, at)?.pos === hit.cell.pos ? at : hit.cell.pos + 1;
+    const pos = cellTextPosition(hit.cell, at !== undefined && cellAt(hit.grid, at)?.pos === hit.cell.pos ? at : hit.cell.pos + 1);
+    if (pos === undefined) return false;
     const selection = clickSelection(view, pos, event.detail);
     this.drag = { view, doc: view.state.doc, ...hit, anchor: hit.cell, head: hit.cell, selecting: false, textFrom: selection.from, textTo: selection.to };
     // Starting a native text drag as well would race with our rectangular selection.
